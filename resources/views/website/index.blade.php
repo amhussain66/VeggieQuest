@@ -57,10 +57,10 @@
         </div>
 
         <div class="row text-center justify-content-center">
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <img src="{{ URL::asset('admin/assets/uploads/'.$vog->image) }}" class="veggie-animation"
                      style="width: 50%; object-fit: cover; border-radius: 50%;">
-            </div>
+            </div> -->
         </div>
 
         
@@ -68,12 +68,16 @@
             <button id="reveal-fact-btn" class="theme-btn btn-style-one">Reveal a Veggie Fact</button>
 
             <div id="veggie-fact-box" style="display: none; margin-top: 20px;">
+            <img src="{{ URL::asset('website/images/resource/veggie-carrot-fact.jpg') }}" 
+                alt="Cartoon Carrot" 
+                style="max-width: 300px; margin-bottom: 15px; border-radius: 20px;">
+
                 <p class="fact-text">
                     🥕 Did you know? Carrots were originally purple before the orange variety became popular!
                 </p>
             </div>
         </div>
-        
+
         
     </div>
 </section>
@@ -92,17 +96,32 @@
                     <div class="inner-column">
                         <!-- Sec Title -->
                         <div class="sec-title">
-                            <div class="title">HEALTHY LIFESTYLE</div>
-                            <h2>Begin your journey to a healthy lifestyle today!</h2>
+                            <!-- <div class="title">HEALTHY LIFESTYLE</div> -->
+                            <h2 class="sec-title">🚀 Start Your Veggie Adventure!</h2>
                             <div class="text">
-                                Discover the joy of nourishing your body with fresh, wholesome foods.
-                                Incorporate daily exercise to boost energy and improve well-being.
-                                Stay hydrated and prioritize quality sleep for optimal health.
-                                Practice mindfulness and manage stress with relaxation techniques.
-                                Make small, consistent changes that lead to lasting results.
-                                Surround yourself with positivity and embrace a balanced lifestyle.
-                                Your journey to better health starts with a single step—take it today!
+                            Eating healthy can be super fun! 🍅🥦🍇  
+                            Power up your body with tasty veggie snacks, drink plenty of water, and move your body like a superhero!  
+                            Every small step earns you points and makes you stronger.  
+                            Are you ready to unlock your first veggie power? 💥💪
                             </div>
+                            <br>
+                            <br>
+                            <div class="progress-section text-center">
+                                <h3>🌟 Your Veggie Power Level</h3>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 30%;">30%</div>
+
+                                    @php
+                                        $points = Auth::guard('websiteuser')->user()->points ?? 0;
+                                        $maxPoints = 100; // You decide!
+                                        $progress = min(100, ($points / $maxPoints) * 100);
+                                    @endphp
+
+                                    <div class="progress-bar" style="width: {{ $progress }}%;">{{ intval($progress) }}%</div>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -127,8 +146,11 @@
 
             <!-- Sec Title -->
             <div class="sec-title centered">
-                <h2> Recipe Categories</h2>
-                <div class="text">Recipe categories group dishes based on their type, ingredients, and purpose <br> making it easier to find the perfect meal.</div>
+            <h2 class="sec-title">🍽️ Pick Your Power-Up Recipes!</h2>
+
+                <div class="text">Choose a recipe zone to explore! Each one is packed with delicious, 
+                    <br> healthy meals that’ll boost your energy and earn you points! 🥕💪  
+                    <br> Are you going to try something cheesy, crunchy, or super green today?</div>
             </div>
 
             <!-- Categories Tabs -->
@@ -167,46 +189,50 @@
     <!-- End Categories Section-->
 
     <!-- Trending Section -->
-    <section class="trending-section">
-        <div class="auto-container">
-            <div class="layer-one"
-                 style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
-            <div class="layer-two"
-                 style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
-            <div class="row clearfix">
+ <!-- Mission Section -->
+<section class="trending-section">
+  <div class="auto-container">
+    <div class="row clearfix">
 
-                <!-- Content Column -->
-                <div class="content-column col-lg-7 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <!-- Sec Title -->
-                        <div class="sec-title">
-                            <div class="title">TRENDING</div>
-                            <h2>Standing Rib Roast</h2>
-                            <div class="text">Preheat oven to 325°. In a small bowl, mix the first 5 ingredients. Place
-                                roast in a roasting pan, fat side up; rub with seasoning mixture.Roast 2-1/4 to 2-3/4
-                                hours or until meat reaches desired doneness (for medium-rare, a thermometer should read
-                                135°; medium, 140°; medium-well, 145°). Remove roast from oven; tent with foil. Let
-                                stand 15 minutes before carving.
-                            </div>
-                        </div>
-                        <div class="bold-text">To separate the fat from the drippings with ease, try this tool from OXO.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image Column -->
-                <div class="image-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="image">
-                            <img src="{{ URL::asset('website/images/resource/category.png') }}" alt=""/>
-                            <div class="mints">15 Min</div>
-                        </div>
-                    </div>
-                </div>
-
+      <!-- Text Content -->
+      <div class="content-column col-lg-7 col-md-12">
+        <div class="inner-column">
+          <div class="sec-title">
+            <div class="title">🚀 Your First Mission</div>
+            <h2>Build Your Super Salad!</h2>
+            <div class="text">
+              Start your journey by creating a colorful salad using 3 or more veggies! Snap a photo, share it with your grown-up, and earn your first 10 points!
             </div>
+            <div class="progress-container mt-4">
+                <div class="progress-bar" style="width: 20%;">1 of 5 Missions Complete</div>
+            </div>
+
+          </div>
+          <a href="/quiz" class="theme-btn btn-style-one mt-3"><span class="txt">Accept the Mission</span></a>
+          <div id="mission-complete" style="display: none; margin-top: 20px;">
+            <p class="fact-text">🎉 Awesome! You completed Mission 1 and earned a badge!</p>
+            <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" style="max-width: 120px;" alt="Mission 1 Badge">
         </div>
-    </section>
+
+        <button id="complete-mission-btn" class="theme-btn btn-style-two mt-3">I Did It!</button>
+
+
+        </div>
+      </div>
+
+      <!-- Image Content -->
+      <div class="image-column col-lg-5 col-md-12">
+        <div class="inner-column">
+          <div class="image">
+            <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" alt="Super Salad Mission" style="width: 100%; border-radius: 12px; max-height: 400px; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
     <!-- End Trending Section -->
 
     <!-- Popular Recipes Section -->

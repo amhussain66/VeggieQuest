@@ -2362,6 +2362,27 @@ img{
 	padding:0px 0px 100px;
 }
 
+.progress-container {
+    width: 80%;
+    background-color: #f3f3f3;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 20px auto;
+    height: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #ffc107; /* Yellow-orange, kid friendly! */
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    color: #fff;
+    transition: width 0.5s ease;
+}
+
+
 .trending-section.style-two{
 	background-color:#faf3f1;
 	padding-top:95px;

@@ -485,17 +485,61 @@
 })(window.jQuery);
 
 // veggie of the week function
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
+//     const btn = document.getElementById('reveal-fact-btn');
+//     const factBox = document.getElementById('veggie-fact-box');
+// 	const questionBox = document.getElementById('veggie-question-box');
+
+//     if (btn && factBox) {
+//         btn.addEventListener('click', function () {
+//             factBox.style.display = 'block';
+//             btn.style.display = 'none';
+// 			if (questionBox) questionBox.style.display = 'none';
+//         });
+//     }
+// });
+
+jQuery(document).ready(function ($) {
     const btn = document.getElementById('reveal-fact-btn');
     const factBox = document.getElementById('veggie-fact-box');
-	const questionBox = document.getElementById('veggie-question-box');
 
     if (btn && factBox) {
         btn.addEventListener('click', function () {
             factBox.style.display = 'block';
-            btn.style.display = 'none';
-			if (questionBox) questionBox.style.display = 'none';
+            this.style.display = 'none';
+
+            // Send fetch request to award points
+            fetch("/award-points", {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name=\"csrf-token\"]').content,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ points: 10 })
+            })
+            .then(res => res.json())
+            .then(data => console.log(data.message));
         });
     }
 });
 
+
+jQuery(document).ready(function ($) {
+    $('#complete-mission-btn').on('click', function () {
+        $('#mission-complete').fadeIn();
+        $(this).hide();
+        $('.progress-bar').css('width', '20%').text('1 of 5 Missions Complete');
+
+        // OPTIONAL: Award points with fetch
+        fetch("/award-points", {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ points: 10 })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data.message));
+    });
+});
