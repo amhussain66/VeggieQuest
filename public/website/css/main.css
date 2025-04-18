@@ -2383,6 +2383,8 @@ img{
 }
 
 
+
+
 .trending-section.style-two{
 	background-color:#faf3f1;
 	padding-top:95px;
@@ -2494,6 +2496,15 @@ img{
 	padding:90px 0px 60px;
 	background:#faf3f1 url(../images/background/1.png);
 	background-size:cover;
+}
+
+#veggie-of-week-box {
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+#veggie-of-week-box.show {
+    opacity: 1;
 }
 
 .popular-recipes-section.style-two{

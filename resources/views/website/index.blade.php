@@ -63,6 +63,14 @@
             </div> -->
         </div>
 
+        <!-- @if($fact)
+        <div class="veggie-of-week text-center my-5">
+            <h2 class="mb-3">🥦 Veggie of the Week: {{ $fact->title }}</h2>
+            <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3">
+            <p>{{ $fact->fact }}</p>
+        </div>
+        @endif
+
         
         <div class="text-center mt-4">
             <button id="reveal-fact-btn" class="theme-btn btn-style-one">Reveal a Veggie Fact</button>
@@ -76,8 +84,26 @@
                     🥕 Did you know? Carrots were originally purple before the orange variety became popular!
                 </p>
             </div>
-        </div>
+        </div> -->
 
+        <div class="text-center mt-4">
+        <button id="reveal-veggie-btn" class="theme-btn btn-style-one">Reveal Veggie of the Week</button>
+    </div>
+
+    @if($fact)
+    <div id="veggie-of-week-box" class="veggie-of-week text-center my-5" style="display: none;">
+        <h2 class="mb-3">🥦 Veggie of the Week: {{ $fact->title }}</h2>
+        <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3">
+        <p>{{ $fact->fact }}</p>
+    </div>
+    @endif
+
+    <script>
+        document.getElementById("reveal-veggie-btn").addEventListener("click", function () {
+            const box = document.getElementById("veggie-of-week-box");
+            box.style.display = box.style.display === "none" ? "block" : "none";
+        });
+    </script>
         
     </div>
 </section>

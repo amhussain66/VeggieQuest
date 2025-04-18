@@ -33,7 +33,14 @@ class WebsiteController extends Controller
         $products = Products::inRandomOrder()->limit(4)->get();
         $blogs = Blogs::inRandomOrder()->limit(4)->get();
         $categories = Categories::orderby('id', 'desc')->get();
-        return view('website.index', compact('vog', 'products', 'categories', 'blogs'));
+    
+        // Get current week number
+        $currentWeek = now()->weekOfYear;
+    
+        // Get veggie fact for current week
+        $fact = \DB::table('veggie_facts')->where('week_number', $currentWeek)->first();
+    
+        return view('website.index', compact('vog', 'products', 'categories', 'blogs', 'fact'));
     }
 
     public function recipes(Request $request)

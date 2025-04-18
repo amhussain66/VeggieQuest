@@ -523,6 +523,7 @@ jQuery(document).ready(function ($) {
     }
 });
 
+// mission complete link to quiz page 
 
 jQuery(document).ready(function ($) {
     $('#complete-mission-btn').on('click', function () {
@@ -542,4 +543,19 @@ jQuery(document).ready(function ($) {
         .then(res => res.json())
         .then(data => console.log(data.message));
     });
+	
+});
+
+// reveal a veggie of the week 
+const btn = document.getElementById("reveal-veggie-btn");
+const box = document.getElementById("veggie-of-week-box");
+
+btn.addEventListener("click", () => {
+    if (box.classList.contains("show")) {
+        box.classList.remove("show");
+        box.style.display = "none";
+    } else {
+        box.style.display = "block";
+        setTimeout(() => box.classList.add("show"), 10);
+    }
 });
