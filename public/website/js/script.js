@@ -483,3 +483,19 @@
 	});	
 
 })(window.jQuery);
+
+// veggie of the week function
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('reveal-fact-btn');
+    const factBox = document.getElementById('veggie-fact-box');
+	const questionBox = document.getElementById('veggie-question-box');
+
+    if (btn && factBox) {
+        btn.addEventListener('click', function () {
+            factBox.style.display = 'block';
+            btn.style.display = 'none';
+			if (questionBox) questionBox.style.display = 'none';
+        });
+    }
+});
+

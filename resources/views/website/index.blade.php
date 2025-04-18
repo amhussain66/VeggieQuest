@@ -35,12 +35,12 @@
 
             <!-- Slide Item -->
             <div class="slide-item">
-                <div class="image-layer" style="background-image:url({{ URL::asset('website/images/resource/tom-paolini-OpEvVQUmK0s-unsplash.jpg') }})"></div>
+                <div class="image-layer" style="background-image:url({{ URL::asset('website/images/resource/Veggie-superheros-togther.jpg') }})" ></div>
 
                 <div class="container">
-                    <h1 class="text-white" style="font-size: 72px">Why healthy eating ?</h1>
-                    <h6 class="text-white">Healthy eating fuels your body with essential nutrients, boosting energy and overall well-being.
-                        <br> It helps prevent diseases, supports mental clarity, and promotes a longer, healthier life.
+                    <h1 class="text-white" style="font-size: 72px">Ready to Power Up with Veggies? </h1>
+                    <h6 class="text-white">Level up your health, boost
+                        <br> 
                     </h6>
                 </div>
             </div>
@@ -50,19 +50,34 @@
     <!--End Banner Section -->
 
     <section class="categories-section">
-        <div class="auto-container">
-            <div class="sec-title centered">
-                <h2><b>‘VEGGIE’</b> OF THE MONTH</h2>
-                <small>{{ $vog->description }}</small>
-            </div>
-            <div class="row text-center justify-content-center">
-                <div class="col-md-12">
-                    <img src="{{ URL::asset('admin/assets/uploads/'.$vog->image) }}" class="veggie-animation"
-                         style="width: 50%; object-fit: cover; border-radius: 50%;">
-                </div>
+    <div class="auto-container">
+        <div class="sec-title centered">
+            <h2><b>‘VEGGIE’</b> OF THE WEEK!</h2>
+            <small>{{ $vog->description }}</small>
+        </div>
+
+        <div class="row text-center justify-content-center">
+            <div class="col-md-12">
+                <img src="{{ URL::asset('admin/assets/uploads/'.$vog->image) }}" class="veggie-animation"
+                     style="width: 50%; object-fit: cover; border-radius: 50%;">
             </div>
         </div>
-    </section>
+
+        
+        <div class="text-center mt-4">
+            <button id="reveal-fact-btn" class="theme-btn btn-style-one">Reveal a Veggie Fact</button>
+
+            <div id="veggie-fact-box" style="display: none; margin-top: 20px;">
+                <p class="fact-text">
+                    🥕 Did you know? Carrots were originally purple before the orange variety became popular!
+                </p>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+
 
     <section class="trending-section">
         <div class="auto-container">
