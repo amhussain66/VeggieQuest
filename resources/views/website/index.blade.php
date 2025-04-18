@@ -87,23 +87,16 @@
         </div> -->
 
         <div class="text-center mt-4">
-        <button id="reveal-veggie-btn" class="theme-btn btn-style-one">Reveal Veggie of the Week</button>
-    </div>
+            <button id="reveal-veggie-btn" class="theme-btn btn-style-one">Reveal Veggie of the Week</button>
+        </div>
 
-    @if($fact)
-    <div id="veggie-of-week-box" class="veggie-of-week text-center my-5" style="display: none;">
-        <h2 class="mb-3">🥦 Veggie of the Week: {{ $fact->title }}</h2>
-        <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3">
-        <p>{{ $fact->fact }}</p>
-    </div>
-    @endif
-
-    <script>
-        document.getElementById("reveal-veggie-btn").addEventListener("click", function () {
-            const box = document.getElementById("veggie-of-week-box");
-            box.style.display = box.style.display === "none" ? "block" : "none";
-        });
-    </script>
+        @if($fact)
+            <div id="veggie-of-week-box" class="veggie-of-week text-center my-5" style="display: none;">
+                <h2 class="mb-3">🥦 Veggie of the Week: {{ $fact->title }}</h2>
+                <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3">
+                <p>{{ $fact->fact }}</p>
+            </div>
+        @endif
         
     </div>
 </section>
@@ -234,7 +227,7 @@
             </div>
 
           </div>
-          <a href="/quiz" class="theme-btn btn-style-one mt-3"><span class="txt">Accept the Mission</span></a>
+          <a href="/user/Quiz" class="theme-btn btn-style-one mt-3"><span class="txt">Accept the Mission</span></a>
           <div id="mission-complete" style="display: none; margin-top: 20px;">
             <p class="fact-text">🎉 Awesome! You completed Mission 1 and earned a badge!</p>
             <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" style="max-width: 120px;" alt="Mission 1 Badge">
@@ -447,6 +440,22 @@
 
         </div>
     </section>
+
+<!-- reveal a veggie of the week JS -->
+    <script>
+    document.getElementById("reveal-veggie-btn").addEventListener("click", function () {
+        const box = document.getElementById("veggie-of-week-box");
+
+        // Optional: smooth slide toggle
+        if (box.style.display === "none" || box.style.display === "") {
+            box.style.display = "block";
+            box.style.transition = "all 0.5s ease-in-out";
+            box.style.opacity = 1;
+        } else {
+            box.style.display = "none";
+        }
+    });
+</script>
     <!-- End Entertaining Section -->
 
     <!-- Instagram Section -->

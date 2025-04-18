@@ -114,27 +114,38 @@ class WebsiteController extends Controller
             'userid' => 'required',
             'answer' => 'required'
         ]);
-
+    
         if ($validator->fails()) {
             return back()->withInput()->with('error', 'All fields required !');
         }
+    
+        $question = QuizQuestions::findOrFail($request->questionid);
+        $correctAnswer = $question->correctanswer->option ?? null;
+    
         $data['questionid'] = $request->questionid;
         $data['quizid'] = $request->quizid;
         $data['userid'] = $request->userid;
         $data['answer'] = $request->answer;
         QuizAnswers::create($data);
-        $totalAnswers = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->where('quizid',$request->quizid)->pluck('questionid')->count();
+    
+        // Compare and flash result
+        $result = ($request->answer == $correctAnswer) ? 'correct' : 'incorrect';
+        session()->flash('quiz_result', $result);
+    
+        $totalAnswers = QuizAnswers::where('userid', Auth::guard('websiteuser')->user()->id)
+            ->where('quizid', $request->quizid)
+            ->pluck('questionid')
+            ->count();
+    
         $totalQuestion = $request->totalQuestion;
-        if($totalAnswers==$totalQuestion)
-        {
+    
+        if ($totalAnswers == $totalQuestion) {
             return redirect()->route('user.quiz')->with('success', 'Quiz Successfully finished.');
+        } else {
+            return redirect()->route('user.quiz', ['quizid' => $request->quizid]);
         }
-        else
-        {
-            return redirect()->route('user.quiz',['quizid' => $request->quizid]);
-        }
-
     }
+    
 
     public function contactus()
     {
