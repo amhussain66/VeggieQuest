@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class WebsiteController extends Controller
 {
@@ -370,5 +371,17 @@ class WebsiteController extends Controller
         $chartDataJson = $attemptsPerDay->toJson();
         return view("website.userdashboard", compact('quizes','products','chartDataJson'));
     }
+
+
+public function weeklyVeggieFact()
+{
+    $weekNumber = now()->weekOfYear;
+
+    $fact = DB::table('veggie_facts')
+        ->where('week_number', $weekNumber)
+        ->first();
+
+    return view('website.weekly_fact', compact('fact'));
+}
 
 }

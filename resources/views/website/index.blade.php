@@ -213,7 +213,8 @@
             <p class="fact-text">🎉 Awesome! You completed Mission 1 and earned a badge!</p>
             <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" style="max-width: 120px;" alt="Mission 1 Badge">
         </div>
-
+            <br>
+            <br>
         <button id="complete-mission-btn" class="theme-btn btn-style-two mt-3">I Did It!</button>
 
 

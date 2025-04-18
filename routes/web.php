@@ -150,5 +150,8 @@ Route::name('admin.')->prefix('admin')->group(function () {
     });
 });
 
+use App\Http\Controllers\WebsiteController;
+Route::get('/weekly-veggie-fact', [WebsiteController::class, 'weeklyVeggieFact']);
+
 
 ?>
