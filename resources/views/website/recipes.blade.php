@@ -1,0 +1,171 @@
+@extends('website.includes.master')
+
+@section('title')
+    Recipes
+@endsection
+
+@section('content')
+
+    <!-- Page Title -->
+    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/10.jpg') }})">
+        <div class="auto-container">
+            <h1>Recipes</h1>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Product Form Section -->
+    <section class="product-form-section style-two">
+        <div class="auto-container">
+            <div class="inner-container margin-top">
+
+                <!-- Default Form -->
+                <div class="default-form">
+                    <form method="get" action="{{ route('recipes') }}">
+                        <div class="clearfix">
+
+                            <!-- Form Group -->
+                            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                                <select class="custom-select-box" name="category">
+                                    <option value="" selected disabled>Categories</option>
+                                    @forelse($categories as $category)
+                                        @if(isset($request) && !empty($request->category) && $request->category==$category->id)
+                                            <option selected value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @else
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endif
+                                    @empty
+                                    @endforelse
+                                    <option value="">All</option>
+                                </select>
+                                <!--<h5><a href="{{ route('recipes') }}" class="btn" style="color: white;background-color: black"><b>All Recipes List</b></a></h5>-->
+                            </div>
+
+                            <!-- Form Group -->
+                            <div class="form-group col-lg-7 col-md-6 col-sm-12">
+                                <input type="text" name="heading" placeholder="Recipe Kayword"
+                                       value="{{ ($request && !empty($request->heading)) ? $request->heading : '' }}">
+                            </div>
+
+                            <div class="form-group col-lg-2 col-md-12 col-sm-12">
+                                <button type="submit" class="theme-btn search-btn"><span class="fa fa-search"> Search</span></button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End Keyword Section -->
+
+    <!-- Popular Recipes Section -->
+    <section class="popular-recipes-section style-three">
+        <div class="auto-container">
+            <!-- Sec Title -->
+            <div class="sec-title">
+                <div class="clearfix">
+                    <div class="text-center">
+                        <h2>All Recipes List</h2>
+                        <div class="text">
+                            "Featuring easy, kid-friendly vegetable recipes like colorful veggie pasta, crispy baked
+                            snacks, fun-shaped salads, and healthy soups. These recipes make veggies exciting for the
+                            whole family with simple, tasty, and nutritious ingredients!"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="outer-container">
+
+            <div class="row clearfix">
+
+                @forelse($products as $product)
+                    <div class="recipes-block style-three col-lg-3 col-md-6 col-sm-12">
+                        <div class="inner-box shadow h-100">
+                            <div class="image position-relative">
+                                <a href="{{ route('recipe_detail',[$product->slug]) }}">
+                                    <img src="{{ URL::asset('admin/assets/uploads/'.$product->image )}}"
+                                         class="img-fluid"
+                                         style="width: 100%; height: 300px; object-fit: cover;" alt=""/>
+                                </a>
+                                @if(Auth::guard('websiteuser')->check())
+                                    @if(in_array($product->id,Auth::guard('websiteuser')->user()->wishlistProducts()))
+                                        <a href="{{ route('user.add_to_wislist',[$product->id]) }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart text-danger"></i></a>
+                                    @else
+                                        <a href="{{ route('user.add_to_wislist',[$product->id]) }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart-o text-danger"></i></a>
+                                    @endif
+                                @else
+                                    <a href="{{ route('login') }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart-o text-danger"></i></a>
+                                @endif
+                            </div>
+                            <div class="lower-content">
+                                <div class="author-image"><img
+                                            src="{{ URL::asset('admin/assets/uploads/'.$product->image )}}"
+                                            alt=""/></div>
+                                <div class="category">{{ $product->category->name }}</div>
+                                <h4><a href="{{ route('recipe_detail',[$product->slug]) }}">{{ $product->heading }}</a>
+                                </h4>
+                                <div class="text">
+                                    {{ Str::limit(strip_tags($product->description), 150) }}
+                                </div>
+                                <ul class="post-meta">
+                                    <li><span class="icon flaticon-dish"></span>{{ $product->ingredients }}</li>
+                                    <li><span class="icon flaticon-clock-3"></span>{{ $product->prepration_time }}</li>
+                                    <li><span class="icon flaticon-business-and-finance"></span>{{ $product->serve }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="row text-center justify-content-center">
+                        <center>
+                            <h3>No record found</h3>
+                        </center>
+                    </div>
+                @endforelse
+
+            </div>
+
+            <div class="row mt-5 text-center justify-content-center">
+                <div class="styled-pagination text-center">
+                    @if ($products->lastPage() > 1)
+                        <ul class="clearfix">
+                            <li class="{{ ($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                @if($products->currentPage() == 1)
+                                    <a style="cursor: not-allowed" disabled=""><span
+                                                class="fa fa-long-arrow-left"></span></a>
+                                @else
+                                    <a href="{{ $products->appends(request()->query())->url($products->currentPage()-1) }}">
+                                        <span class="fa fa-long-arrow-left"></span>
+                                    </a>
+                                @endif
+                            </li>
+                            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                <li class="{{ ($products->currentPage() == $i) ? ' active' : '' }}">
+                                    <a href="{{ $products->appends(request()->query())->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+                            <li class="{{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                @if($products->currentPage() == $products->lastPage())
+                                    <a style="cursor: not-allowed" disabled=""><span
+                                                class="fa fa-long-arrow-right"></span></a>
+                                @else
+                                    <a href="{{ $products->appends(request()->query())->url($products->currentPage()+1) }}">
+                                        <span class="fa fa-long-arrow-right"></span>
+                                    </a>
+                                @endif
+                            </li>
+                        </ul>
+                    @endif
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Popular Recipes Section -->
+
+@endsection

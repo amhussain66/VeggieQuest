@@ -1,0 +1,16 @@
+[19-Jan-2024 02:24:21 America/New_York] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\Kernel" not found in /home/dwreqvsc/public_html/property/app/Http/Kernel.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/dwreqvsc/public_html/property/app/Http/Kernel.php on line 7
+[19-Jan-2024 02:24:29 America/New_York] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\Kernel" not found in /home/dwreqvsc/public_html/property/app/Http/Kernel.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/dwreqvsc/public_html/property/app/Http/Kernel.php on line 7
+[22-Jan-2024 05:58:11 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\Kernel" not found in /home/prayfmgy/strategicrealestates.com/app/Http/Kernel.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/prayfmgy/strategicrealestates.com/app/Http/Kernel.php on line 7
+[22-Jan-2024 05:58:12 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\Kernel" not found in /home/prayfmgy/strategicrealestates.com/app/Http/Kernel.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/prayfmgy/strategicrealestates.com/app/Http/Kernel.php on line 7
