@@ -119,33 +119,27 @@ class WebsiteController extends Controller
         // Only get questions NOT answered correctly
         $query = QuizQuestions::whereNotIn('id', $answeredCorrectly);
     
-        // Count how many answered (regardless of correctness)
+        // Count how many answered
         $totalAnswers = $answered->count();
     
-        // If 10 questions already answered → send to results
-        if ($totalAnswers >= 10) {
-            // Count how many were correct
-            $correctCount = 0;
-            foreach ($answered as $a) {
-                $question = QuizQuestions::with('correctanswer')->find($a->questionid);
-                if ($question && $question->correctanswer && $question->correctanswer->option === $a->answer) {
-                    $correctCount++;
-                }
-            }
+        // 🟢 New: Flag to track if quiz is finished
+        $quizCompleted = false;
     
-            return redirect()->route('user.quiz.results', [
-                'correct' => $correctCount,
-                'total' => 10
-            ]);
+        if ($totalAnswers >= 10) {
+            $quizCompleted = true;
+            $correctCount = count($answeredCorrectly);
+            $totalQuestion = 10; // 👈 Add this line
+        
+            return view('website.quiz', compact(
+                'quizCompleted', 'correctCount', 'totalAnswers', 'totalQuestion', 'quizid'
+            ));
         }
     
-        // Get next available question
+        // Else, show next question
         $question = $query->inRandomOrder()->first();
-    
-        // Total number is fixed at 10
         $totalQuestion = 10;
     
-        return view('website.quiz', compact('request', 'question', 'quizid', 'totalQuestion', 'totalAnswers'));
+        return view('website.quiz', compact('request', 'question', 'quizid', 'totalQuestion', 'totalAnswers', 'quizCompleted'));
     }
     
 
