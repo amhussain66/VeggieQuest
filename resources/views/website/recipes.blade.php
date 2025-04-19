@@ -7,9 +7,9 @@
 @section('content')
 
     <!-- Page Title -->
-    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/10.jpg') }})">
+    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/recipe-page-bg.png') }})">
         <div class="auto-container">
-            <h1>Recipes</h1>
+            <h1>Recipes !</h1>
         </div>
     </section>
     <!--End Page Title-->
@@ -83,7 +83,7 @@
 
                 @forelse($products as $product)
                     <div class="recipes-block style-three col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box shadow h-100">
+                         <div class="inner-box shadow h-100" >
                             <div class="image position-relative">
                                 <a href="{{ route('recipe_detail',[$product->slug]) }}">
                                     <img src="{{ URL::asset('admin/assets/uploads/'.$product->image )}}"
@@ -100,23 +100,66 @@
                                     <a href="{{ route('login') }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart-o text-danger"></i></a>
                                 @endif
                             </div>
-                            <div class="lower-content">
-                                <div class="author-image"><img
-                                            src="{{ URL::asset('admin/assets/uploads/'.$product->image )}}"
-                                            alt=""/></div>
-                                <div class="category">{{ $product->category->name }}</div>
-                                <h4><a href="{{ route('recipe_detail',[$product->slug]) }}">{{ $product->heading }}</a>
+                            <div class="lower-content text-center">
+                            {{-- 🍅 Category tag positioned top-left --}}
+                                <div class="position-absolute" style="top: 10px; left: 10px;">
+                                    <span class="badge"
+                                        style="background-color: #ffb347; color: #fff; font-size: 13px; padding: 5px 10px; border-radius: 8px;">
+                                        {{ $product->category->name }}
+                                    </span>
+                                </div>
+                                {{--  Difficulty Icon --}}
+                                @php
+                                    $badgeLabel = '';
+                                    $badgeIcon = '';
+
+                                    switch ($product->difficulty) {
+                                        case 1:
+                                            $badgeLabel = 'Easy Peasy!';
+                                            $badgeIcon = 'difficulty-1.png';
+                                            break;
+                                        case 2:
+                                            $badgeLabel = 'Little Helper Needed!';
+                                            $badgeIcon = 'difficulty-2.png';
+                                            break;
+                                        case 3:
+                                            $badgeLabel = 'Grown-Up Supervision!';
+                                            $badgeIcon = 'difficulty-3.png';
+                                            break;
+                                    }
+                                @endphp
+
+                                @if($badgeIcon)
+                                    <div class="difficulty-badge text-center my-3">
+                                        <img src="{{ asset('website/images/icons/' . $badgeIcon) }}" alt="{{ $badgeLabel }}" style="width: 60px; height: 60px;">
+                                        <div class="badge mt-2"
+                                            style="font-size: 14px; background-color: #ffeaa7; padding: 6px 12px; border-radius: 12px; display: inline-block;">
+                                            {{ $badgeLabel }}
+                                        </div>
+                                    </div>
+                                @endif
+
+
+                                <!-- <div class="category text-uppercase mb-2" style="font-size: 13px; color: #ff6f61;">
+                                    {{ $product->category->name }}
+                                </div> -->
+
+                                <h4>
+                                    <a href="{{ route('recipe_detail',[$product->slug]) }}">{{ $product->heading }}</a>
                                 </h4>
+
                                 <div class="text">
                                     {{ Str::limit(strip_tags($product->description), 150) }}
                                 </div>
-                                <ul class="post-meta">
-                                    <li><span class="icon flaticon-dish"></span>{{ $product->ingredients }}</li>
-                                    <li><span class="icon flaticon-clock-3"></span>{{ $product->prepration_time }}</li>
-                                    <li><span class="icon flaticon-business-and-finance"></span>{{ $product->serve }}
-                                    </li>
+
+                                <ul class="post-meta list-unstyled d-flex justify-content-center gap-3">
+                                    <li><span class="icon flaticon-dish"></span> {{ $product->ingredients }}</li>
+                                    <li><span class="icon flaticon-clock-3"></span> {{ $product->prepration_time }}</li>
+                                    <li><span class="icon flaticon-business-and-finance"></span> {{ $product->serve }}</li>
                                 </ul>
                             </div>
+
+
                         </div>
                     </div>
                 @empty

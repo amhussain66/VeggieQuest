@@ -1,4 +1,4 @@
-/* Spcica HTML Template */
+/* Spcica HTML Template */ 
 
 /************ TABLE OF CONTENTS ***************
 1. Fonts
@@ -110,7 +110,7 @@ body {
 a{
 	text-decoration:none;
 	cursor:pointer;
-	color:#ff7d5f;
+	color:#d68135;
 }
 
 button,
@@ -2018,9 +2018,9 @@ img{
 }
 
 .product-form-section .default-form .ui-selectmenu-button.ui-button{
-	background-color:#fdebe7;
+	background-color:#ff8e2a;
 	border-color:#fdebe7;
-	color:#ff7d5f;
+	color:#ffffff;
 	font-size:16px;
 	letter-spacing:1px;
 	padding-left:20px;
@@ -2038,7 +2038,7 @@ img{
 }
 
 .product-form-section .form-group .ui-button .ui-icon:before{
-	color:#ff8667;
+	color:#a05a1e;
 }
 
 .product-form-section .form-group .search-btn{
@@ -2049,7 +2049,7 @@ img{
 	font-size:16px;
 	border-radius:0px 50px 50px 0px;
 	display:inline-block;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .default-form{
@@ -2661,6 +2661,23 @@ img{
 	margin-top:38px;
 }
 
+/* .rounded-recipe-card .lower-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.rounded-recipe-card h4 a {
+    color: #333;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', cursive;
+} */
+
+.recipes-block .inner-box {
+    border-radius: 16px;
+    overflow: hidden;
+	background-color: white;
+}
+
 
 
 /* recipes-details-area */
@@ -2943,6 +2960,8 @@ img{
 	position:relative;
 	margin-bottom:30px;
 }
+
+
 
 .entertaining-block .inner-box{
 	position:relative;
@@ -4317,13 +4336,14 @@ img{
 	color:#161616;
 }
 
+
 .recipe-detail{
 	position:relative;
 }
 
 .recipe-detail .inner-box{
 	position:relative;
-}
+	}
 
 .recipe-detail .inner-box .image{
 	position:relative;
