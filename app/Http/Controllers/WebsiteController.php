@@ -128,7 +128,7 @@ class WebsiteController extends Controller
         $data['answer'] = $request->answer;
         QuizAnswers::create($data);
     
-        // Compare and flash result
+        // Flash result for feedback
         $result = ($request->answer == $correctAnswer) ? 'correct' : 'incorrect';
         session()->flash('quiz_result', $result);
     
@@ -139,13 +139,37 @@ class WebsiteController extends Controller
     
         $totalQuestion = $request->totalQuestion;
     
+        // ✅ When quiz is complete, evaluate result
         if ($totalAnswers == $totalQuestion) {
-            return redirect()->route('user.quiz')->with('success', 'Quiz Successfully finished.');
+            $allAnswers = QuizAnswers::where('userid', Auth::guard('websiteuser')->user()->id)
+                ->where('quizid', $request->quizid)
+                ->get();
+    
+            $correctCount = 0;
+            foreach ($allAnswers as $answer) {
+                $question = QuizQuestions::with('correctanswer')->find($answer->questionid);
+                if ($question && $question->correctanswer && $question->correctanswer->option === $answer->answer) {
+                    $correctCount++;
+                }
+            }
+    
+            return redirect()->route('user.quiz.results', [
+                'correct' => $correctCount,
+                'total' => $totalQuestion
+            ]);
         } else {
             return redirect()->route('user.quiz', ['quizid' => $request->quizid]);
         }
     }
     
+    public function quizResults(Request $request)
+{
+    $correct = $request->correct;
+    $total = $request->total;
+
+    return view('website.quiz_results', compact('correct', 'total'));
+}
+
 
     public function contactus()
     {

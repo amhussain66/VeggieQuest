@@ -154,4 +154,6 @@ use App\Http\Controllers\WebsiteController;
 Route::get('/weekly-veggie-fact', [WebsiteController::class, 'weeklyVeggieFact']);
 
 
+Route::get('/quiz/results', [WebsiteController::class, 'quizResults'])->name('user.quiz.results');
+
 ?>
