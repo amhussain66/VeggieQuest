@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\DailyPuzzle;
+use App\Models\UserPuzzleAnswer;
 
 class WebsiteController extends Controller
 {
@@ -32,7 +35,14 @@ class WebsiteController extends Controller
         $products = Products::inRandomOrder()->limit(4)->get();
         $blogs = Blogs::inRandomOrder()->limit(4)->get();
         $categories = Categories::orderby('id', 'desc')->get();
-        return view('website.index', compact('vog', 'products', 'categories', 'blogs'));
+    
+        // Get current week number
+        $currentWeek = now()->weekOfYear;
+    
+        // Get veggie fact for current week
+        $fact = \DB::table('veggie_facts')->where('week_number', $currentWeek)->first();
+    
+        return view('website.index', compact('vog', 'products', 'categories', 'blogs', 'fact'));
     }
 
     public function recipes(Request $request)
@@ -80,23 +90,95 @@ class WebsiteController extends Controller
 
     public function quiz(Request $request)
     {
-//        dd($request->all());
-        $query = QuizQuestions::query();
-        if(isset($request->quizid) && !empty($request->quizid))
-        {
-            $quizid = $request->quizid;
-            $already = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->where('quizid',$quizid)->pluck('questionid')->toArray();
-            $query->whereNotIn('id',$already);
+        $userId = Auth::guard('websiteuser')->user()->id;
+        $today = now()->toDateString();
+    
+        // Check if a quiz has already been started today
+        $todayAttempts = QuizAnswers::where('userid', $userId)
+            ->whereDate('created_at', $today)
+            ->pluck('quizid');
+    
+        if ($todayAttempts->isNotEmpty()) {
+            $quizid = $todayAttempts->first(); // Assume one quiz per day
+        } else {
+            $quizid = rand(100000, 999999);
         }
-        else
-        {
-            $quizid = rand(10000,1000000);
+    
+        // Get answered questions for this quiz
+        $answered = QuizAnswers::where('userid', $userId)
+            ->where('quizid', $quizid)
+            ->get();
+    
+        // Get correctly answered questions
+        $answeredCorrectly = [];
+        foreach ($answered as $a) {
+            $question = QuizQuestions::with('correctanswer')->find($a->questionid);
+            if ($question && $question->correctanswer && $question->correctanswer->option === $a->answer) {
+                $answeredCorrectly[] = $a->questionid;
+            }
         }
-        $question = $query->inRandomOrder()->first();
-        $totalQuestion = QuizQuestions::count();
-        $totalAnswers = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->where('quizid',$quizid)->pluck('questionid')->count();
-        return view('website.quiz', compact('request','question','quizid','totalQuestion','totalAnswers'));
+    
+        // Quiz logic
+        $totalAnswers = $answered->count();
+        $totalQuestion = 10;
+        $quizCompleted = $totalAnswers >= $totalQuestion;
+    
+        if ($quizCompleted) {
+            $correctCount = count($answeredCorrectly);
+            return view('website.quiz', compact(
+                'quizCompleted', 'correctCount', 'totalAnswers', 'totalQuestion', 'quizid'
+            ));
+        }
+    
+        $question = QuizQuestions::whereNotIn('id', $answeredCorrectly)->inRandomOrder()->first();
+    
+        // Get IDs of puzzles the user has answered 
+        $answeredPuzzleIds = UserPuzzleAnswer::where('userid', $userId)
+        ->whereDate('created_at', $today)
+        ->pluck('puzzleid')
+        ->toArray();
+
+        // Get up to 5 puzzles the user has NOT answered yet today
+        $puzzles = DailyPuzzle::whereNotIn('id', $answeredPuzzleIds)
+        ->inRandomOrder()
+        ->take(5)
+        ->get();
+    
+    
+        return view('website.quiz', compact(
+            'request', 'question', 'quizid', 'totalQuestion', 'totalAnswers', 'quizCompleted', 'puzzles', 'answeredPuzzleIds'
+        ));
     }
+    
+    public function submitPuzzle(Request $request)
+{
+    $request->validate([
+        'puzzleid' => 'required|exists:daily_puzzles,id',
+        'user_answer' => 'required|string'
+    ]);
+
+    $userId = Auth::guard('websiteuser')->id();
+    $puzzleId = $request->puzzleid;
+
+    // Prevent duplicate answers
+    $alreadyAnswered = UserPuzzleAnswer::where('userid', $userId)
+        ->where('puzzleid', $puzzleId)
+        ->exists();
+
+    if ($alreadyAnswered) {
+        return back()->with('error', 'You already answered this puzzle!');
+    }
+
+    UserPuzzleAnswer::create([
+        'userid' => $userId,
+        'puzzleid' => $puzzleId,
+        'answer' => $request->user_answer,
+        'created_at' => now()
+    ]);
+
+    return back()->with('success', 'Answer submitted! 🧠');
+}
+    
 
     public function savequiz(Request $request)
     {
@@ -106,27 +188,62 @@ class WebsiteController extends Controller
             'userid' => 'required',
             'answer' => 'required'
         ]);
-
+    
         if ($validator->fails()) {
             return back()->withInput()->with('error', 'All fields required !');
         }
+    
+        $question = QuizQuestions::findOrFail($request->questionid);
+        $correctAnswer = $question->correctanswer->option ?? null;
+    
         $data['questionid'] = $request->questionid;
         $data['quizid'] = $request->quizid;
         $data['userid'] = $request->userid;
         $data['answer'] = $request->answer;
         QuizAnswers::create($data);
-        $totalAnswers = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->where('quizid',$request->quizid)->pluck('questionid')->count();
+    
+        // Flash result for feedback
+        $result = ($request->answer == $correctAnswer) ? 'correct' : 'incorrect';
+        session()->flash('quiz_result', $result);
+    
+        $totalAnswers = QuizAnswers::where('userid', Auth::guard('websiteuser')->user()->id)
+            ->where('quizid', $request->quizid)
+            ->pluck('questionid')
+            ->count();
+    
         $totalQuestion = $request->totalQuestion;
-        if($totalAnswers==$totalQuestion)
-        {
-            return redirect()->route('user.quiz')->with('success', 'Quiz Successfully finished.');
+    
+        // ✅ When quiz is complete, evaluate result
+        if ($totalAnswers == $totalQuestion) {
+            $allAnswers = QuizAnswers::where('userid', Auth::guard('websiteuser')->user()->id)
+                ->where('quizid', $request->quizid)
+                ->get();
+    
+            $correctCount = 0;
+            foreach ($allAnswers as $answer) {
+                $question = QuizQuestions::with('correctanswer')->find($answer->questionid);
+                if ($question && $question->correctanswer && $question->correctanswer->option === $answer->answer) {
+                    $correctCount++;
+                }
+            }
+    
+            return redirect()->route('user.quiz.results', [
+                'correct' => $correctCount,
+                'total' => $totalQuestion
+            ]);
+        } else {
+            return redirect()->route('user.quiz', ['quizid' => $request->quizid]);
         }
-        else
-        {
-            return redirect()->route('user.quiz',['quizid' => $request->quizid]);
-        }
-
     }
+    
+    public function quizResults(Request $request)
+{
+    $correct = $request->correct;
+    $total = $request->total;
+
+    return view('website.quiz_results', compact('correct', 'total'));
+}
+
 
     public function contactus()
     {
@@ -370,5 +487,17 @@ class WebsiteController extends Controller
         $chartDataJson = $attemptsPerDay->toJson();
         return view("website.userdashboard", compact('quizes','products','chartDataJson'));
     }
+
+
+public function weeklyVeggieFact()
+{
+    $weekNumber = now()->weekOfYear;
+
+    $fact = DB::table('veggie_facts')
+        ->where('week_number', $weekNumber)
+        ->first();
+
+    return view('website.weekly_fact', compact('fact'));
+}
 
 }

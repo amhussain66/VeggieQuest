@@ -132,6 +132,7 @@ h1,h2,h3,h4,h5,h6 {
 
 h1{
 	font-size:40px;
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 h2{
@@ -2116,6 +2117,22 @@ img{
 	padding:100px 0px 90px;
 }
 
+.theme-btn.btn-style-one {
+    background-color: #00b894;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+}
+
+.theme-btn.btn-style-one:hover {
+    background-color: #55efc4;
+    transform: scale(1.05);
+}
+
+
 .categories-tab{
 	position:relative;	
 }
@@ -2346,6 +2363,29 @@ img{
 	padding:0px 0px 100px;
 }
 
+.progress-container {
+    width: 80%;
+    background-color: #f3f3f3;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 20px auto;
+    height: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #ffc107; /* Yellow-orange, kid friendly! */
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    color: #fff;
+    transition: width 0.5s ease;
+}
+
+
+
+
 .trending-section.style-two{
 	background-color:#faf3f1;
 	padding-top:95px;
@@ -2457,6 +2497,15 @@ img{
 	padding:90px 0px 60px;
 	background:#faf3f1 url(../images/background/1.png);
 	background-size:cover;
+}
+
+#veggie-of-week-box {
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+#veggie-of-week-box.show {
+    opacity: 1;
 }
 
 .popular-recipes-section.style-two{
@@ -4119,6 +4168,22 @@ img{
 .sidebar-page-container{
 	position:relative;
 	padding:90px 0px 50px;
+}
+
+.progress-bar {
+    transition: width 0.6s ease;
+  }
+
+  .quiz-option {
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border-radius: 10px;
+}
+
+.quiz-option:hover {
+    background-color: #f9f9f9;
+    border-color: #88cc88;
 }
 
 .sidebar-page-container .content-side,
