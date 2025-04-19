@@ -88,23 +88,66 @@ class WebsiteController extends Controller
 
     public function quiz(Request $request)
     {
-//        dd($request->all());
-        $query = QuizQuestions::query();
-        if(isset($request->quizid) && !empty($request->quizid))
-        {
-            $quizid = $request->quizid;
-            $already = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->where('quizid',$quizid)->pluck('questionid')->toArray();
-            $query->whereNotIn('id',$already);
+        $userId = Auth::guard('websiteuser')->user()->id;
+        $today = now()->toDateString();
+    
+        // Check if a quiz has already been started today
+        $todayAttempts = QuizAnswers::where('userid', $userId)
+            ->whereDate('created_at', $today)
+            ->pluck('quizid');
+    
+        if ($todayAttempts->isNotEmpty()) {
+            $quizid = $todayAttempts->first(); // Assume one quiz per day
+        } else {
+            $quizid = rand(100000, 999999);
         }
-        else
-        {
-            $quizid = rand(10000,1000000);
+    
+        // Get answered questions for this quiz
+        $answered = QuizAnswers::where('userid', $userId)
+            ->where('quizid', $quizid)
+            ->get();
+    
+        // Get questions that were correctly answered
+        $answeredCorrectly = [];
+        foreach ($answered as $a) {
+            $question = QuizQuestions::with('correctanswer')->find($a->questionid);
+            if ($question && $question->correctanswer && $question->correctanswer->option === $a->answer) {
+                $answeredCorrectly[] = $a->questionid;
+            }
         }
+    
+        // Only get questions NOT answered correctly
+        $query = QuizQuestions::whereNotIn('id', $answeredCorrectly);
+    
+        // Count how many answered (regardless of correctness)
+        $totalAnswers = $answered->count();
+    
+        // If 10 questions already answered → send to results
+        if ($totalAnswers >= 10) {
+            // Count how many were correct
+            $correctCount = 0;
+            foreach ($answered as $a) {
+                $question = QuizQuestions::with('correctanswer')->find($a->questionid);
+                if ($question && $question->correctanswer && $question->correctanswer->option === $a->answer) {
+                    $correctCount++;
+                }
+            }
+    
+            return redirect()->route('user.quiz.results', [
+                'correct' => $correctCount,
+                'total' => 10
+            ]);
+        }
+    
+        // Get next available question
         $question = $query->inRandomOrder()->first();
-        $totalQuestion = QuizQuestions::count();
-        $totalAnswers = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->where('quizid',$quizid)->pluck('questionid')->count();
-        return view('website.quiz', compact('request','question','quizid','totalQuestion','totalAnswers'));
+    
+        // Total number is fixed at 10
+        $totalQuestion = 10;
+    
+        return view('website.quiz', compact('request', 'question', 'quizid', 'totalQuestion', 'totalAnswers'));
     }
+    
 
     public function savequiz(Request $request)
     {
