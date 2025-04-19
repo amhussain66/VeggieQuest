@@ -155,5 +155,6 @@ Route::get('/weekly-veggie-fact', [WebsiteController::class, 'weeklyVeggieFact']
 
 
 Route::get('/quiz/results', [WebsiteController::class, 'quizResults'])->name('user.quiz.results');
-
+Route::get('/activities', [WebsiteController::class, 'activities'])->name('user.activities');
+Route::post('/submit-puzzle', [WebsiteController::class, 'submitPuzzle'])->name('user.puzzle.submit');
 ?>

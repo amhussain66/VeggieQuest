@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\DailyPuzzle;
+use App\Models\UserPuzzleAnswer;
 
 class WebsiteController extends Controller
 {
@@ -107,7 +109,7 @@ class WebsiteController extends Controller
             ->where('quizid', $quizid)
             ->get();
     
-        // Get questions that were correctly answered
+        // Get correctly answered questions
         $answeredCorrectly = [];
         foreach ($answered as $a) {
             $question = QuizQuestions::with('correctanswer')->find($a->questionid);
@@ -116,31 +118,66 @@ class WebsiteController extends Controller
             }
         }
     
-        // Only get questions NOT answered correctly
-        $query = QuizQuestions::whereNotIn('id', $answeredCorrectly);
-    
-        // Count how many answered
+        // Quiz logic
         $totalAnswers = $answered->count();
+        $totalQuestion = 10;
+        $quizCompleted = $totalAnswers >= $totalQuestion;
     
-        // 🟢 New: Flag to track if quiz is finished
-        $quizCompleted = false;
-    
-        if ($totalAnswers >= 10) {
-            $quizCompleted = true;
+        if ($quizCompleted) {
             $correctCount = count($answeredCorrectly);
-            $totalQuestion = 10; // 👈 Add this line
-        
             return view('website.quiz', compact(
                 'quizCompleted', 'correctCount', 'totalAnswers', 'totalQuestion', 'quizid'
             ));
         }
     
-        // Else, show next question
-        $question = $query->inRandomOrder()->first();
-        $totalQuestion = 10;
+        $question = QuizQuestions::whereNotIn('id', $answeredCorrectly)->inRandomOrder()->first();
     
-        return view('website.quiz', compact('request', 'question', 'quizid', 'totalQuestion', 'totalAnswers', 'quizCompleted'));
+        // Get IDs of puzzles the user has answered 
+        $answeredPuzzleIds = UserPuzzleAnswer::where('userid', $userId)
+        ->whereDate('created_at', $today)
+        ->pluck('puzzleid')
+        ->toArray();
+
+        // Get up to 5 puzzles the user has NOT answered yet today
+        $puzzles = DailyPuzzle::whereNotIn('id', $answeredPuzzleIds)
+        ->inRandomOrder()
+        ->take(5)
+        ->get();
+    
+    
+        return view('website.quiz', compact(
+            'request', 'question', 'quizid', 'totalQuestion', 'totalAnswers', 'quizCompleted', 'puzzles', 'answeredPuzzleIds'
+        ));
     }
+    
+    public function submitPuzzle(Request $request)
+{
+    $request->validate([
+        'puzzleid' => 'required|exists:daily_puzzles,id',
+        'user_answer' => 'required|string'
+    ]);
+
+    $userId = Auth::guard('websiteuser')->id();
+    $puzzleId = $request->puzzleid;
+
+    // Prevent duplicate answers
+    $alreadyAnswered = UserPuzzleAnswer::where('userid', $userId)
+        ->where('puzzleid', $puzzleId)
+        ->exists();
+
+    if ($alreadyAnswered) {
+        return back()->with('error', 'You already answered this puzzle!');
+    }
+
+    UserPuzzleAnswer::create([
+        'userid' => $userId,
+        'puzzleid' => $puzzleId,
+        'answer' => $request->user_answer,
+        'created_at' => now()
+    ]);
+
+    return back()->with('success', 'Answer submitted! 🧠');
+}
     
 
     public function savequiz(Request $request)

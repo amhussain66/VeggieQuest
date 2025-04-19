@@ -9,7 +9,7 @@
     <!-- Page Title -->
     <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/17.png') }})">
         <div class="auto-container">
-            <h1>Quiz</h1>
+            <h1>Fun Challenges</h1>
         </div>
     </section>
     <!--End Page Title-->
@@ -130,8 +130,54 @@
                 </form>
 
             @endif {{-- closes @elseif for quiz --}}
+
+            {{-- ✅ Divider --}}
+        <hr class="my-5">
+
+        {{-- 🧩 Daily Puzzle Section --}}
+        @if(isset($puzzles) && $puzzles->count())
+            <div class="daily-puzzles mt-5">
+                <h2 class="text-center mb-4">🧩 Today's Veggie Puzzles</h2>
+
+                @foreach($puzzles as $puzzle)
+                    <div class="mb-4 p-4 border rounded bg-light">
+                        <h5><strong>Type:</strong> {{ ucfirst($puzzle->type) }}</h5>
+                        <p class="lead">{{ $puzzle->question }}</p>
+
+                        @if(in_array($puzzle->id, $answeredPuzzleIds))
+                            <p class="text-success">✅ Already answered!</p>
+                        @else
+                            <form action="{{ route('user.puzzle.submit') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="puzzleid" value="{{ $puzzle->id }}">
+                                <input type="text" name="user_answer" class="form-control" placeholder="Your answer..." required>
+                                <button type="submit" class="btn btn-success mt-2">Submit</button>
+                            </form>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-center text-muted">No puzzles available for today. Check back tomorrow!</p>
+        @endif
+
+
+        {{-- 📚 Extra Fun Section (example) --}}
+        <div class="extra-fun-section mt-5">
+            <h2 class="text-center mb-4">🎮 More Veggie Fun</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ asset('website/images/resource/funchallenges-carrot-right.png') }}" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6 d-flex flex-column justify-content-center">
+                    <p class="lead">Discover veggie-themed games, printables, and challenges!</p>
+                    <a href="{{ route('user.activities') }}" class="btn btn-warning btn-lg">Explore Activities</a>
+                </div>
+            </div>
+        </div>
             
         </div>
+
     </div>
 
     @endsection
