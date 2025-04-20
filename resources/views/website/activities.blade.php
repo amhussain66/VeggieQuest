@@ -68,35 +68,85 @@
     </div>
 </section>
 
-<!-- 🖍️ Printable Coloring Pages Section -->
+<!-- 🖍️ Printable Pages Section -->
 <section class="printable-section py-5">
-    <div class="auto-container">
-        <h2 class="text-center mb-5" style="color: #7a57f4; font-weight: bold;">
-            ✏️ Printable Coloring Pages
+    <div class="auto-container text-center">
+        <h2 class="mb-4" style="color: #7a57fa; font-weight: bold;">
+            🖍️ Printable Fun Pages
         </h2>
 
-        <div class="row">
-            @foreach($printables as $printable)
-                <div class="col-md-3 col-sm-6 mb-4 d-flex align-items-stretch">
-                    <a href="{{ asset('website/pdf/colouring_pages/' . $printable['file']) }}" 
-                    class="w-100 text-decoration-none"
-                    target="_blank">
+        <!-- Buttons -->
+        <div class="mb-4 d-flex justify-content-center flex-wrap gap-3">
+        <button class="btn btn-warning px-4 py-2 fw-bold shadow-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#coloringCollapse"
+                onclick="togglePrintables('coloring')">
+                🎨 Coloring Pages
+            </button>
+            <button class="btn btn-success px-4 py-2 fw-bold shadow-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#wordSearchCollapse"
+                onclick="togglePrintables('wordsearch')">
+                🔍 Word Searches
+            </button>
+        </div>
 
-                        <div class="coloring-card text-center p-4 w-100 h-100">
-                            <img src="{{ asset('website/images/icons/' . $printable['icon']) }}"
-                                alt="{{ $printable['title'] }}"
-                                class="img-fluid mb-3 coloring-icon rounded-icon">
+ <!-- Coloring Pages Collapse -->
+        <div id="coloringCollapse" style="display: none;">
+            <div class="row g-4 justify-content-center">
+                @foreach($printables as $printable)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="{{ asset('website/pdf/colouring_pages/' . $printable['file']) }}" target="_blank" class="text-decoration-none">
+                            <div class="coloring-card text-center p-4">
+                                <img src="{{ asset('website/images/icons/' . $printable['icon']) }}"
+                                    alt="{{ $printable['title'] }}"
+                                    class="img-fluid coloring-icon rounded-icon mb-3" />
+                                <h6 class="coloring-title">{{ $printable['title'] }}</h6>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
 
-                            <h6 class="coloring-title">{{ $printable['title'] }}</h6>
-                        </div>
-
-                    </a>
-                </div>
-            @endforeach
+        <!-- Word Search Collapse -->
+        <div id="wordSearchCollapse" style="display: none;">
+            <div class="row g-4 justify-content-center">
+                @foreach($wordSearches as $search)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="{{ asset('website/pdf/word_searches/' . $search['file']) }}" target="_blank" class="text-decoration-none">
+                            <div class="coloring-card text-center p-4">
+                                <img src="{{ asset('website/images/icons/' . $search['icon']) }}"
+                                    alt="{{ $search['title'] }}"
+                                    class="img-fluid coloring-icon rounded-icon mb-3" />
+                                <h6 class="text-success fw-bold">{{ $search['title'] }}</h6>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
 
+<script>
+    function togglePrintables(type) {
+        const coloring = document.getElementById('coloringCollapse');
+        const wordsearch = document.getElementById('wordSearchCollapse');
 
+        if (type === 'coloring') {
+            coloring.style.display = 'flex';
+            wordsearch.style.display = 'none';
+        } else {
+            wordsearch.style.display = 'flex';
+            coloring.style.display = 'none';
+        }
+    }
+
+    // Default to coloring pages on load
+    document.addEventListener("DOMContentLoaded", () => {
+        togglePrintables('coloring');
+    });
+</script>
 
 @endsection

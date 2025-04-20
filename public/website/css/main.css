@@ -6315,18 +6315,22 @@ img{
     transform: scale(1.1);
 }
 
+.printable-section .btn + .btn {
+    margin-left: 16px;
+}
+
 .coloring-card {
     background-color: #fffbea;
     border-radius: 18px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 10px; /* 👈 Adds natural spacing */
 }
 
 .coloring-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-
 .coloring-icon {
     width: 200px;
     height: 200px;
@@ -6338,8 +6342,7 @@ img{
 }
 
 .rounded-icon {
-    border-radius: 12px; /* adjust for roundness */
-    /* border: 2px solid #ffa500; optional: adds a colored border */
+    border-radius: 12px;
     padding: 5px;
-    background-color: #fff; /* optional */
+    background-color: #fff;
 }

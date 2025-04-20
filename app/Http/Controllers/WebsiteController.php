@@ -65,7 +65,7 @@ class WebsiteController extends Controller
         return view('website.recipe_detail', compact('product'));
     }
 
-    public function activities()
+    public function activitiesPage()
     {
         $printables = [
             [
@@ -79,7 +79,7 @@ class WebsiteController extends Controller
                 'icon' => 'colouring-icon2.png',
             ],
             [
-                'title' => 'Mushrooms Coloring Sheet',
+                'title' => 'Mushroom Coloring Sheet',
                 'file' => 'Mushrooms-Coloring-Sheet.pdf',
                 'icon' => 'colouring-icon3.png',
             ],
@@ -99,7 +99,7 @@ class WebsiteController extends Controller
                 'icon' => 'colouring-icon6.png',
             ],
             [
-                'title' => 'Vegetable Coloring Sheet',
+                'title' => 'Veg Coloring Sheet',
                 'file' => 'Vegetables-Coloring-Pages.pdf',
                 'icon' => 'colouring-icon7.png',
             ],
@@ -109,8 +109,14 @@ class WebsiteController extends Controller
                 'icon' => 'colouring-icon8.png',
             ],
         ];
-
-        return view('website.activities', compact('printables'));
+        $wordSearches = [
+            ['file' => 'ADA_BTSWordsearch.pdf', 'title' => 'Food Word Search', 'icon' => 'ws-icon1.png'],
+            ['file' => 'healthy_eating_word_search.pdf', 'title' => 'Healthy Eating Word Search', 'icon' => 'ws-icon2.png'],
+            ['file' => 'superfoods-word-search.pdf', 'title' => 'Super Foods Word Search', 'icon' => 'ws-icon3.png'],
+            // ... add more
+        ];
+        
+        return view('website.activities', compact('printables', 'wordSearches'));
     }
 
     public function resources()
