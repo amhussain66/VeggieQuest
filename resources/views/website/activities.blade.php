@@ -17,15 +17,15 @@
 <!-- 🌟 Sticky Navigation Buttons -->
 <div class="auto-container my-5">
     <div class="d-flex justify-content-center flex-wrap gap-4">
-        <a href="#food-games" class="btn btn-outline-success px-4 py-2 fw-bold">🍎 Food Games</a>
-        <a href="#brain-games" class="btn btn-outline-primary px-4 py-2 fw-bold">🧠 Match It Games</a>
+        <a href="#brain-games" class="btn btn-outline-primary px-4 py-2 fw-bold">🍎 Food Games</a>
+        <a href="#food-games" class="btn btn-outline-success px-4 py-2 fw-bold">🧠 Match It Games</a>
         <a href="#fitness-videos" class="btn btn-outline-info px-4 py-2 fw-bold">🏃 Fitness</a>
         <a href="#printables" class="btn btn-outline-warning px-4 py-2 fw-bold">🖍️ Printables</a>
     </div>
 </div>
 
-<!-- 🎮 Brain Games -->
-<section id="brain-games" class="game-section py-5">
+<!-- 🎮 Helathy Foods -->
+<section id="brain-games" class="game-section py-5"style=" background-color:rgba(252, 213, 85, 0.62);" >
     <div class="auto-container text-center">
     <h2 class="section-title mb-4">🍎 Healthy Food Games</h2>
     <p class="lead text-muted mb-4">Get ready to explore fun, interactive games that teach kids all about healthy food choices! Click a game to jump right in.</p>
@@ -83,7 +83,7 @@
 </section>
 
 <!-- 🥦 Brain Games -->
-<section id="food-games" class="game-section bg-light py-5">
+<section id="food-games" class="game-section bg-light py-5" style="background-image: url('/website/images/\background\match-it-games-bg.svg'); background-size: cover; ">
     <div class="auto-container text-center">
     <h2 class="section-title mb-4">🥦 Match It Games</h2>
     <p class="lead text-muted mb-4">Challenge your brain with these fun matching games. Perfect for developing memory and learning about fruits and veggies!</p>
@@ -122,7 +122,7 @@
 
 
 <!-- 🕺 Fitness Videos -->
-<section id="fitness-videos" class="game-section py-5">
+<section id="fitness-videos" class="game-section py-5"  style=" background-color:#17a2b8;" >
     <div class="auto-container text-center">
     <h2 class="section-title mb-4">🏃 Fun Fitness Videos</h2>
     <p class="lead text-muted mb-4">Time to move your body! Join in with these exciting, kid-friendly videos to stay active and have fun at the same time.</p>
@@ -142,7 +142,7 @@
 </section>
 
 <!-- 🖍️ Printable Pages Section -->
-<section id="printables" class="printable-section py-5">
+<section id="printables" class="printable-section py-5" style=" background-color:rgba(252, 213, 85, 0.62);" >
     <div class="auto-container text-center">
     <h2 class="mb-4" style="color: #7a57fa; font-weight: bold;">🖍️ Printable Fun Pages</h2>
     <p class="lead text-muted mb-4">Enjoy hands-on fun with printable coloring sheets and word searches. Just click, print, and play!</p>
