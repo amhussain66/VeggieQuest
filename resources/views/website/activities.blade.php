@@ -1,108 +1,71 @@
 @extends('website.includes.master')
 
 @section('title')
-    Activities
+    Games & Activities
 @endsection
 
 @section('content')
 
-    <!-- Page Title -->
-    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/12.png') }})">
-        <div class="auto-container">
-            <h1>Activities</h1>
-        </div>
-    </section>
-    <!--End Page Title-->
+<!-- 🎯 Hero Banner -->
+<section class="page-title" style="background-image:url('{{ URL::asset('website/images/background/game-and-activities-bg.png') }}'); background-size: cover; background-position: center;">
+    <div class="auto-container text-center py-5">
+        <h1 class="display-4 text-white">Let’s Play & Learn!</h1>
+        <p class="lead text-white">Explore veggie games, fun fitness, and activities made just for kids!</p>
+    </div>
+</section>
 
-    <!-- Video Section -->
-    <section class="video-section" style="background-image: url({{ URL::asset('website/images/background/1.png') }})">
-        <div class="auto-container">
-
-
-            <div class="row mb-5">
-                <div class="col-md-2"></div>
-                <div class="col-md-8 text-center justify-content-center">
-                    <iframe id="webplayer"
-                            title="Match It - Fruits and Vegetables Free Games online for kids in Nursery by Tiny Tap"
-                            style="background-color:transparent" width="100%" height="600" webkitallowfullscreen=""
-                            mozallowfullscreen="" allowfullscreen="" allowtransparency="true"
-                            data_src="https://static.tinytap.com/media/webplayer/webplayer.html?id=4AAEE896-CA1A-4B77-837C-B1BAC6DD608C"
-                            src="https://static.tinytap.com/media/webplayer/webplayer.html?id=4AAEE896-CA1A-4B77-837C-B1BAC6DD608C"></iframe>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-
-            <div class="row mb-5">
-                <div class="col-md-12 text-center justify-content-center">
-                    <h3 class="mb-3"><b>PLAY HEALTHY AND UNHEALTHY FOOD GAMES</b></h3>
-                    <a href="https://wordwall.net/resource/4153860/healthy-and-unhealthy-food" target="_blank">
-                        <img src="{{ URL::asset('website/images/h.png') }}" style="width: 100%" alt="">
-                    </a>
-                </div>
-            </div>
-
-
-            <div class="row clearfix">
-
-                <!-- Column -->
-                <div class="column col-lg-4 col-md-4 col-sm-12">
-                    <iframe style="width: 100% !important;height: 300px;object-fit: cover"
-                            src="https://www.youtube.com/embed/LhYtcadR9nw"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-
-                <!-- Column -->
-                <div class="column col-lg-4 col-md-4 col-sm-12">
-                    <iframe style="width: 100% !important;height: 300px;object-fit: cover"
-                            src="https://www.youtube.com/embed/-1-s8GBpFeQ"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-
-                <!-- Column -->
-                <div class="column col-lg-4 col-md-4 col-sm-12">
-                    <iframe style="width: 100% !important;height: 300px;object-fit: cover"
-                            src="https://www.youtube.com/embed/QphRMalB_LM"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-
-                <!-- Column -->
-                <div class="column col-lg-4 col-md-4 col-sm-12">
-                    <iframe style="width: 100% !important;height: 300px;object-fit: cover"
-                            src="https://www.youtube.com/embed/aHVR2FnTpdk"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-
-
-                <!-- Column -->
-                <div class="column col-lg-4 col-md-4 col-sm-12">
-                    <iframe style="width: 100% !important;height: 300px;object-fit: cover"
-                            src="https://www.youtube.com/embed/WpIFlh5whcs"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-
+<!-- 🎮 Brain Games -->
+<section class="game-section py-5">
+    <div class="auto-container text-center">
+        <h2 class="section-title mb-4">🧠 Brain Games</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <!-- <img src="{{ asset('website/images/games/match-it.jpg') }}" class="img-fluid rounded shadow" alt="Match It Game">
+                <a href="https://www.example.com/match-it" class="btn btn-orange mt-2">Play Match It</a> -->
+                <H3>Match It Game</H3>
+                <iframe id="webplayer"
+                title="Match It - Fruits and Vegetables Free Games online for kids in Nursery by Tiny Tap"
+                style="background-color:transparent" width="100%" height="300" webkitallowfullscreen=""
+                mozallowfullscreen="" allowfullscreen="" allowtransparency="true"
+                data_src="https://static.tinytap.com/media/webplayer/webplayer.html?id=4AAEE896-CA1A-4B77-837C-B1BAC6DD608C"
+                src="https://static.tinytap.com/media/webplayer/webplayer.html?id=4AAEE896-CA1A-4B77-837C-B1BAC6DD608C"></iframe>
             </div>
         </div>
-    </section>
-    <!-- End Video Section -->
+    </div>
+</section>
+
+<!-- 🥦 Healthy Food Games -->
+<section class="game-section bg-light py-5">
+    <div class="auto-container text-center">
+        <h2 class="section-title mb-4">🍎 Healthy Food Games</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <img src="{{ asset('website/images/more-games.png') }}" class="img-fluid rounded shadow" alt="More Games">
+                <a href="https://wordwall.net/resource/4153860/healthy-and-unhealthy-food" class="btn btn-orange mt-2">Play More Games</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 🕺 Fitness Videos -->
+<section class="game-section py-5">
+    <div class="auto-container text-center">
+        <h2 class="section-title mb-4">🏃 Fun Fitness Videos</h2>
+        <div class="row justify-content-center">
+            <!-- Video 1 -->
+            <div class="col-md-4 mb-4">
+                <iframe width="100%" height="215" src="https://www.youtube.com/embed/LhYtcadR9nw" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Video 2 -->
+            <div class="col-md-4 mb-4">
+                <iframe width="100%" height="215" src="https://www.youtube.com/embed/-1-s8GBpFeQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Video 3 -->
+            <div class="col-md-4 mb-4">
+                <iframe width="100%" height="215" src="https://www.youtube.com/embed/QphRMalB_LM" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
 
 @endsection
