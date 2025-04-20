@@ -68,4 +68,35 @@
     </div>
 </section>
 
+<!-- 🖍️ Printable Coloring Pages Section -->
+<section class="printable-section py-5">
+    <div class="auto-container">
+        <h2 class="text-center mb-5" style="color: #7a57f4; font-weight: bold;">
+            ✏️ Printable Coloring Pages
+        </h2>
+
+        <div class="row">
+            @foreach($printables as $printable)
+                <div class="col-md-3 col-sm-6 mb-4 d-flex align-items-stretch">
+                    <a href="{{ asset('website/pdf/colouring_pages/' . $printable['file']) }}" 
+                    class="w-100 text-decoration-none"
+                    target="_blank">
+
+                        <div class="coloring-card text-center p-4 w-100 h-100">
+                            <img src="{{ asset('website/images/icons/' . $printable['icon']) }}"
+                                alt="{{ $printable['title'] }}"
+                                class="img-fluid mb-3 coloring-icon rounded-icon">
+
+                            <h6 class="coloring-title">{{ $printable['title'] }}</h6>
+                        </div>
+
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+
+
 @endsection

@@ -6307,3 +6307,39 @@ img{
 .game-section {
     padding: 60px 0;
 }
+
+.printable-section img {
+    transition: transform 0.2s ease;
+}
+.printable-section img:hover {
+    transform: scale(1.1);
+}
+
+.coloring-card {
+    background-color: #fffbea;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coloring-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.coloring-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.coloring-title {
+    font-weight: 700;
+    color: #d35400;
+}
+
+.rounded-icon {
+    border-radius: 12px; /* adjust for roundness */
+    /* border: 2px solid #ffa500; optional: adds a colored border */
+    padding: 5px;
+    background-color: #fff; /* optional */
+}

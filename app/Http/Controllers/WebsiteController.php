@@ -67,7 +67,50 @@ class WebsiteController extends Controller
 
     public function activities()
     {
-        return view('website.activities');
+        $printables = [
+            [
+                'title' => 'Broccoli Coloring Sheet',
+                'file' => 'Broccoli-Coloring-Page-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon1.png',
+            ],
+            [
+                'title' => 'Carrots Coloring Sheet',
+                'file' => 'Carrots-Coloring-Page-For-Kids.pdf',
+                'icon' => 'colouring-icon2.png',
+            ],
+            [
+                'title' => 'Mushrooms Coloring Sheet',
+                'file' => 'Mushrooms-Coloring-Sheet.pdf',
+                'icon' => 'colouring-icon3.png',
+            ],
+            [
+                'title' => 'Tomatoes Coloring Sheet',
+                'file' => 'Vine-Tomatoes-Coloring-Page.pdf',
+                'icon' => 'colouring-icon4.png',
+            ],
+            [
+                'title' => 'Onion Coloring Sheet',
+                'file' => 'Brown-Onions-Coloring-Page.pdf',
+                'icon' => 'colouring-icon5.png',
+            ],
+            [
+                'title' => 'Corn Coloring Sheet',
+                'file' => 'Coloring-Page-Of-Corn-On-The-Cob.pdf',
+                'icon' => 'colouring-icon6.png',
+            ],
+            [
+                'title' => 'Vegetable Coloring Sheet',
+                'file' => 'Vegetables-Coloring-Pages.pdf',
+                'icon' => 'colouring-icon7.png',
+            ],
+            [
+                'title' => 'Mix Veg Coloring Sheets',
+                'file' => 'Simple-Outline-Of-Common-Vegetables-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon8.png',
+            ],
+        ];
+
+        return view('website.activities', compact('printables'));
     }
 
     public function resources()
