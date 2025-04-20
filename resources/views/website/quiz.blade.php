@@ -171,7 +171,8 @@
                 </div>
                 <div class="col-md-6 d-flex flex-column justify-content-center">
                     <p class="lead">Discover veggie-themed games, printables, and challenges!</p>
-                    <a href="{{ route('user.activities') }}" class="btn btn-warning btn-lg">Explore Activities</a>
+                    <a href="{{ url('/activities') }}" class="btn btn-warning btn-lg">Explore Activities</a>
+
                 </div>
             </div>
         </div>
