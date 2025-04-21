@@ -128,6 +128,8 @@ $system = App\Models\Setting::first();
             border-bottom: none !important;
             text-decoration: none !important;
             transition: all 0.3s ease-in-out;
+            text-shadow: 2px 2px 0px rgb(61, 47, 6); 
+            font-weight: bold;
         }
 
         .navigation > li.active > a {
@@ -143,7 +145,8 @@ $system = App\Models\Setting::first();
             border-bottom: 2px solid #ffcc00;
         }
         .navigation > li > a:hover {
-            color: #ffcc00 !important;
+            color:rgb(28, 190, 44) !important;
+            text-shadow: 2px 2px 4px rgb(10, 71, 14);
         }
 
     </style>
