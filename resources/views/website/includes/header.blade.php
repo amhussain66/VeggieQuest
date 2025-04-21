@@ -1,4 +1,4 @@
-v<?php
+<?php
 $system = App\Models\Setting::first();
 ?>
 <!DOCTYPE html>
@@ -122,6 +122,30 @@ $system = App\Models\Setting::first();
             background: #555;
             box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
         }
+
+        /* nav chnages */
+        .navigation > li > a {
+            border-bottom: none !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navigation > li.active > a {
+            color: #ffcc00 !important;
+            font-weight: bold;
+            border-bottom: 2px solid #ffcc00;
+        }
+
+
+        .navigation > li.active > a {
+            color: #ffcc00 !important;
+            font-weight: bold;
+            border-bottom: 2px solid #ffcc00;
+        }
+        .navigation > li > a:hover {
+            color: #ffcc00 !important;
+        }
+
     </style>
 
 </head>
@@ -156,12 +180,25 @@ $system = App\Models\Setting::first();
 
                             <div class="navbar-collapse show collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li><a href="{{ route('/') }}">Home</a></li>
-                                    <li><a href="{{ route('user.quiz') }}">Fun Challenges</a></li>
-                                    <li><a href="{{ route('recipes') }}">Veggie Recipes</a></li>
-                                    <li><a href="{{ route('activities') }}">Games & Activities</a></li>
-                                    <li><a href="{{ route('veggie_facts_benefits') }}">Veggie Facts & Benefits</a></li>
-                                    <li><a href="{{ route('resources') }}">Parents & Teachers</a></li>
+                                <li class="{{ request()->routeIs('/') ? 'active' : '' }}">
+                                    <a href="{{ route('/') }}">Home</a>
+                                </li>
+                                <li class="{{ request()->routeIs('user.quiz') ? 'active' : '' }}">
+                                    <a href="{{ route('user.quiz') }}">Fun Challenges</a>
+                                </li>
+                                <li class="{{ request()->routeIs('recipes') ? 'active' : '' }}">
+                                    <a href="{{ route('recipes') }}">Veggie Recipes</a>
+                                </li>
+                                <li class="{{ request()->routeIs('activities') ? 'active' : '' }}">
+                                    <a href="{{ route('activities') }}">Games & Activities</a>
+                                </li>
+                                <li class="{{ request()->routeIs('veggie_facts_benefits') ? 'active' : '' }}">
+                                    <a href="{{ route('veggie_facts_benefits') }}">Veggie Facts & Benefits</a>
+                                </li>
+                                <li class="{{ request()->routeIs('resources') ? 'active' : '' }}">
+                                    <a href="{{ route('resources') }}">Parents & Teachers</a>
+                                </li>
+
                                     @if(Auth::guard('websiteuser')->check())
                                         <li class="dropdown"><a style="cursor: pointer">{{ Auth::guard('websiteuser')->user()->name }}</a>
                                             <ul>
