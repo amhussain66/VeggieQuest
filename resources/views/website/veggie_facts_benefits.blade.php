@@ -15,7 +15,7 @@
 </section>
 
 <!-- 🌟 Sticky Nav -->
-<div class="auto-container my-5">
+<!-- <div class="auto-container my-5">
     <div class="d-flex justify-content-center flex-wrap gap-3">
         <a href="#broccoli" class="btn btn-outline-success">🥦 Broccoli</a>
         <a href="#carrots" class="btn btn-outline-warning">🥕 Carrots</a>
@@ -24,13 +24,26 @@
         <a href="#spinach" class="btn btn-outline-primary">🥬 Spinach</a>
         <a href="#corn" class="btn btn-outline-warning">🌽 Corn</a>
     </div>
-</div>
+</div> -->
 
 <!-- 🥦 Veggie Facts Carousel -->
 <section class="veggie-carousel-section py-5">
     <div class="auto-container text-center">
         <h2 class="mb-4 text-success fw-bold">🌿 Discover the Superpowers of Veggies!</h2>
-        <p class="mb-5">Click through to learn fun facts and awesome benefits of your favorite vegetables!</p>
+        <p class="mb-5">Press on the veggie you want to learn more about! And to find out about the other veggies,
+            <br> click through to learn fun facts and awesome benefits!</p>
+            <!-- 🌟 Sticky Nav -->
+            <div class="auto-container my-5">
+                <!-- 🌟 Veggie Nav Buttons -->
+                <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
+                <button class="btn btn-outline-success" data-bs-target="#veggieFactsSlider" data-bs-slide-to="11">🥦 Broccoli</button>
+                <button class="btn btn-outline-warning" data-bs-target="#veggieFactsSlider" data-bs-slide-to="7">🥕 Carrots</button>
+                <button class="btn btn-outline-danger" data-bs-target="#veggieFactsSlider" data-bs-slide-to="0">🎃 Pumpkin</button>
+                <button class="btn btn-outline-success" data-bs-target="#veggieFactsSlider" data-bs-slide-to="5">🌱 Green Onion</button>
+                <button class="btn btn-outline-primary" data-bs-target="#veggieFactsSlider" data-bs-slide-to="2">🍆 Aubergine </button>
+                <button class="btn btn-outline-warning" data-bs-target="#veggieFactsSlider" data-bs-slide-to="8">🌽 Corn</button>
+            </div>
+        </div>
 
         <div id="veggieFactsSlider" class="carousel slide carousel-dark carousel-fade">
         <div class="carousel-indicators">
@@ -62,8 +75,8 @@
         <div class="carousel-item">
             <div class="p-4">
             <img src="{{ asset('website/images/icons/3-orb.png') }}" class="mb-4 veggie-icon-lg" alt="Orb Icon" />
-            <h4>🌕 Mystery Veggie – Secret Super Orb</h4>
-            <p>Every veggie has a mystery! What powers do YOU think this veggie has? Use your imagination!</p>
+            <h4>🍆 Aubergine  – Brain Boost Buddy</h4>
+            <p>Aubergines are full of antioxidants that help keep your brain sharp and focused!</p>
             </div>
         </div>
 

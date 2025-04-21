@@ -6417,7 +6417,7 @@ img{
     background-color: #fff;
 }
 
-/* Vegiie facts page  */
+/*========================== Vegiie facts page =================== */
 
 /* Veggie Fact Cards */
 .card {
@@ -6439,24 +6439,38 @@ img{
 }
 
 /* Sticky Nav Buttons */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 8px 16px;
+    white-space: nowrap;
+}
+
+.btn::before {
+    display: inline-block;
+    line-height: 1;
+}
+
+
 .auto-container .btn-outline-success,
 .auto-container .btn-outline-warning,
 .auto-container .btn-outline-danger,
 .auto-container .btn-outline-primary {
+    font-weight: bold;
+    border-width: 2px;
     border-radius: 30px;
-    font-size: 16px;
-    transition: all 0.2s ease;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
 }
 
 .auto-container .btn:hover {
-    transform: translateY(-2px);
+	transform: scale(1.1);
 }
 
-/* Carousel */
-.carousel-inner img {
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
 
 /* Section Headings */
 section h2 {
@@ -6475,13 +6489,52 @@ iframe {
     border-radius: 12px;
 }
 
-/* .veggieFactsSlider{
-background-color: #00e49a;
-} */
+/* ======= Veggie Carousel Section Fix ======= */
 
-/* =======veggie carousel===== */
+.veggie-carousel-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-.veggie-carousel-section .carousel-item {
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.carousel-fade .carousel-inner {
+    position: relative;
+}
+
+/* Ensure all slides overlap and transition smoothly */
+.carousel-fade .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    pointer-events: none;
+}
+
+.carousel-fade .carousel-item.active {
+    position: relative;
+    opacity: 1;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+/* Carousel content box */
+.carousel-item > div {
     background-color: #fffbea;
     border-radius: 20px;
     padding: 30px;
@@ -6490,50 +6543,7 @@ background-color: #00e49a;
     margin: 0 auto;
 }
 
-.veggie-carousel-section img {
-    transition: transform 0.2s ease;
-}
-.veggie-carousel-section img:hover {
-    transform: scale(1.1);
-}
-
-/* Fix Bootstrap 5 carousel stacking issue */
-
-/* Ensure carousel is properly centered and doesn't break layout */
-.veggie-carousel-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-/* Carousel Container Fix */
-.carousel-inner {
-    position: relative;
-    width: 100%;
-    max-width: 800px; /* Optional: Limit width */
-    margin: 0 auto;
-    overflow: hidden;
-    min-height: 400px;
-}
-
-/* Fade transition fix */
-.carousel-fade .carousel-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-    z-index: 0;
-}
-
-.carousel-fade .carousel-item.active {
-    opacity: 1;
-    z-index: 1;
-}
-
-/* Center each slide's content */
+/* Center inside the box */
 .carousel-item > .p-4 {
     display: flex;
     flex-direction: column;
@@ -6543,15 +6553,20 @@ background-color: #00e49a;
     height: 100%;
 }
 
-/* Heading & paragraph styling */
-.carousel-inner h4 {
-    color: #ff6f00;
-    font-weight: bold;
-}
-
-.carousel-inner p {
+.carousel-item p {
+    color: #000;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.carousel-inner img {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.carousel-inner img:hover {
+    transform: scale(1.1);
 }
 
 /* Image sizing */
@@ -6561,12 +6576,13 @@ background-color: #00e49a;
     max-width: 100%;
 }
 
-/* Smooth anchor scrolling */
-html {
-    scroll-behavior: smooth;
+/* Navigation arrows size */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
 }
 
-/* Comic strip */
+/* -------Comic strip----- */
 .comic-strip {
     background-color: #fffbe6;
     padding: 50px 20px;
