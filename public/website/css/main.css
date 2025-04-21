@@ -6475,7 +6475,7 @@ background-color: #00e49a;
 
 /* Fix Bootstrap 5 carousel stacking issue */
 
-/* ✅ Ensure carousel is properly centered and doesn't break layout */
+/* Ensure carousel is properly centered and doesn't break layout */
 .veggie-carousel-section {
     display: flex;
     justify-content: center;
@@ -6483,7 +6483,7 @@ background-color: #00e49a;
     flex-direction: column;
 }
 
-/* ✅ Carousel Container Fix */
+/* Carousel Container Fix */
 .carousel-inner {
     position: relative;
     width: 100%;
@@ -6493,7 +6493,7 @@ background-color: #00e49a;
     min-height: 400px;
 }
 
-/* ✅ Fade transition fix */
+/* Fade transition fix */
 .carousel-fade .carousel-item {
     position: absolute;
     top: 0;
@@ -6509,7 +6509,7 @@ background-color: #00e49a;
     z-index: 1;
 }
 
-/* ✅ Center each slide's content */
+/* Center each slide's content */
 .carousel-item > .p-4 {
     display: flex;
     flex-direction: column;
@@ -6519,7 +6519,7 @@ background-color: #00e49a;
     height: 100%;
 }
 
-/* ✅ Heading & paragraph styling */
+/* Heading & paragraph styling */
 .carousel-inner h4 {
     color: #ff6f00;
     font-weight: bold;
@@ -6530,14 +6530,63 @@ background-color: #00e49a;
     margin: 0 auto;
 }
 
-/* ✅ Image sizing */
+/* Image sizing */
 .veggie-icon-lg {
     width: 220px;
     height: auto;
     max-width: 100%;
 }
 
-/* ✅ Smooth anchor scrolling */
+/* Smooth anchor scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* Comic strip */
+.comic-strip {
+    background-color: #fffbe6;
+    padding: 50px 20px;
+    overflow-x: auto;
+}
+
+.comic-panels {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap; /* prevents wrapping */
+    overflow-x: auto;   /* allows horizontal scroll on small screens */
+}
+
+.comic-panel {
+    min-width: 220px;
+    max-width: 240px;
+    flex: 0 0 auto;
+    text-align: center;
+    border: 3px solid #f3c13a;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+
+.comic-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.comic-panel .caption {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #333;
+}
+.comic-caption {
+    font-size: 1.2rem;
+    color: #444;
+    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
 }

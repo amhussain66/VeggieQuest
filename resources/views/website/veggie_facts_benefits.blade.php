@@ -191,6 +191,50 @@
     </div>
 </section>
 
+<!-- 🧩 Veggie Comic Strip -->
+<section class="comic-strip py-5" style="background-color: #fffbe6;">
+  <div class="container">
+    <h2 class="text-center mb-5 text-warning fw-bold">🥕 Super Veggie Adventures!</h2>
+    <p class="comic-caption text-center mb-5">
+     <em>Read the Veggie Comic below to see how your favorite superhero veggies save the day with their amazing powers!</em>
+    </p>
+
+    <div class="comic-panels d-flex flex-wrap justify-content-center gap-4">
+      
+      <!-- Panel 1 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel1.png') }}" alt="Carrot yelling night vision">
+        <p class="caption">“The kids look tired,” says Broccoli</p>
+      </div>
+
+      <!-- Panel 2 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel2.png') }}" alt="Sad kids in night vision">
+        <p class="caption">Super Carrot yells: "Night Vision!"</p>
+      </div>
+
+      <!-- Panel 3 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel3.png') }}" alt="Pepper superhero">
+        <p class="caption">Carrot scans the kids in night vision mode.</p>
+      </div>
+
+      <!-- Panel 4 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel4.png') }}" alt="Kids in garden night mode">
+        <p class="caption">Red Pepper to the rescue: "I'll boost their immunity!" </p>
+      </div>
+
+      <!-- Panel 5 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel5.png') }}" alt="Kids high five veggies">
+        <p class="caption">Mission complete! High-fives all around!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -228,7 +272,16 @@
     <div class="auto-container">
         <h2 class="text-success fw-bold mb-3">🌟 Eat Your Superpowers!</h2>
         <p class="text-muted mb-4">Add colorful veggies to your plate every day to boost your body, sharpen your mind, and feel amazing inside and out!</p>
-        <a href="{{ url('/Quiz') }}" class="btn btn-success btn-lg px-4 shadow">🧠 Take the Veggie Quiz!</a>
+        @auth
+            <a href="{{ url('/Quiz') }}" class="btn btn-success btn-lg px-4 shadow">
+                🧠 Take the Veggie Quiz!
+            </a>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-outline-success btn-lg px-4 shadow">
+                🔒 Login to Take the Veggie Quiz!
+            </a>
+        @endauth
+
     </div>
 </section>
 

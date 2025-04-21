@@ -18,29 +18,30 @@ class LoginController extends Controller
     {
         if ($request->isMethod('post')) {
             if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
-
+    
                 if (Auth::check()) {
-
-                    return redirect(RouteServiceProvider::ADMIN);
-
+                    // 👇 Redirect to Quiz page after successful login
+                    return redirect()->intended('/Quiz');
                 }
-
+    
             } else {
                 return redirect()->back()->with('error', 'Invalid Email or Password !');
             }
         } else {
-
+    
             if (Auth::check()) {
-                return redirect(RouteServiceProvider::ADMIN);
+                return redirect()->intended('/Quiz');
             } else {
                 return view('admin.login');
             }
         }
     }
-
+    
     public function logout(Request $request)
     {
         Auth::logout();
         return redirect()->route("admin.login");
     }
+
+
 }
