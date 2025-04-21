@@ -547,15 +547,19 @@ jQuery(document).ready(function ($) {
 });
 
 // reveal a veggie of the week 
-const btn = document.getElementById("reveal-veggie-btn");
-const box = document.getElementById("veggie-of-week-box");
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("reveal-veggie-btn");
+    const box = document.getElementById("veggie-of-week-box");
 
-btn.addEventListener("click", () => {
-    if (box.classList.contains("show")) {
-        box.classList.remove("show");
-        box.style.display = "none";
-    } else {
-        box.style.display = "block";
-        setTimeout(() => box.classList.add("show"), 10);
+    if (btn && box) {
+        btn.addEventListener("click", () => {
+            if (box.classList.contains("show")) {
+                box.classList.remove("show");
+                box.style.display = "none";
+            } else {
+                box.style.display = "block";
+                setTimeout(() => box.classList.add("show"), 10);
+            }
+        });
     }
 });

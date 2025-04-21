@@ -6366,33 +6366,6 @@ img{
 
 /* match it games css */
 
-/* .game-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.game-iframe {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 260px;
-    border: none;
-    border-radius: 12px;
-}
-
-.game-card h6 {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-} */
 
 /* Make match games large and centered */
 .match-card {
@@ -6418,4 +6391,153 @@ img{
     color: #ff7a00;
     text-align: center;
     background-color: #fff;
+}
+
+/* Vegiie facts page  */
+
+/* Veggie Fact Cards */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Icons Inside Cards */
+.card img {
+    width: 90px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Sticky Nav Buttons */
+.auto-container .btn-outline-success,
+.auto-container .btn-outline-warning,
+.auto-container .btn-outline-danger,
+.auto-container .btn-outline-primary {
+    border-radius: 30px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.auto-container .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Carousel */
+.carousel-inner img {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headings */
+section h2 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+/* Match general spacing */
+.card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+iframe {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+/* .veggieFactsSlider{
+background-color: #00e49a;
+} */
+
+/* =======veggie carousel===== */
+
+.veggie-carousel-section .carousel-item {
+    background-color: #fffbea;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.veggie-carousel-section img {
+    transition: transform 0.2s ease;
+}
+.veggie-carousel-section img:hover {
+    transform: scale(1.1);
+}
+
+/* Fix Bootstrap 5 carousel stacking issue */
+
+/* ✅ Ensure carousel is properly centered and doesn't break layout */
+.veggie-carousel-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ✅ Carousel Container Fix */
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Optional: Limit width */
+    margin: 0 auto;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+/* ✅ Fade transition fix */
+.carousel-fade .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 0;
+}
+
+.carousel-fade .carousel-item.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* ✅ Center each slide's content */
+.carousel-item > .p-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+/* ✅ Heading & paragraph styling */
+.carousel-inner h4 {
+    color: #ff6f00;
+    font-weight: bold;
+}
+
+.carousel-inner p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ✅ Image sizing */
+.veggie-icon-lg {
+    width: 220px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* ✅ Smooth anchor scrolling */
+html {
+    scroll-behavior: smooth;
 }
