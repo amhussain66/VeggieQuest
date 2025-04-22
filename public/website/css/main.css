@@ -6495,7 +6495,7 @@ iframe {
 } */
 
 .vg-fact-bg{
-	background: #E9F5BE url(../images/background/1.png);
+	background: #fff3e5 url(../images/background/1.png);
 }
 .veggie-carousel-section {
     display: flex;
@@ -6503,7 +6503,7 @@ iframe {
     align-items: center;
     flex-direction: column;
 	background-color: #E9F5BE;
-	background-image: ;
+	/* background-image: ; */
 }
 
 .carousel-inner {
@@ -6532,12 +6532,12 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px; /* spacing between levels */
+    gap: 32px; /* More space between items */
 }
 
-/* 🧠 Icons used in the guide legend */
+/* 📈 Bigger icons in the legend */
 .difficulty-guide-icon {
-    height: 50px;
+    height: 100px; 
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -6546,10 +6546,25 @@ iframe {
     transform: scale(1.1);
 }
 
-/* 🧑‍🍳 Inline difficulty icon beside recipe titles */
+/* 📏 Inline icons beside recipe titles (slightly bigger too) */
 .recipe-difficulty-icon {
-    height: 36px;
+    height: 100px; /* Increased from 36px */
     width: auto;
+}
+
+/* ✍️ Bigger text for guide descriptions */
+.recipe-difficulty-guide div span {
+    font-size: 18px; /* Bigger font */
+    font-weight: bold;
+    color: #222;
+    margin-left: 10px;
+}
+
+/* 💡 Optional: make the guide heading stand out more */
+.recipe-difficulty-guide h5 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
 }
 
 /* 🎯 Text under guide icons */

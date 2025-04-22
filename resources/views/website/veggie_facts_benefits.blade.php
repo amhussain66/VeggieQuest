@@ -249,7 +249,7 @@
 </section>
 
 <!-- 🍽️ Veggie Recipes Carousel Section -->
-<section class="py-5 vg-fact-bg" style="background-color:rgb(184, 231, 223);">
+<section class="py-5 vg-fact-bg" >
     <div class="auto-container">
         <div class="text-center mb-5">
             <h2 class="text-info fw-bold">🍽️ Veggie Recipes to Try!</h2>
@@ -263,15 +263,15 @@
                 <div class="recipe-difficulty-guide">
                     <div>
                         <img src="{{ asset('website/images/icons/difficulty-1.png') }}" class="difficulty-guide-icon mb-2" alt="Easy">
-                        <div><strong>Easy</strong><br><small class="text-muted">Little help needed</small></div>
+                        <div><strong>Easy Peasy!</strong><br><small class="text-muted">You got this</small></div>
                     </div>
                     <div>
                         <img src="{{ asset('website/images/icons/difficulty-2.png') }}" class="difficulty-guide-icon mb-2" alt="Medium">
-                        <div><strong>Medium</strong><br><small class="text-muted">Some grown-up help</small></div>
+                        <div><strong>Little Helper Needed</strong><br><small class="text-muted">Some grown-up help</small></div>
                     </div>
                     <div>
                         <img src="{{ asset('website/images/icons/difficulty-3.png') }}" class="difficulty-guide-icon mb-2" alt="Hard">
-                        <div><strong>Hard</strong><br><small class="text-muted">Grown-up needed</small></div>
+                        <div><strong>Grown-Up Supervision</strong><br><small class="text-muted">Grown-up needed</small></div>
                     </div>
                 </div>
             </div>
