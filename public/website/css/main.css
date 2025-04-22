@@ -6711,3 +6711,13 @@ iframe {
     margin: 0 auto;
     line-height: 1.6;
 }
+
+/* =========== PArents and Teachers ================ */
+section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.bg-light {
+    background-color: #f9f9f9 !important;
+}

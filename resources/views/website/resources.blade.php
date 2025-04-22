@@ -7,12 +7,41 @@
 @section('content')
 
     <!-- Page Title -->
-    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/12.png') }})">
+    <!-- 🌟 Hero Section -->
+    <section class="page-title py-5 text-center" style="background-image:url({{ URL::asset('website/images/background/12.png') }}); background-size: cover; background-position: center;">
         <div class="auto-container">
-            <h1>Resources</h1>
+            <h1 class="display-4 text-white fw-bold">Resources for Parents & Teachers</h1>
+            <p class="lead text-white mt-3">Helpful tools, tips, and fun activities to support your child’s healthy eating journey!</p>
         </div>
     </section>
-    <!--End Page Title-->
+
+
+    <!-- 🔗 Quick Access Resources -->
+    <section class="py-5 bg-light">
+        <div class="auto-container text-center">
+            <h2 class="fw-bold text-success mb-4">Quick Access Tools</h2>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-4">
+                    <a href="#meal-tips" class="card shadow h-100 p-4 text-decoration-none">
+                        <h4 class="text-success">🍽️ Meal Planning Tips</h4>
+                        <p class="text-muted">Easy ways to organize your family's meals.</p>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#printables" class="card shadow h-100 p-4 text-decoration-none">
+                        <h4 class="text-success">🖨️ Printable Activities</h4>
+                        <p class="text-muted">Fun coloring pages, word searches & more.</p>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#faqs" class="card shadow h-100 p-4 text-decoration-none">
+                        <h4 class="text-success">❓ FAQs & Advice</h4>
+                        <p class="text-muted">Answers to your top questions on healthy eating.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Resources Section -->
     <section class="video-section"
@@ -27,6 +56,7 @@
                 </h1>
             </div>
 
+            
             <section class="about-section">
                 <div class="layer-one"
                      style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
@@ -426,7 +456,121 @@
     </section>
     <!-- End Resources Section -->
 
+    <!-- Healthy Eating Tips -->
+    <section class="about-section py-5" style="background-color: #f0fdf7;">
+        <div class="auto-container">
+            <h2 class="text-success fw-bold mb-4">🥦 Healthy Eating Tips for Little Ones</h2>
+            <p>Encouraging kids to eat healthy can be fun and rewarding! Here are some tried-and-true tips:</p>
+            <ul class="text-start mt-3">
+                <li>🍎 Keep fruits and veggies visible and within reach.</li>
+                <li>🥕 Let children pick a new veggie each week to try together.</li>
+                <li>🍽️ Eat together and be a veggie role model!</li>
+                <li>🎨 Make meals colorful and fun – let them decorate their plate.</li>
+                <li>🧑‍🍳 Get them involved in simple cooking tasks to boost interest.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Educational Videos -->
+    <section class="py-5 bg-light">
+        <div class="auto-container text-center">
+            <h2 class="fw-bold text-info mb-4">🎥 Quick Educational Videos</h2>
+            <p class="mb-4">Watch these short clips with your child to learn more about the power of healthy eating!</p>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-4">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/00xZyFeUSf8"
+                            title="Discover Healthy Vegetables" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+                <!-- Add more if needed -->
+            </div>
+        </div>
+    </section>
+    <!-- Parent Tips -->
+<section class="py-5" style="background-color:#fff9eb;">
+    <div class="auto-container text-center">
+        <h2 class="fw-bold text-success mb-4">👨‍👩‍👧‍👦 Parent Tips & Stories</h2>
+        <p>Here’s what other parents have shared about making healthy eating fun at home:</p>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>"Letting my kids help wash veggies made them excited to eat what they prepared!"</p>
+                    <footer class="blockquote-footer">Emily, Mom of 2</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>"We use a sticker chart for every veggie tried. It works wonders!"</p>
+                    <footer class="blockquote-footer">James, Dad of 1</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>"Veggie taste tests are now our family’s weekend game!"</p>
+                    <footer class="blockquote-footer">Priya, Mom of 3</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQs -->
+<section class="py-5 bg-white">
+    <div class="auto-container">
+        <h2 class="text-success fw-bold text-center mb-4">❓ Frequently Asked Questions</h2>
+
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true">
+                        What if my child refuses to eat veggies?
+                    </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Keep offering a variety without pressure! Try new ways like smoothies, dips, or fun shapes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                        How much vegetables should my child eat?
+                    </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Aim for 5 portions a day – a portion is about a handful for their age/size.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                        What if my child has food allergies?
+                    </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Always check labels and consult with your healthcare provider for safe veggie choices.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
 @endsection
+
+
+
 @section('script')
     <script>
         function show(val) {
