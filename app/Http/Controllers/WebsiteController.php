@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\DailyPuzzle;
 use App\Models\UserPuzzleAnswer;
 
+
 class WebsiteController extends Controller
 {
 
@@ -451,7 +452,15 @@ class WebsiteController extends Controller
 
     public function veggie_facts_benefits()
     {
-        return view('website.veggie_facts_benefits');
+        $featuredRecipes = Products::latest()->take(6)->get(); // or filter by 'featured' column if needed
+        return view('website.veggie_facts_benefits', compact('featuredRecipes'));
+
+    }
+
+    public function veggieFacts()
+    {
+        $featuredRecipes = Product::latest()->take(6)->get(); // pick 6 recent or featured recipes
+        return view('your.blade.name', compact('featuredRecipes'));
     }
 
     public function userlogout(Request $request)

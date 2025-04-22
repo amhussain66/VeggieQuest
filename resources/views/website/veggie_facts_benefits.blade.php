@@ -249,36 +249,80 @@
 </section>
 
 
-
-
-<!-- 🎠 Carousel Section -->
-<section class="py-5" style="background-color: #f7fdfc;">
+<!-- 🍽️ Veggie Recipes Carousel Section -->
+<section class="py-5 vg-fact-bg" style="background-color:rgb(184, 231, 223);">
     <div class="auto-container">
-        <div class="text-center mb-4">
-            <h2 class="text-info fw-bold">🍽️ Veggie Dishes in Action!</h2>
-            <p class="text-muted">See what veggie-powered meals can look like!</p>
+        <div class="text-center mb-5">
+            <h2 class="text-info fw-bold">🍽️ Veggie Recipes to Try!</h2>
+            <p class="text-muted">Tasty, healthy dishes packed with veggie superpowers!</p>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item active">
-                            <img src="{{ asset('website/images/resource/r3.jpg') }}" class="d-block w-100" style="height: 450px; object-fit: cover;" alt="Slide 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('website/images/resource/r5.jpg') }}" class="d-block w-100" style="height: 450px; object-fit: cover;" alt="Slide 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('website/images/resource/r4.jpg') }}" class="d-block w-100" style="height: 450px; object-fit: cover;" alt="Slide 3">
-                        </div>
+
+        <div class="row align-items-center">
+            <!-- 📊 Difficulty Legend -->
+            <div class="recipe-difficulty-guide">
+                <h5 class="fw-bold mb-3">🍳 Recipe Difficulty Guide</h5>
+                <div class="d-flex align-items-center justify-content-start gap-4">
+                    <div class="text-center">
+                        <img src="{{ asset('website/images/icons/difficulty-1.png') }}" class="difficulty-guide-icon" alt="Easy">
+                        <p class="small mt-2">Easy<br><span class="text-muted">Little help needed</span></p>
                     </div>
-                    <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></a>
-                    <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></a>
+                    <div class="text-center">
+                        <img src="{{ asset('website/images/icons/difficulty-2.png') }}" class="difficulty-guide-icon" alt="Medium">
+                        <p class="small mt-2">Medium<br><span class="text-muted">Some grown-up help</span></p>
+                    </div>
+                    <div class="text-center">
+                        <img src="{{ asset('website/images/icons/difficulty-3.png') }}" class="difficulty-guide-icon" alt="Hard">
+                        <p class="small mt-2">Hard<br><span class="text-muted">Grown-up needed</span></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 🥕 Carousel -->
+            <div class="col-md-8">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($featuredRecipes as $index => $recipe)
+                            <div class="carousel-item @if($index == 0) active @endif">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10 text-center">
+                                        <a href="{{ route('recipe_detail', [$recipe->slug]) }}">
+                                            <img src="{{ asset('admin/assets/uploads/'.$recipe->image) }}"
+                                                 class="w-100 rounded-top recipe-img"
+                                                 alt="{{ $recipe->heading }}">
+                                        </a>
+                                        <div class="mt-3">
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <h4 class="text-success mb-0">{{ $recipe->heading }}</h4>
+                                                @php
+                                                    $difficultyIcon = 'difficulty-' . $recipe->difficulty . '.png';
+                                                @endphp
+                                                <img src="{{ asset('website/images/icons/' . $difficultyIcon) }}"
+                                                    alt="Difficulty Level {{ $recipe->difficulty }}"
+                                                    class="recipe-difficulty-icon">
+                                            </div>
+                                            <p class="text-muted">{{ Str::limit(strip_tags($recipe->description), 120) }}</p>
+                                            <a href="{{ route('recipe_detail', [$recipe->slug]) }}" class="btn btn-outline-success">View Recipe</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <!-- 🌱 Closing CTA -->
 <section class="py-5 text-center" style="background-color: #e6fff2;">

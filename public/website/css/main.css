@@ -6490,12 +6490,20 @@ iframe {
 }
 
 /* ======= Veggie Carousel Section Fix ======= */
+/* .py-5{
+	background: #E9F5BE url(../images/background/1.png);
+} */
 
+.vg-fact-bg{
+	background: #E9F5BE url(../images/background/1.png);
+}
 .veggie-carousel-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+	background-color: #E9F5BE;
+	background-image: ;
 }
 
 .carousel-inner {
@@ -6510,6 +6518,34 @@ iframe {
 .carousel-fade .carousel-inner {
     position: relative;
 }
+
+.difficulty-guide-icon {
+    height: 24px;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* recipie diffculty section */
+.recipe-difficulty-guide {
+    margin-bottom: 30px;
+}
+
+.difficulty-guide-icon {
+    height: 36px;
+    width: auto;
+}
+
+.difficulty-icon-inline {
+    height: 32px;
+    vertical-align: middle;
+}
+
+
+.difficulty-guide-icon:hover {
+    transform: scale(1.1);
+}
+
 
 /* Ensure all slides overlap and transition smoothly */
 .carousel-fade .carousel-item {
@@ -6581,6 +6617,23 @@ iframe {
 .carousel-control-next {
     width: 5%;
 }
+
+/* ----------- recipe carousel ------------ */
+#recipeCarousel .carousel-item {
+    transition: transform 0.6s ease, opacity 0.6s ease-in-out;
+}
+
+.recipe-img {
+    height: 320px; /* or 350px if you want bigger */
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.carousel-item .text-center {
+    padding-top: 1rem;
+}
+
 
 /* -------Comic strip----- */
 .comic-strip {
