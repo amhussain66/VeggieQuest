@@ -6526,24 +6526,37 @@ iframe {
     vertical-align: middle;
 }
 
-/* recipie diffculty section */
+/* 🍳 Recipe Difficulty Guide - Main container */
 .recipe-difficulty-guide {
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; /* spacing between levels */
 }
 
+/* 🧠 Icons used in the guide legend */
 .difficulty-guide-icon {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.difficulty-guide-icon:hover {
+    transform: scale(1.1);
+}
+
+/* 🧑‍🍳 Inline difficulty icon beside recipe titles */
+.recipe-difficulty-icon {
     height: 36px;
     width: auto;
 }
 
-.difficulty-icon-inline {
-    height: 32px;
-    vertical-align: middle;
-}
-
-
-.difficulty-guide-icon:hover {
-    transform: scale(1.1);
+/* 🎯 Text under guide icons */
+.recipe-difficulty-guide div {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
 }
 
 

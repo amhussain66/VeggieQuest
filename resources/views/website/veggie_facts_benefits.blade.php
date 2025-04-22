@@ -248,7 +248,6 @@
   </div>
 </section>
 
-
 <!-- 🍽️ Veggie Recipes Carousel Section -->
 <section class="py-5 vg-fact-bg" style="background-color:rgb(184, 231, 223);">
     <div class="auto-container">
@@ -259,27 +258,26 @@
 
         <div class="row align-items-center">
             <!-- 📊 Difficulty Legend -->
-            <div class="recipe-difficulty-guide">
-                <h5 class="fw-bold mb-3">🍳 Recipe Difficulty Guide</h5>
-                <div class="d-flex align-items-center justify-content-start gap-4">
-                    <div class="text-center">
-                        <img src="{{ asset('website/images/icons/difficulty-1.png') }}" class="difficulty-guide-icon" alt="Easy">
-                        <p class="small mt-2">Easy<br><span class="text-muted">Little help needed</span></p>
+            <div class="col-lg-3 text-center mb-5 mb-lg-0">
+                <h5 class="fw-bold text-dark mb-4">👩‍🍳 Recipe Difficulty Guide</h5>
+                <div class="recipe-difficulty-guide">
+                    <div>
+                        <img src="{{ asset('website/images/icons/difficulty-1.png') }}" class="difficulty-guide-icon mb-2" alt="Easy">
+                        <div><strong>Easy</strong><br><small class="text-muted">Little help needed</small></div>
                     </div>
-                    <div class="text-center">
-                        <img src="{{ asset('website/images/icons/difficulty-2.png') }}" class="difficulty-guide-icon" alt="Medium">
-                        <p class="small mt-2">Medium<br><span class="text-muted">Some grown-up help</span></p>
+                    <div>
+                        <img src="{{ asset('website/images/icons/difficulty-2.png') }}" class="difficulty-guide-icon mb-2" alt="Medium">
+                        <div><strong>Medium</strong><br><small class="text-muted">Some grown-up help</small></div>
                     </div>
-                    <div class="text-center">
-                        <img src="{{ asset('website/images/icons/difficulty-3.png') }}" class="difficulty-guide-icon" alt="Hard">
-                        <p class="small mt-2">Hard<br><span class="text-muted">Grown-up needed</span></p>
+                    <div>
+                        <img src="{{ asset('website/images/icons/difficulty-3.png') }}" class="difficulty-guide-icon mb-2" alt="Hard">
+                        <div><strong>Hard</strong><br><small class="text-muted">Grown-up needed</small></div>
                     </div>
                 </div>
             </div>
 
-
             <!-- 🥕 Carousel -->
-            <div class="col-md-8">
+            <div class="col-lg-9">
                 <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($featuredRecipes as $index => $recipe)
@@ -298,8 +296,9 @@
                                                     $difficultyIcon = 'difficulty-' . $recipe->difficulty . '.png';
                                                 @endphp
                                                 <img src="{{ asset('website/images/icons/' . $difficultyIcon) }}"
-                                                    alt="Difficulty Level {{ $recipe->difficulty }}"
-                                                    class="recipe-difficulty-icon">
+                                                     alt="Difficulty Level {{ $recipe->difficulty }}"
+                                                     class="recipe-difficulty-icon"
+                                                     style="height: 36px;">
                                             </div>
                                             <p class="text-muted">{{ Str::limit(strip_tags($recipe->description), 120) }}</p>
                                             <a href="{{ route('recipe_detail', [$recipe->slug]) }}" class="btn btn-outline-success">View Recipe</a>
