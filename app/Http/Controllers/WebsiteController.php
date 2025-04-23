@@ -25,7 +25,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\DailyPuzzle;
 use App\Models\UserPuzzleAnswer;
-
+use App\Models\UserTip; 
 
 class WebsiteController extends Controller
 {
@@ -170,8 +170,12 @@ class WebsiteController extends Controller
             ['file' => 'superfoods-word-search.pdf', 'title' => 'Super Foods Word Search', 'icon' => 'ws-icon3.png'],
             // ... add more
         ];
-        
-        return view('website.resources', compact('printables', 'wordSearches'));
+
+            // Fetch tips from DB
+        $tips = UserTip::orderBy('created_at', 'desc')->get();
+
+        // Pass tips along with other variables
+        return view('website.resources', compact('printables', 'wordSearches', 'tips'));
 
     }
 
@@ -613,5 +617,28 @@ public function weeklyVeggieFact()
 
     return view('website.weekly_fact', compact('fact'));
 }
+
+public function submitTip(Request $request)
+{
+    $request->validate([
+        'tip' => 'required|string|max:1000',
+    ]);
+
+    UserTip::create([
+        'name' => $request->name,
+        'tip' => $request->tip,
+    ]);
+
+    return back()->with('success', 'Thank you for your tip!');
+}
+
+
+
+// public function showHealthyTips()
+// {
+//     $tips = UserTip::orderBy('created_at', 'desc')->get();
+//     return view('website.healthy-tips', compact('tips'));
+// }
+
 
 }

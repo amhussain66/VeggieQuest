@@ -162,4 +162,8 @@ Route::post('/submit-puzzle', [WebsiteController::class, 'submitPuzzle'])->name(
 Route::get('/activities', [WebsiteController::class, 'activitiesPage'])->name('activities');
 Route::get('/resources', [WebsiteController::class, 'resourcesPage'])->name('resources');
 
+// user tips route
+Route::post('/submit-tip', [WebsiteController::class, 'submitTip'])->name('submit.tip');
+Route::get('/healthy-tips', [WebsiteController::class, 'showHealthyTips'])->name('healthy.tips');
+
 ?>

@@ -8,9 +8,10 @@
 
     <!-- Page Title -->
     <!-- 🌟 Hero Section -->
-    <section class="page-title py-5 text-center" style="background-image:url({{ URL::asset('website/images/background/12.png') }}); background-size: cover; background-position: center;">
+    <section class="page-title py-5 text-center" style="background-image:url({{ URL::asset('website/images/background/parents-bg.png') }}); background-size: cover; background-position: center;">
         <div class="auto-container">
-            <h1 class="display-4 text-white fw-bold">Resources for Parents & Teachers</h1>
+            <h1 class="display-4 text-white fw-bold"><br>
+            Resources for Parents & Teachers</h1>
             <p class="lead text-white mt-3">Helpful tools, tips, and fun activities to support your child’s healthy eating journey!</p>
         </div>
     </section>
@@ -122,49 +123,56 @@
 
             <!-- Caption Above Buttons -->
             <div class="auto-container text-center mb-4">
-                <h3 class="fw-bold text-success">Helpful Tools for Parents & Teachers</h3>
-                <p class="text-muted">Quick access to useful health calculators and fun printable activities for your kids!</p>
+                <h3 class="fw-bold text-success">Some Helpful Tools 🔧</h3>
+                <p class="text-muted">Knowing your BMI is an important step in understanding and managing your health.</p>
             </div>
 
-                <!-- Button Cards -->
-                <div class="row">
+            <!-- Button Cards -->
+            <div class="row">
 
-                    <!-- Column -->
-                    <div class="column col-lg-6 col-md-6 col-sm-12">
-                        <div class="card shadow p-3">
-                            <div class="card-body text-center">
-                                <a style="color: #ff7d5f; text-decoration: none;"
-                                href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults">
-                                    <h2>BMI Calculator <br> <b>For Adults</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
-                                </a>
-                            </div>
+                <!-- Column -->
+                <div class="column col-lg-6 col-md-6 col-sm-12">
+                    <div class="card shadow p-3">
+                        <div class="card-body text-center">
+                            <a style="color:rgb(221, 137, 28); text-decoration: none;"
+                            href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults">
+                                <h2>⚖️BMI Calculator <br> <b>For Adults</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
+                            </a>
                         </div>
                     </div>
-
-                    <!-- Column -->
-                    <div class="column col-lg-6 col-md-6 col-sm-12">
-                        <div class="card shadow p-3">
-                            <div class="card-body text-center">
-                                <a style="color: #ff7d5f; text-decoration: none;"
-                                href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-children-teenagers">
-                                    <h2>BMI Calculator <br> <b>Children and Teenagers</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Column -->
-                    <div class="column col-lg-12 col-md-12 col-sm-12 text-center mt-4">
-                        <div class="card shadow p-3">
-                            <div class="card-body text-center">
-                                <a style="color: #ff7d5f; text-decoration: none;" href="https://mondaymandala.com/vegetable-coloring-pages/">
-                                    <h2>Printable PDF <b>(Colouring Pages)</b> <i class="fa fa-arrow-circle-right"></i></h2>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- Column -->
+                <div class="column col-lg-6 col-md-6 col-sm-12">
+                    <div class="card shadow p-3">
+                        <div class="card-body text-center">
+                            <a style="color:rgb(221, 137, 28); text-decoration: none;"
+                            href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-children-teenagers">
+                                <h2>🚸BMI Calculator <br> <b>Children and Teenagers</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why BMI Section -->
+            <div class="auto-container mt-5">
+                <div class="card shadow p-4">
+                    <div class="card-body">
+                        <h4 class="fw-bold text-success mb-3">Why Knowing BMI Matters</h4>
+                        <p class="text-muted">
+                            Body Mass Index (BMI) helps assess whether an individual has a healthy weight for their height.
+                            For adults, it’s a useful tool for identifying potential health risks like heart disease or diabetes.
+                        </p>
+                        <p class="text-muted">
+                            <strong>For children and teenagers</strong>, BMI is especially important as it supports tracking healthy growth.
+                            Since their bodies are still developing, understanding BMI ensures they’re on the right track physically and can help prevent future health issues.
+                            Promoting healthy habits early sets the foundation for lifelong wellness!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
 
 
             <section class="about-section">
@@ -313,23 +321,67 @@
     </section>
     <!-- End Resources Section -->
 
-    <!-- Healthy Eating Tips -->
-    <section class="about-section py-5" style="background-color: #f0fdf7;">
-        <div class="auto-container">
-            <h2 class="text-success fw-bold mb-4">🥦 Healthy Eating Tips for Little Ones</h2>
-            <p>Encouraging kids to eat healthy can be fun and rewarding! Here are some tried-and-true tips:</p>
-            <ul class="text-start mt-3">
-                <li>🍎 Keep fruits and veggies visible and within reach.</li>
-                <li>🥕 Let children pick a new veggie each week to try together.</li>
-                <li>🍽️ Eat together and be a veggie role model!</li>
-                <li>🎨 Make meals colorful and fun – let them decorate their plate.</li>
-                <li>🧑‍🍳 Get them involved in simple cooking tasks to boost interest.</li>
-            </ul>
-        </div>
-    </section>
+        <!-- Healthy Eating Tips -->
+        <section class="about-section py-5" style="background-color: #f0fdf7;">
+            <div class="auto-container">
+                <h2 class="text-success fw-bold mb-4 text-center">🥦 Healthy Eating Tips for Little Ones</h2>
+                <div class="row">
+                    <!-- Tips Column -->
+                    <div class="col-lg-6">
+                        <h4 class="text-primary fw-bold">⭐ Tried-and-True Tips</h4>
+                        <ul class="text-start mt-3 list-unstyled">
+                            <li>🍎 Keep fruits and veggies visible and within reach.</li>
+                            <li>🥕 Let children pick a new veggie each week to try together.</li>
+                            <li>🍽️ Eat together and be a veggie role model!</li>
+                            <li>🎨 Make meals colorful and fun – let them decorate their plate.</li>
+                            <li>🧑‍🍳 Get them involved in simple cooking tasks to boost interest.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Add Suggestion Column -->
+                    <div class="col-lg-6">
+                        <h4 class="text-primary fw-bold">💬 Add Your Own Tips</h4>
+                        <form action="{{ route('submit.tip') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name (optional):</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Jane Doe">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tip" class="form-label">Your Healthy Eating Tip:</label>
+                                <textarea class="form-control" id="tip" name="tip" rows="4" placeholder="Share your tip..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success fw-bold px-4 py-2 shadow-sm">Submit Tip</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Display Submitted Tips -->
+        <section class="py-5" style="background-color: #f9f9f9;">
+            <div class="auto-container">
+                <h2 class="text-success fw-bold mb-4">🌱 Community Healthy Tips</h2>
+                <div class="row">
+                    @foreach($tips as $tip)
+                        <div class="col-md-6 mb-3">
+                            <div class="card shadow-sm p-3">
+                                <p class="mb-2">{{ $tip->tip }}</p>
+                                @if($tip->name)
+                                    <small class="text-muted">— {{ $tip->name }}</small>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+
 
     <!-- Educational Videos -->
-    <section class="py-5 bg-light">
+
+    <!-- <section class="py-5 bg-light">
         <div class="auto-container text-center">
             <h2 class="fw-bold text-info mb-4">🎥 Quick Educational Videos</h2>
             <p class="mb-4">Watch these short clips with your child to learn more about the power of healthy eating!</p>
@@ -341,10 +393,12 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                 </div>
-                <!-- Add more if needed -->
+      
             </div>
         </div>
-    </section>
+    </section> -->
+
+
     <!-- Parent Tips -->
 <section class="py-5" style="background-color:#fff9eb;">
     <div class="auto-container text-center">
