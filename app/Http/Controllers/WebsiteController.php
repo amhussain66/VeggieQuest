@@ -120,6 +120,62 @@ class WebsiteController extends Controller
         return view('website.activities', compact('printables', 'wordSearches'));
     }
 
+    public function resourcesPage()
+    {
+        $printables = [
+            [
+                'title' => 'Broccoli Coloring Sheet',
+                'file' => 'Broccoli-Coloring-Page-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon1.png',
+            ],
+            [
+                'title' => 'Carrots Coloring Sheet',
+                'file' => 'Carrots-Coloring-Page-For-Kids.pdf',
+                'icon' => 'colouring-icon2.png',
+            ],
+            [
+                'title' => 'Mushroom Coloring Sheet',
+                'file' => 'Mushrooms-Coloring-Sheet.pdf',
+                'icon' => 'colouring-icon3.png',
+            ],
+            [
+                'title' => 'Tomatoes Coloring Sheet',
+                'file' => 'Vine-Tomatoes-Coloring-Page.pdf',
+                'icon' => 'colouring-icon4.png',
+            ],
+            [
+                'title' => 'Onion Coloring Sheet',
+                'file' => 'Brown-Onions-Coloring-Page.pdf',
+                'icon' => 'colouring-icon5.png',
+            ],
+            [
+                'title' => 'Corn Coloring Sheet',
+                'file' => 'Coloring-Page-Of-Corn-On-The-Cob.pdf',
+                'icon' => 'colouring-icon6.png',
+            ],
+            [
+                'title' => 'Veg Coloring Sheet',
+                'file' => 'Vegetables-Coloring-Pages.pdf',
+                'icon' => 'colouring-icon7.png',
+            ],
+            [
+                'title' => 'Mix Veg Coloring Sheets',
+                'file' => 'Simple-Outline-Of-Common-Vegetables-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon8.png',
+            ],
+        ];
+        $wordSearches = [
+            ['file' => 'ADA_BTSWordsearch.pdf', 'title' => 'Food Word Search', 'icon' => 'ws-icon1.png'],
+            ['file' => 'healthy_eating_word_search.pdf', 'title' => 'Healthy Eating Word Search', 'icon' => 'ws-icon2.png'],
+            ['file' => 'superfoods-word-search.pdf', 'title' => 'Super Foods Word Search', 'icon' => 'ws-icon3.png'],
+            // ... add more
+        ];
+        
+        return view('website.resources', compact('printables', 'wordSearches'));
+
+    }
+
+
     public function resources()
     {
         return view('website.resources');

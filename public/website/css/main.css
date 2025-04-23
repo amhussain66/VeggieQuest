@@ -6712,7 +6712,7 @@ iframe {
     line-height: 1.6;
 }
 
-/* =========== PArents and Teachers ================ */
+/* =========== Parents and Teachers ================ */
 section {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -6721,3 +6721,8 @@ section {
 .bg-light {
     background-color: #f9f9f9 !important;
 }
+
+.advice-inner{
+	/* background-color: #05db56; 	 */
+}
+

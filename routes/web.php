@@ -160,5 +160,6 @@ Route::get('/activities', [WebsiteController::class, 'activitiesPage'])->name('u
 
 Route::post('/submit-puzzle', [WebsiteController::class, 'submitPuzzle'])->name('user.puzzle.submit');
 Route::get('/activities', [WebsiteController::class, 'activitiesPage'])->name('activities');
+Route::get('/resources', [WebsiteController::class, 'resourcesPage'])->name('resources');
 
 ?>
