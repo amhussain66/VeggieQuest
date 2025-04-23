@@ -30,22 +30,17 @@
     </style>
 
     <!-- Banner Section -->
-    <section class="banner-section">
-        <div class="banner-carousel owl-theme owl-carousel">
-
-            <!-- Slide Item -->
+        <!-- Banner Section -->
+        <section class="banner-section">
             <div class="slide-item">
-                <div class="image-layer" style="background-image:url({{ URL::asset('website/images/resource/Veggie-superheros-togther.jpg') }})" ></div>
-
+                <div class="image-layer" style="background-image:url({{ URL::asset('website/images/resource/Veggie-superheros-togther.jpg') }})"></div>
                 <div class="container">
-                    <h1 class="text-white" style="font-size: 72px">Ready to Power Up with Veggies? </h1>
-                    <h6 class="text-white">Level up your health, boost
-                        <br> 
-                    </h6>
+                    <h1 class="text-white" style="font-size: 72px;">Ready to Power Up with Veggies?</h1>
+                    <h6 class="text-white">Level up your health, boost</h6>
                 </div>
             </div>
+        </section>
 
-        </div>
     </section>
     <!--End Banner Section -->
 
@@ -53,7 +48,7 @@
     <div class="auto-container">
         <div class="sec-title centered">
             <h2><b>‘VEGGIE’</b> OF THE WEEK!</h2>
-            <small>{{ $vog->description }}</small>
+            <p> Discover this weeks Veggie of the weak by pressing the button below!</p>
         </div>
 
         <div class="row text-center justify-content-center">
@@ -378,19 +373,18 @@
                         <div class="carousel-inner">
                             <div class="item carousel-item active">
                                 <div class="img-box"><img src="{{ URL::asset('website/images/resource/r3.jpg') }}" alt=""></div>
-                                <p class="testimonial">These healthy vegetable recipes have completely transformed my meals! They are not only delicious but also packed with nutrients that keep me energized throughout the day.Healthy eating has never been this fun! These veggie recipes are easy to follow, and they make me feel great inside and out.</p>
-                                <p class="overview"><b>Jennifer Smith</b>, Office Worker</p>
+                                <p class="testimonial">These healthy vegetable recipes are so yummy!</p>
+                                <p class="overview"><b>Aadam Hussain</p>
                             </div>
                             <div class="item carousel-item">
                                 <div class="img-box"><img src="{{ URL::asset('website/images/resource/r3.jpg') }}" alt=""></div>
-                                <p class="testimonial">I never knew eating vegetables could be this tasty! These recipes have made healthy eating so much easier and enjoyable for my whole family.I’ve discovered new ways to enjoy veggies, and now they’re a staple in my daily meals!.</p>
-                                <p class="overview"><b>Dauglas McNun</b>, Financial Advisor</p>
+                                <p class="testimonial">I never knew eating vegetables could be this tasty!</p>
+                                <p class="overview"><b>Sam Harris</p>
                             </div>
                             <div class="item carousel-item">
                                 <div class="img-box"><img src="{{ URL::asset('website/images/resource/r4.jpg') }}" alt=""></div>
-                                <p class="testimonial">Simple, flavorful, and nutritious—these vegetable recipes have helped me maintain a balanced diet without feeling deprived.I’ve discovered new ways to enjoy veggies, and now they’re a staple in
-                                    <br> my daily meals!.</p>
-                                <p class="overview"><b>Hellen Wright</b>, Athelete</p>
+                                <p class="testimonial">I learn't a new recipie!</p>
+                                <p class="overview"><b>Chloe Wright</p>
                             </div>
                         </div>
                         <!-- Carousel Controls -->
@@ -407,39 +401,8 @@
         </div>
     </section>
 
-    <!-- Entertaining Section -->
-    <section class="entertaining-section">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-                <h2>Blogs</h2>
-            </div>
 
-            <div class="row clearfix">
 
-                @forelse($blogs as $blog)
-                    <div class="entertaining-block col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="{{ route('blog_detail',[$blog->slug]) }}"><img src="{{ URL::asset('admin/assets/uploads/'.$blog->image )}}"
-                                                                          style="width: 100%;height:300px;object-fit: cover" alt=""/></a>
-                            </div>
-                            <div class="lower-content">
-                                <ul class="post-meta">
-                                    <li><span class="icon "></span>{{ Carbon\Carbon::parse($blog->created_at)->format('d M ,Y') }}</li>
-                                </ul>
-                                <h4><a href="{{ route('blog_detail',[$blog->slug]) }}">{{ $blog->heading }}</a></h4>
-                                <a href="{{ route('blog_detail',[$blog->slug]) }}" class="theme-btn read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                @endforelse
-
-            </div>
-
-        </div>
-    </section>
 
 <!-- reveal a veggie of the week JS -->
     <script>
@@ -456,6 +419,42 @@
         }
     });
 </script>
+
+<style>
+    .banner-section {
+        position: relative;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .banner-section .slide-item {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* Makes the banner fill the full viewport height */
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .banner-section .image-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .banner-section .container {
+        position: relative;
+        z-index: 2;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+    }
+</style>
+
     <!-- End Entertaining Section -->
 
     <!-- Instagram Section -->
