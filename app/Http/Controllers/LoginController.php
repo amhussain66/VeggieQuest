@@ -3,45 +3,36 @@
 namespace App\Http\Controllers;
 
 use Auth;
-
-use App\Models\UsersLoginHistory;
-use Carbon\Carbon;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Hash;
-use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
+    // Show admin login page or redirect if already logged in
     public function adminLogin(Request $request)
     {
         if ($request->isMethod('post')) {
             if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
-    
                 if (Auth::check()) {
-                    // 👇 Redirect to Quiz page after successful login
-                    return redirect()->intended('/Quiz');
+                    // Redirect to admin dashboard after successful login
+                    return redirect()->route('admin.dashboard');
                 }
-    
             } else {
-                return redirect()->back()->with('error', 'Invalid Email or Password !');
+                return redirect()->back()->with('error', 'Invalid Email or Password!');
             }
         } else {
-    
             if (Auth::check()) {
-                return redirect()->intended('/Quiz');
+                // Already logged-in admins get redirected
+                return redirect()->route('admin.dashboard');
             } else {
                 return view('admin.login');
             }
         }
     }
-    
+
+    // Logout admin
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route("admin.login");
+        return redirect()->route('admin.login');
     }
-
-
 }

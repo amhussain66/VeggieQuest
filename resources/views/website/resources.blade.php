@@ -19,7 +19,7 @@
     <!-- 🔗 Quick Access Resources -->
     <section class="py-5 bg-light">
         <div class="auto-container text-center">
-            <h2 class="fw-bold text-success mb-4">Quick Access Tools</h2>
+            <h2 class="fw-bold text-success mb-4">Find the right section for you</h2>
             <div class="row justify-content-center g-4">
                 <div class="col-md-4">
                     <a href="#meal-tips" class="card shadow h-100 p-4 text-decoration-none">
