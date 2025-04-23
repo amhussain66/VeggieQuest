@@ -173,9 +173,11 @@ class WebsiteController extends Controller
 
             // Fetch tips from DB
         $tips = UserTip::orderBy('created_at', 'desc')->get();
+        // fetch 4 latest blogs 
+        $blogs = Blogs::orderBy('id', 'desc')->take(4)->get(); 
 
         // Pass tips along with other variables
-        return view('website.resources', compact('printables', 'wordSearches', 'tips'));
+        return view('website.resources', compact('printables', 'wordSearches', 'tips', 'blogs'));
 
     }
 

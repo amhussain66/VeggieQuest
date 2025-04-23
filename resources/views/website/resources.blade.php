@@ -8,41 +8,46 @@
 
     <!-- Page Title -->
     <!-- 🌟 Hero Section -->
-    <section class="page-title py-5 text-center" style="background-image:url({{ URL::asset('website/images/background/parents-bg.png') }}); background-size: cover; background-position: center;">
+    <section class="page-title py-5 text-center" style="background-image:url({{ URL::asset('website/images/background/teachers-bg.png') }}); background-size: cover; background-position: center;">
         <div class="auto-container">
             <h1 class="display-4 text-white fw-bold"><br>
-            Resources for Parents & Teachers</h1>
+            For Parents & Teachers</h1>
             <p class="lead text-white mt-3">Helpful tools, tips, and fun activities to support your child’s healthy eating journey!</p>
         </div>
     </section>
 
 
-    <!-- 🔗 Quick Access Resources -->
-    <section class="py-5 bg-light">
-        <div class="auto-container text-center">
-            <h2 class="fw-bold text-success mb-4">Find the right section for you</h2>
-            <div class="row justify-content-center g-4">
-                <div class="col-md-4">
-                    <a href="#meal-tips" class="card shadow h-100 p-4 text-decoration-none">
-                        <h4 class="text-success">🍽️ Meal Planning Tips</h4>
-                        <p class="text-muted">Easy ways to organize your family's meals.</p>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#printables" class="card shadow h-100 p-4 text-decoration-none">
-                        <h4 class="text-success">🖨️ Printable Activities</h4>
-                        <p class="text-muted">Fun coloring pages, word searches & more.</p>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="#faqs" class="card shadow h-100 p-4 text-decoration-none">
-                        <h4 class="text-success">❓ FAQs & Advice</h4>
-                        <p class="text-muted">Answers to your top questions on healthy eating.</p>
-                    </a>
+        <!-- 🔗 Quick Access Resources -->
+        <section class="py-4 bg-light">
+            <div class="auto-container text-center">
+                <h3 class="fw-bold text-success mb-3">Find the right section for you below</h3>
+                <div class="row justify-content-center g-3">
+
+                    @php
+                        $resources = [
+                            ['id' => 'meal-tips', 'icon' => '🍽️', 'title' => 'Meal Planning Tips', 'desc' => "Easy ways to organize your family's meals."],
+                            ['id' => 'helpful-tools', 'icon' => '🔧', 'title' => 'Helpful Tools', 'desc' => 'BMI calculators & more to support healthy living.'],
+                            ['id' => 'blogs', 'icon' => '📝', 'title' => 'Blogs', 'desc' => 'Read inspiring articles and practical tips.'],
+                            ['id' => 'printables', 'icon' => '🖨️', 'title' => 'Printable PDFs', 'desc' => 'Coloring pages, word searches, and fun activities.'],
+                            ['id' => 'advice-tips', 'icon' => '💡', 'title' => 'Advice & Tips', 'desc' => 'Learn how to add more nutrients to meals.'],
+                            ['id' => 'faqs', 'icon' => '❓', 'title' => 'FAQs', 'desc' => 'Your top questions about healthy eating answered.'],
+                        ];
+                    @endphp
+
+                    @foreach($resources as $resource)
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <a href="#{{ $resource['id'] }}" class="card shadow-sm h-100 p-3 text-decoration-none">
+                                <h5 class="text-success mb-2">{{ $resource['icon'] }} {{ $resource['title'] }}</h5>
+                                <p class="text-muted small mb-0">{{ $resource['desc'] }}</p>
+                            </a>
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+
 
     <!-- Resources Section -->
     <section class="video-section"
@@ -51,14 +56,14 @@
 
             <div class="row text-center justify-content-center">
                 <h1 class="mb-3">
-                    <b>
+                    <!-- <b>
                         Ready to get your to-do list <br> under control?
-                    </b>
+                    </b> -->
                 </h1>
             </div>
 
             
-            <section class="about-section py-5">
+            <sectio id="meal-tips" class="about-section py-5">
                 <div class="auto-container">
                     <div class="card shadow-lg p-4">
                         <div class="card-body">
@@ -90,11 +95,11 @@
                                             <h2 class="fw-bold">MEAL PLANNING TIPS</h2>
                                         </div>
                                         <div class="text text-muted">
-                                            <p>Sunday AM - While drinking coffee at the breakfast table with the kids, I
+                                            <p><strong>Sunday AM -</strong> While drinking coffee at the breakfast table with the kids, I
                                                 reference our meal index and choose 5 dinners for the week. I put those dinners
                                                 in a OneNote template that my husband created.</p>
 
-                                            <p>Sunday AM - I reference recipes and add ingredients to the same OneNote template.
+                                            <p><strong>Sunday AM -</strong> I reference recipes and add ingredients to the same OneNote template.
                                                 I also add anything else we need for breakfasts, lunches, or snacks, checking
                                                 the fridge and pantry as I go.</p>
                                         </div>
@@ -103,15 +108,15 @@
                             </div>
 
                             <div class="row clearfix mt-4 text-muted align-items-stretch">
-                                <p>Sunday AM - My husband goes grocery shopping using the OneNote template that syncs to his phone.</p>
-                                <p>Sunday PM - I make our Monday dinner in advance because Mondays are bonkers!</p>
-                                <p>Sunday PM - My husband usually cooks a new recipe or one that takes longer since we have more time on Sunday as compared to a weeknight.</p>
-                                <p>Monday - We eat the pre-made dinner in shifts between dance and piano.</p>
-                                <p>Tuesday - Tacos, enchiladas, or some variation (meal chosen on Sunday).</p>
-                                <p>Wednesday - Some sort of chicken dish usually (meal chosen on Sunday).</p>
-                                <p>Thursday - Some sort of pasta dish usually (meal chosen on Sunday).</p>
-                                <p>Friday - Pizza and movie night (alternate homemade and take-out).</p>
-                                <p>Saturday - Out to eat or leftovers.</p>
+                                <p><strong>Sunday AM -</strong> My husband goes grocery shopping using the OneNote template that syncs to his phone.</p>
+                                <p><strong>Sunday PM -</strong> I make our Monday dinner in advance because Mondays are bonkers!</p>
+                                <p><strong>Sunday PM -</strong> My husband usually cooks a new recipe or one that takes longer since we have more time on Sunday as compared to a weeknight.</p>
+                                <p><strong>Monday - </strong>We eat the pre-made dinner in shifts between dance and piano.</p>
+                                <p><strong>Tuesday -</strong> Tacos, enchiladas, or some variation (meal chosen on Sunday).</p>
+                                <p><strong>Wednesday -</strong> Some sort of chicken dish usually (meal chosen on Sunday).</p>
+                                <p><strong>Thursday - </strong>Some sort of pasta dish usually (meal chosen on Sunday).</p>
+                                <p><strong>Friday - </strong>Pizza and movie night (alternate homemade and take-out).</p>
+                                <p><strong>Saturday - </strong>Out to eat or leftovers.</p>
                                 <p>I want to highlight why this routine works so well and doesn't take a ton of time so that you
                                     can see the process behind creating an effective and easy routine.</p>
                             </div>
@@ -119,63 +124,171 @@
                     </div>
                 </div>
             </section>
+            
+            <section id="helpful-tools" class="py-5" style="background-color: #fefefe;">
+                <div class="auto-container">
+                    <!-- Caption Above Buttons -->
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold text-success">Some Helpful Tools 🔧</h3>
+                        <p class="text-muted">Knowing your BMI is an important step in understanding and managing your health.</p>
+                    </div>
 
+                    <!-- Button Cards -->
+                    <div class="row g-4">
+                        <!-- Adult BMI Calculator -->
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="card shadow p-3 h-100">
+                                <div class="card-body text-center">
+                                    <a style="color:rgb(221, 137, 28); text-decoration: none;"
+                                    href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults">
+                                        <h2>⚖️ BMI Calculator <br> <b>For Adults</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-            <!-- Caption Above Buttons -->
-            <div class="auto-container text-center mb-4">
-                <h3 class="fw-bold text-success">Some Helpful Tools 🔧</h3>
-                <p class="text-muted">Knowing your BMI is an important step in understanding and managing your health.</p>
-            </div>
+                        <!-- Children BMI Calculator -->
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="card shadow p-3 h-100">
+                                <div class="card-body text-center">
+                                    <a style="color:rgb(221, 137, 28); text-decoration: none;"
+                                    href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-children-teenagers">
+                                        <h2>🚸 BMI Calculator <br> <b>Children and Teenagers</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Button Cards -->
-            <div class="row">
-
-                <!-- Column -->
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-                    <div class="card shadow p-3">
-                        <div class="card-body text-center">
-                            <a style="color:rgb(221, 137, 28); text-decoration: none;"
-                            href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults">
-                                <h2>⚖️BMI Calculator <br> <b>For Adults</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
-                            </a>
+                    <!-- Why BMI Section -->
+                    <div class="mt-5">
+                        <div class="card shadow p-4">
+                            <div class="card-body">
+                                <h4 class="fw-bold text-success mb-3">Why Knowing BMI Matters</h4>
+                                <p class="text-muted">
+                                    Body Mass Index (BMI) helps assess whether an individual has a healthy weight for their height.
+                                    For adults, it’s a useful tool for identifying potential health risks like heart disease or diabetes.
+                                </p>
+                                <p class="text-muted">
+                                    <strong>For children and teenagers</strong>, BMI is especially important as it supports tracking healthy growth.
+                                    Since their bodies are still developing, understanding BMI ensures they’re on the right track physically and can help prevent future health issues.
+                                    Promoting healthy habits early sets the foundation for lifelong wellness!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Column -->
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-                    <div class="card shadow p-3">
-                        <div class="card-body text-center">
-                            <a style="color:rgb(221, 137, 28); text-decoration: none;"
-                            href="https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-children-teenagers">
-                                <h2>🚸BMI Calculator <br> <b>Children and Teenagers</b> <br> <i class="fa fa-arrow-circle-right"></i></h2>
+
+                        <!-- Blog Section -->
+                        <section id="blogs" class="entertaining-section py-5 mb-5" style="background-color: #fff9f0;">
+                            <div class="auto-container">
+                                <!-- Sec Title -->
+                                <div class="sec-title text-center mb-5">
+                                    <h2>📝 Latest Blog Posts</h2>
+                                    <p>Explore our latest blog posts below and discover more by clicking one.</p>
+                                </div>
+
+                                <div class="row clearfix">
+                                    @forelse($blogs as $blog)
+                                        <div class="entertaining-block col-lg-3 col-md-6 col-sm-12 mb-4">
+                                            <div class="inner-box shadow-sm h-100 d-flex flex-column rounded-lg overflow-hidden">
+                                                <div class="image">
+                                                    <a href="{{ route('blog_detail', [$blog->slug]) }}">
+                                                        <img src="{{ URL::asset('admin/assets/uploads/' . $blog->image) }}"
+                                                            style="width: 100%; height: 300px; object-fit: cover;" alt="{{ $blog->heading }}"/>
+                                                    </a>
+                                                </div>
+                                                <div class="lower-content text-center p-3 flex-grow-1 d-flex flex-column justify-content-between">
+                                                    <ul class="post-meta list-unstyled mb-2">
+                                                        <li><small>{{ \Carbon\Carbon::parse($blog->created_at)->format('d M, Y') }}</small></li>
+                                                    </ul>
+                                                    <h5 class="fw-bold mb-3" style="font-size: 1.1rem;">
+                                                        <a href="{{ route('blog_detail', [$blog->slug]) }}" style="text-decoration: none; color: #333;">
+                                                            {{ $blog->heading }}
+                                                        </a>
+                                                    </h5>
+                                                    <a href="{{ route('blog_detail', [$blog->slug]) }}" class="btn btn-outline-warning fw-bold mt-auto">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <p class="text-center text-muted">No blog posts found.</p>
+                                    @endforelse
+                                </div>
+                            </div>
+                        </section>
+                        
+        <!-- 🌈 Printable Resources Section -->
+        <section id="printables" class="py-5 mb-5" style="background-color: rgba(255, 252, 241, 0.62);">
+            <div class="auto-container text-center">
+                <h2 class="mb-4" style="color:rgb(7, 66, 13); font-weight: bold;">Printable Fun Pages</h2>
+                <p class="lead text-muted mb-4">From various different printable pages to chose from, download some now for your little one to try.</p>
+
+                <!-- Toggle Buttons Styled Like Games Page -->
+                <div class="mb-4 d-flex justify-content-center flex-wrap gap-3">
+                    <button class="btn btn-info px-4 py-2 fw-bold shadow-sm"
+                    onclick="togglePrintables('diary')">📒 Food Diary</button>
+                    <button class="btn btn-warning px-4 py-2 fw-bold shadow-sm"
+                        onclick="togglePrintables('coloring')">🎨 Coloring Pages</button>
+                    <button class="btn btn-success px-4 py-2 fw-bold shadow-sm"
+                        onclick="togglePrintables('wordsearch')">🔍 Word Searches</button>
+                </div>
+
+
+                <!-- Food Diary Section -->
+                <div id="foodDiaryCollapse" style="display: none;" class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="{{ asset('website/pdf/food_diary.pdf') }}" target="_blank" class="text-decoration-none">
+                            <div class="coloring-card text-center p-4">
+                                <img src="{{ asset('website/images/icons/food-diary.png') }}"
+                                    alt="Food Diary"
+                                    class="img-fluid coloring-icon rounded-icon mb-3" />
+                                <h6 class="coloring-title">Food Diary</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coloring Pages Section -->
+                <div id="coloringCollapse" style="display: none;" class="row g-4 justify-content-center">
+                    @foreach($printables as $printable)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <a href="{{ asset('website/pdf/colouring_pages/' . $printable['file']) }}" target="_blank" class="text-decoration-none">
+                                <div class="coloring-card text-center p-4">
+                                    <img src="{{ asset('website/images/icons/' . $printable['icon']) }}"
+                                        alt="{{ $printable['title'] }}"
+                                        class="img-fluid coloring-icon rounded-icon mb-3" />
+                                    <h6 class="coloring-title">{{ $printable['title'] }}</h6>
+                                </div>
                             </a>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
 
-            <!-- Why BMI Section -->
-            <div class="auto-container mt-5">
-                <div class="card shadow p-4">
-                    <div class="card-body">
-                        <h4 class="fw-bold text-success mb-3">Why Knowing BMI Matters</h4>
-                        <p class="text-muted">
-                            Body Mass Index (BMI) helps assess whether an individual has a healthy weight for their height.
-                            For adults, it’s a useful tool for identifying potential health risks like heart disease or diabetes.
-                        </p>
-                        <p class="text-muted">
-                            <strong>For children and teenagers</strong>, BMI is especially important as it supports tracking healthy growth.
-                            Since their bodies are still developing, understanding BMI ensures they’re on the right track physically and can help prevent future health issues.
-                            Promoting healthy habits early sets the foundation for lifelong wellness!
-                        </p>
-                    </div>
+                <!-- Word Search Section -->
+                <div id="wordSearchCollapse" style="display: none;" class="row g-4 justify-content-center">
+                    @foreach($wordSearches as $search)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <a href="{{ asset('website/pdf/word_searches/' . $search['file']) }}" target="_blank" class="text-decoration-none">
+                                <div class="coloring-card text-center p-4">
+                                    <img src="{{ asset('website/images/icons/' . $search['icon']) }}"
+                                        alt="{{ $search['title'] }}"
+                                        class="img-fluid coloring-icon rounded-icon mb-3" />
+                                    <h6 class="coloring-title">{{ $search['title'] }}</h6>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
+
+
             </div>
+        </section>
 
 
-
-            <section class="about-section">
+            <section id="advice-tips" class="about-section">
                 <div class="auto-container">
                     <div class="card shadow-lg p-4" style="border-radius: 15px;">
 
@@ -245,80 +358,12 @@
     </div>
 </section>
 
-            
-        <!-- 🌈 Printable Resources Section -->
-        <section id="printables" class="py-5" style="background-color: rgba(255, 252, 241, 0.62);">
-            <div class="auto-container text-center">
-                <h2 class="mb-4" style="color:rgb(7, 66, 13); font-weight: bold;">Printable Fun Pages</h2>
-                <p class="lead text-muted mb-4">From various different printable ppages to chose from, download some now for your little one to try.</p>
 
-                <!-- Toggle Buttons Styled Like Games Page -->
-                <div class="mb-4 d-flex justify-content-center flex-wrap gap-3">
-                    <button class="btn btn-info px-4 py-2 fw-bold shadow-sm"
-                    onclick="togglePrintables('diary')">📒 Food Diary</button>
-                    <button class="btn btn-warning px-4 py-2 fw-bold shadow-sm"
-                        onclick="togglePrintables('coloring')">🎨 Coloring Pages</button>
-                    <button class="btn btn-success px-4 py-2 fw-bold shadow-sm"
-                        onclick="togglePrintables('wordsearch')">🔍 Word Searches</button>
-                </div>
+          
+         </div>
+    </div>
+</section>
 
-
-                <!-- Food Diary Section -->
-                <div id="foodDiaryCollapse" style="display: none;" class="row g-4 justify-content-center">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <a href="{{ asset('website/pdf/food_diary.pdf') }}" target="_blank" class="text-decoration-none">
-                            <div class="coloring-card text-center p-4">
-                                <img src="{{ asset('website/images/icons/food-diary.png') }}"
-                                    alt="Food Diary"
-                                    class="img-fluid coloring-icon rounded-icon mb-3" />
-                                <h6 class="coloring-title">Food Diary</h6>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Coloring Pages Section -->
-                <div id="coloringCollapse" style="display: none;" class="row g-4 justify-content-center">
-                    @foreach($printables as $printable)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ asset('website/pdf/colouring_pages/' . $printable['file']) }}" target="_blank" class="text-decoration-none">
-                                <div class="coloring-card text-center p-4">
-                                    <img src="{{ asset('website/images/icons/' . $printable['icon']) }}"
-                                        alt="{{ $printable['title'] }}"
-                                        class="img-fluid coloring-icon rounded-icon mb-3" />
-                                    <h6 class="coloring-title">{{ $printable['title'] }}</h6>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- Word Search Section -->
-                <div id="wordSearchCollapse" style="display: none;" class="row g-4 justify-content-center">
-                    @foreach($wordSearches as $search)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ asset('website/pdf/word_searches/' . $search['file']) }}" target="_blank" class="text-decoration-none">
-                                <div class="coloring-card text-center p-4">
-                                    <img src="{{ asset('website/images/icons/' . $search['icon']) }}"
-                                        alt="{{ $search['title'] }}"
-                                        class="img-fluid coloring-icon rounded-icon mb-3" />
-                                    <h6 class="coloring-title">{{ $search['title'] }}</h6>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-
-
-            </div>
-        </section>
-
-           
-
-            </div>
-
-        </div>
-    </section>
     <!-- End Resources Section -->
 
         <!-- Healthy Eating Tips -->
@@ -428,54 +473,94 @@
     </div>
 </section>
 
-<!-- FAQs -->
-<section class="py-5 bg-white">
-    <div class="auto-container">
-        <h2 class="text-success fw-bold text-center mb-4">❓ Frequently Asked Questions</h2>
+            <!-- FAQs -->
+            <section id="faqs" class="py-5 bg-white">
+                <div class="auto-container">
+                    <h2 class="text-success fw-bold text-center mb-4">❓ Frequently Asked Questions</h2>
 
-        <div class="accordion" id="faqAccordion">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq1">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true">
-                        What if my child refuses to eat veggies?
-                    </button>
-                </h2>
-                <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Keep offering a variety without pressure! Try new ways like smoothies, dips, or fun shapes.
+                    <div class="accordion" id="faqAccordion">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true">
+                                    What if my child refuses to eat veggies?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Keep offering a variety without pressure! Try new ways like smoothies, dips, or fun shapes.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                    How much vegetables should my child eat?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Aim for 5 portions a day – a portion is about a handful for their age/size.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                    What if my child has food allergies?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Always check labels and consult with your healthcare provider for safe veggie choices.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                    What are good snacks for active kids?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Great snack options include fruit, yoghurt, vegetable sticks with hummus, cheese cubes, wholegrain crackers, or a small smoothie.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                    My child is a picky eater. Should I be worried?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Picky eating is common in young children. Keep offering a variety of healthy foods without pressure, and avoid turning mealtimes into a battle. Most children grow out of it.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                                    How can I make healthy meals more appealing?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Make food colourful and fun—use cookie cutters for sandwiches, create food faces or fun shapes, and serve a variety of textures. Involving your child in meal prep can also spark their interest.
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq2">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-                        How much vegetables should my child eat?
-                    </button>
-                </h2>
-                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Aim for 5 portions a day – a portion is about a handful for their age/size.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq3">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
-                        What if my child has food allergies?
-                    </button>
-                </h2>
-                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                        Always check labels and consult with your healthcare provider for safe veggie choices.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+            </section>
 
 
 @endsection
