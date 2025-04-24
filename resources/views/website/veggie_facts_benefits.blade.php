@@ -6,139 +6,374 @@
 
 @section('content')
 
-    <!-- Page Title -->
-    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/12.png') }})">
-        <div class="auto-container">
-            <h1>Veggie Facts & Benefits</h1>
+<!-- 🌿 Hero Banner -->
+<section class="page-title" style="background-image:url({{ URL::asset('website/images/background/facts-bg.png') }}); background-size: cover; background-position: center;">
+    <div class="auto-container text-center py-5">
+        <h1 class="display-4 text-white">Veggie Facts & Benefits</h1>
+        <p class="lead text-white">Explore superpowers hidden in your favorite veggies!</p>
+    </div>
+</section>
+
+<!-- 🌟 Sticky Nav -->
+<!-- <div class="auto-container my-5">
+    <div class="d-flex justify-content-center flex-wrap gap-3">
+        <a href="#broccoli" class="btn btn-outline-success">🥦 Broccoli</a>
+        <a href="#carrots" class="btn btn-outline-warning">🥕 Carrots</a>
+        <a href="#sweet-potatoes" class="btn btn-outline-danger">🍠 Sweet Potatoes</a>
+        <a href="#avocados" class="btn btn-outline-success">🥑 Avocados</a>
+        <a href="#spinach" class="btn btn-outline-primary">🥬 Spinach</a>
+        <a href="#corn" class="btn btn-outline-warning">🌽 Corn</a>
+    </div>
+</div> -->
+
+<!-- 🥦 Veggie Facts Carousel -->
+<section class="veggie-carousel-section py-5">
+    <div class="auto-container text-center">
+        <h2 class="mb-4 text-success fw-bold">🌿 Discover the Superpowers of Veggies!</h2>
+        <p class="mb-5">Press on the veggie you want to learn more about! And to find out about the other veggies,
+            <br> click through to learn fun facts and awesome benefits!</p>
+            <!-- 🌟 Sticky Nav -->
+            <div class="auto-container my-5">
+                <!-- 🌟 Veggie Nav Buttons -->
+                <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
+                <button class="btn btn-outline-success" data-bs-target="#veggieFactsSlider" data-bs-slide-to="11">🥦 Broccoli</button>
+                <button class="btn btn-outline-warning" data-bs-target="#veggieFactsSlider" data-bs-slide-to="7">🥕 Carrots</button>
+                <button class="btn btn-outline-danger" data-bs-target="#veggieFactsSlider" data-bs-slide-to="0">🎃 Pumpkin</button>
+                <button class="btn btn-outline-success" data-bs-target="#veggieFactsSlider" data-bs-slide-to="5">🌱 Green Onion</button>
+                <button class="btn btn-outline-primary" data-bs-target="#veggieFactsSlider" data-bs-slide-to="2">🍆 Aubergine </button>
+                <button class="btn btn-outline-warning" data-bs-target="#veggieFactsSlider" data-bs-slide-to="8">🌽 Corn</button>
+            </div>
         </div>
-    </section>
-    <!--End Page Title-->
 
-    <!-- Resources Section -->
-    <section class="video-section"
-             style="background-image: url({{ URL::asset('website/images/background/1.png') }});padding-top: 0px">
-        <div class="auto-container">
+        <div id="veggieFactsSlider" class="carousel slide carousel-dark carousel-fade">
+        <div class="carousel-indicators">
+    @for ($i = 0; $i < 15; $i++)
+        <button type="button" data-bs-target="#veggieFactsSlider" data-bs-slide-to="{{ $i }}" class="{{ $i == 0 ? 'active' : '' }}" aria-current="{{ $i == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $i + 1 }}"></button>
+    @endfor
+</div>
+    <div class="carousel-inner">
 
-            <div class="row text-center justify-content-center">
-                <h1 class="mb-3">
-                    <b>
-                        Veggie Facts & Benefits
-                    </b>
-                </h1>
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/1-pumpkin.png') }}" class="mb-4 veggie-icon-lg" alt="Pumpkin Icon" />
+                <h4>🎃 Pumpkin – Power Packed Potions</h4>
+                <p>Pumpkins are full of Vitamin A, which helps your eyes see in the dark like a superhero!</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/2-pepper.png') }}" class="mb-4 veggie-icon-lg" alt="Pepper Icon" />
+                <h4>🌶️ Bell Peppers – Rainbow Crunch</h4>
+                <p>Red, yellow, green—bell peppers are full of Vitamin C to keep you strong and smiling!</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <div class="p-4">
+            <img src="{{ asset('website/images/icons/3-orb.png') }}" class="mb-4 veggie-icon-lg" alt="Orb Icon" />
+            <h4>🍆 Aubergine  – Brain Boost Buddy</h4>
+            <p>Aubergines are full of antioxidants that help keep your brain sharp and focused!</p>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/4-red-onion.png') }}" class="mb-4 veggie-icon-lg" alt="Red Onion Icon" />
+                <h4>🧅 Red Onion – The Flavor Ninja</h4>
+                <p>Red onions sneak flavor into your meals and help your body fight off germs!</p>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/5-chilli.png') }}" class="mb-4 veggie-icon-lg" alt="Chilli Icon" />
+                <h4>🌶️ Chilli – The Tiny Fireball</h4>
+                <p>Just a little bit of chilli can wake up your taste buds and speed up your metabolism!</p>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/6-green-onion.png') }}" class="mb-4 veggie-icon-lg" alt="Green Onion Icon" />
+                <h4>🌱 Green Onion – The Little Helper</h4>
+                <p>These skinny veggies help your heart and give your meals a zesty kick!</p>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/7-beetroot.png') }}" class="mb-4 veggie-icon-lg" alt="Beetroot Icon" />
+                <h4>❤️ Beetroot – Heartbeat Hero</h4>
+                <p>Beets keep your blood strong and your heart pumping happily!</p>
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/8-carrot.png') }}" class="mb-4 veggie-icon-lg" alt="Carrot Icon" />
+                <h4>🥕 Carrots – Night Vision Ninjas</h4>
+                <p>Carrots help you see clearly—especially in the dark! 🥷</p>
+            </div>
+        </div>
+
+        <!-- Slide 9 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/9-corn.png') }}" class="mb-4 veggie-icon-lg" alt="Corn Icon" />
+                <h4>🌽 Corn – Pop of Power</h4>
+                <p>Corn helps your tummy stay happy and strong with its fiber goodness!</p>
+            </div>
+        </div>
+
+        <!-- Slide 10 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/10-red-pepper.png') }}" class="mb-4 veggie-icon-lg" alt="Red Pepper Icon" />
+                <h4>❤️ Red Pepper – Vitamin C Champion</h4>
+                <p>Red peppers have even more Vitamin C than oranges. Wow! 💪</p>
+            </div>
+        </div>
+
+        <!-- Slide 11 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/11-colliflower.png') }}" class="mb-4 veggie-icon-lg" alt="Cauliflower Icon" />
+                <h4>🧠 Cauliflower – Brainy Bites</h4>
+                <p>This white veggie helps your brain stay sharp and focused!</p>
+            </div>
+        </div>
+
+        <!-- Slide 12 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/12-broccoli.png') }}" class="mb-4 veggie-icon-lg" alt="Broccoli Icon" />
+                <h4>🥦 Broccoli – Tiny Tree of Strength</h4>
+                <p>Broccoli is a superhero veggie with iron, fiber, and more Vitamin C than oranges!</p>
+            </div>
+        </div>
+
+        <!-- Slide 13 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/13-squash.png') }}" class="mb-4 veggie-icon-lg" alt="Squash Icon" />
+                <h4>🍠 Squash – Energy Zapper</h4>
+                <p>Squash is soft, sweet, and full of potassium to keep you moving!</p>
+            </div>
+        </div>
+
+        <!-- Slide 14 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/14-potato.png') }}" class="mb-4 veggie-icon-lg" alt="Potato Icon" />
+                <h4>🥔 Potatoes – Earthy Energy Balls</h4>
+                <p>Potatoes give you long-lasting fuel for fun, learning, and games!</p>
+            </div>
+        </div>
+
+        <!-- Slide 15 -->
+        <div class="carousel-item">
+            <div class="p-4">
+                <img src="{{ asset('website/images/icons/15-mushroom.png') }}" class="mb-4 veggie-icon-lg" alt="Mushroom Icon" />
+                <h4>🍄 Mushrooms – Forest Power Caps</h4>
+                <p>Mushrooms boost your immune system and give your meals super flavor!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#veggieFactsSlider" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#veggieFactsSlider" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+    </div>
+</section>
+
+<!-- 🧩 Veggie Comic Strip -->
+<section class="comic-strip py-5" style="background-color: #fffbe6;">
+  <div class="container">
+    <h2 class="text-center mb-5 text-warning fw-bold">🥕 Super Veggie Adventures!</h2>
+    <p class="comic-caption text-center mb-5">
+     <em>Read the Veggie Comic below to see how your favorite superhero veggies save the day with their amazing powers!</em>
+    </p>
+
+    <div class="comic-panels d-flex flex-wrap justify-content-center gap-4">
+      
+      <!-- Panel 1 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel1.png') }}" alt="Carrot yelling night vision">
+        <p class="caption">“The kids look tired,” says Broccoli</p>
+      </div>
+
+      <!-- Panel 2 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel2.png') }}" alt="Sad kids in night vision">
+        <p class="caption">Super Carrot yells: "Night Vision!"</p>
+      </div>
+
+      <!-- Panel 3 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel3.png') }}" alt="Pepper superhero">
+        <p class="caption">Carrot scans the kids in night vision mode.</p>
+      </div>
+
+      <!-- Panel 4 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel4.png') }}" alt="Kids in garden night mode">
+        <p class="caption">Red Pepper to the rescue: "I'll boost their immunity!" </p>
+      </div>
+
+      <!-- Panel 5 -->
+      <div class="comic-panel">
+        <img src="{{ asset('website/images/comic/panel5.png') }}" alt="Kids high five veggies">
+        <p class="caption">Mission complete! High-fives all around!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 🍽️ Veggie Recipes Carousel Section -->
+<section class="py-5 vg-fact-bg" >
+    <div class="auto-container">
+        <div class="text-center mb-5">
+            <h2 class="text-info fw-bold">🍽️ Veggie Recipes to Try!</h2>
+            <p class="text-muted">Tasty, healthy dishes packed with veggie superpowers!</p>
+        </div>
+
+        <div class="row align-items-center">
+            <!-- 📊 Difficulty Legend -->
+            <div class="col-lg-3 text-center mb-5 mb-lg-0">
+                <h5 class="fw-bold text-dark mb-4">👩‍🍳 Recipe Difficulty Guide</h5>
+                <div class="recipe-difficulty-guide">
+                    <div>
+                        <img src="{{ asset('website/images/icons/difficulty-1.png') }}" class="difficulty-guide-icon mb-2" alt="Easy">
+                        <div><strong>Easy Peasy!</strong><br><small class="text-muted">You got this</small></div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('website/images/icons/difficulty-2.png') }}" class="difficulty-guide-icon mb-2" alt="Medium">
+                        <div><strong>Little Helper Needed</strong><br><small class="text-muted">Some grown-up help</small></div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('website/images/icons/difficulty-3.png') }}" class="difficulty-guide-icon mb-2" alt="Hard">
+                        <div><strong>Grown-Up Supervision</strong><br><small class="text-muted">Grown-up needed</small></div>
+                    </div>
+                </div>
             </div>
 
-            <section class="about-section">
-                <div class="layer-one" style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
-                <div class="layer-two" style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
-                <div class="auto-container">
-
-                    <div class="row clearfix">
-
-                        <!-- Image Column -->
-                        <div class="image-column col-lg-4 col-md-12 col-sm-12">
-                            <div class="inner-column">
-                                <div class="image">
-                                    <img src="{{ URL::asset('website/images/resource/v.webp') }}" alt="" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Content Column -->
-                        <div class="content-column col-lg-8 col-md-12 col-sm-12">
-                            <div class="inner-column">
-                                <!-- Sec Title -->
-                                <div class="sec-title">
-                                    <div class="title">Veggie Facts & Benefits</div>
-                                    <h2>VEGGIE FACTS & BENEFITS</h2>
-                                </div>
-                                <div class="bold-text">🥦 Veggie Fun Facts & Superpowers! 🥕</div>
-                                <p>Eating vegetables isn't just healthy—it’s like fueling your body with superpowers! Check out these cool facts about your favorite veggies and why they’re so good for you.</p>
-
-                                <div class="bold-text">🥦 Broccoli – The Tiny Tree of Power</div>
-                                <p>Did you know broccoli contains more vitamin C than an orange? It’s packed with antioxidants that help boost your immune system and keep your skin glowing!</p>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="row my-4">
-                        <div class="col-md-12 col-center m-auto">
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <!-- Carousel -->
-                                <div class="carousel-inner">
-                                    <div class="item carousel-item active">
-                                        <img src="{{ URL::asset('website/images/resource/r3.jpg') }}" alt="" style="width: 100%;height:500px;object-fit: cover;border-radius: 5%">
-                                    </div>
-                                    <div class="item carousel-item">
-                                        <img src="{{ URL::asset('website/images/resource/r5.jpg') }}" alt="" style="width: 100%;height:500px;object-fit: cover;border-radius: 5%">
-                                    </div>
-                                    <div class="item carousel-item">
-                                        <img src="{{ URL::asset('website/images/resource/r4.jpg') }}" alt="" style="width: 100%;height:500px;object-fit: cover;border-radius: 5%">
+            <!-- 🥕 Carousel -->
+            <div class="col-lg-9">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($featuredRecipes as $index => $recipe)
+                            <div class="carousel-item @if($index == 0) active @endif">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10 text-center">
+                                        <a href="{{ route('recipe_detail', [$recipe->slug]) }}">
+                                            <img src="{{ asset('admin/assets/uploads/'.$recipe->image) }}"
+                                                 class="w-100 rounded-top recipe-img"
+                                                 alt="{{ $recipe->heading }}">
+                                        </a>
+                                        <div class="mt-3">
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <h4 class="text-success mb-0">{{ $recipe->heading }}</h4>
+                                                @php
+                                                    $difficultyIcon = 'difficulty-' . $recipe->difficulty . '.png';
+                                                @endphp
+                                                <img src="{{ asset('website/images/icons/' . $difficultyIcon) }}"
+                                                     alt="Difficulty Level {{ $recipe->difficulty }}"
+                                                     class="recipe-difficulty-icon"
+                                                     style="height: 36px;">
+                                            </div>
+                                            <p class="text-muted">{{ Str::limit(strip_tags($recipe->description), 120) }}</p>
+                                            <a href="{{ route('recipe_detail', [$recipe->slug]) }}" class="btn btn-outline-success">View Recipe</a>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- Carousel Controls -->
-                                <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
 
-
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <div class="bold-text"><b>🥕 Carrots – X-Ray Vision Booster</b></div>
-                            <p>Carrots are loaded with beta-carotene, which your body turns into vitamin A. This helps improve your eyesight—especially at night! So, if you want superhero vision, eat your carrots!</p>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="bold-text"><b>🍠 Sweet Potatoes – Energy Bombs</b></div>
-                            <p>Sweet potatoes are packed with fiber and slow-digesting carbs, giving you long-lasting energy. Plus, they help keep your heart healthy!</p>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="bold-text"><b>🥑 Avocados – The Brain Fuel</b></div>
-                            <p>Avocados are full of healthy fats that boost brain power and keep your heart strong. No wonder they’re called a superfood!</p>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="bold-text"><b>🥬 Spinach – Strength in Every Bite</b></div>
-                            <p>Just like Popeye, spinach can make you stronger! It’s rich in iron, which helps carry oxygen to your muscles, making you feel more energized.</p>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="bold-text"><b>🌽 Corn – Nature’s Popcorn</b></div>
-                            <p>Corn has its own built-in sunscreen! It contains lutein and zeaxanthin, which protect your eyes from harmful UV rays. Who knew?!</p>
-                        </div>
-
-
-                        <br>
-
-                        <div class="col-md-12 text-center justify-content-center">
-                            <div class="bold-text"><h2><b>🌱 Eat Your Superpowers!</b></h2></div>
-                            <p>Each vegetable has its own special ability to keep you strong, smart, and energized. So, add more veggies to your plate and unlock your health superpowers every day! Would you like any customization, such as a specific design, images, or additional facts? 😊</p>
-                        </div>
-
-
-                        <br>
-
-                        <div class="col-md-12 text-center justify-content-center">
-                            <iframe width="866" height="487" src="https://www.youtube.com/embed/00xZyFeUSf8" title="🥕🥦 Discover Healthy Vegetables: Fun Facts and Benefits for Kids! 🥬🍅 #vegetables #kidslearning" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-
-                    </div>
-
+                    <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    </a>
                 </div>
-            </section>
-
+            </div>
         </div>
-    </section>
-    <!-- End Resources Section -->
+    </div>
+</section>
 
+
+
+<!-- 🌱 Closing CTA -->
+<section class="py-5 text-center" style="background-color: #e6fff2;">
+    <div class="auto-container">
+        <h2 class="text-success fw-bold mb-3">🌟 Eat Your Superpowers!</h2>
+        <p class="text-muted mb-4">Add colorful veggies to your plate every day to boost your body, sharpen your mind, and feel amazing inside and out!</p>
+        @auth
+            <a href="{{ url('/Quiz') }}" class="btn btn-success btn-lg px-4 shadow">
+                🧠 Take the Veggie Quiz!
+            </a>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-outline-success btn-lg px-4 shadow">
+                🔒 Login to Take the Veggie Quiz!
+            </a>
+        @endauth
+
+    </div>
+</section>
+
+<!-- 🎬 Video -->
+<section class="py-5 bg-light">
+    <div class="auto-container text-center">
+        <h4 class="fw-bold mb-3">🎥 Watch & Learn</h4>
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/00xZyFeUSf8"
+            title="Discover Healthy Vegetables"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen class="rounded shadow"></iframe>
+    </div>
+</section>
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+
+
+@endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const myCarousel = document.querySelector('#veggieFactsSlider');
+            if (myCarousel) {
+                new bootstrap.Carousel(myCarousel, {
+                    interval: false,
+                    ride: false
+                });
+            }
+        });
+    </script>
 @endsection

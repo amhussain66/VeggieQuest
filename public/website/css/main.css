@@ -1,4 +1,4 @@
-/* Spcica HTML Template */
+/* Spcica HTML Template */ 
 
 /************ TABLE OF CONTENTS ***************
 1. Fonts
@@ -110,7 +110,7 @@ body {
 a{
 	text-decoration:none;
 	cursor:pointer;
-	color:#ff7d5f;
+	color:#d68135;
 }
 
 button,
@@ -235,7 +235,7 @@ img{
     height: 100%;
     z-index: 1;
     opacity: 0;
-    background-color: #ff7d5f;
+    background-color: #ff8e2a;
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -321,7 +321,7 @@ img{
 	overflow: hidden;
 	overflow:hidden;
 	border-radius:50px;
-	background-color: #ff7d5f;
+	background-color: #ff8e2a;
 	text-transform: capitalize;
 }
 
@@ -461,7 +461,7 @@ img{
 }
 
 .theme_color{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .preloader{ position:fixed; left:0px; top:0px; width:100%; height:100%; z-index:999999; background-color:#ffffff; background-position:center center; background-repeat:no-repeat; background-image:url(../images/icons/preloader.svg); background-size:90px; display:none;}
@@ -504,7 +504,7 @@ img{
 
 .scroll-to-top:hover{
 	color:#ffffff;
-	background:#ff7d5f;
+	background:#ff8e2a;
 }
 
 /*** 
@@ -523,7 +523,7 @@ img{
 
 .sec-title .title{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:14px;
 	font-weight:400;
 	margin-bottom:5px;
@@ -705,7 +705,7 @@ img{
 }
 
 .main-header .header-upper .outer-box .login-info li.recipe a{
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 	padding:12px 20px;
 	font-family: 'Playfair Display', serif;
 }
@@ -871,7 +871,7 @@ img{
 	width:280px;	
 	left: auto !important;
 	border-radius:0px;
-	border-top:3px solid #ff7d5f;
+	border-top:3px solid #ff8e2a;
 	-webkit-transform: translate3d(0px, 0px, 0px) !important;
 	transform: translate3d(0px, 0px, 0px) !important;
 }
@@ -915,7 +915,7 @@ img{
 
 .main-header .header-upper .search-panel input:focus,
 .main-header .header-upper .search-panel select:focus{
-	border-color:#ff7d5f;	
+	border-color:#ff8e2a;	
 }
 
 .main-header .header-upper .search-panel .search-btn{
@@ -979,6 +979,9 @@ img{
 	-webkit-animation-iteration-count: 1;
 	animation-iteration-count: 1;	
 }
+
+
+
 
 .sticky-header .main-menu .navigation > li > a{
 	padding:23px 0px  !important;
@@ -1113,7 +1116,7 @@ img{
 
 .main-menu .navigation > li:hover > a,
 .main-menu .navigation > li.current > a{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .main-header.header-style-two .social-icon-one li a{
@@ -1196,7 +1199,7 @@ img{
 .main-menu .navigation > li > ul > li:hover > a{
 	color:#ffffff;
 	padding-left:30px;
-	background:#ff7d5f;
+	background:#ff8e2a;
 }
 
 .main-menu .navigation > li > ul > li.dropdown > a:after{
@@ -1277,7 +1280,7 @@ img{
 .main-menu .navigation > li > ul > li > ul > li:hover > a{
 	color:#ffffff;
 	padding-left:30px;
-	background:#ff7d5f;
+	background:#ff8e2a;
 }
 
 .main-menu .navigation > li > ul > li > ul > li.dropdown > a:after{
@@ -1509,7 +1512,7 @@ img{
 	padding:4px 18px;
 	border-radius:5px;
 	display:inline-block;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .banner-section .banner-carousel .content-box .info-list .rating{
@@ -1563,7 +1566,7 @@ img{
 .banner-section .banner-carousel .content-box h1{
 	display: block;
 	line-height: 1.3em;
-	color: #ff7d5f;
+	color: #ff8e2a;
 	font-weight: 700;
 	margin-bottom: 12px;
 	margin-top:18px;
@@ -1594,7 +1597,7 @@ img{
 .banner-section .banner-carousel .content-box .post-meta li .icon{
 	position:relative;
 	margin-right:8px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:18px;
 }
 
@@ -1717,7 +1720,7 @@ img{
 }
 
 .header-style-two .nav-outer .mobile-nav-toggler{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .mobile-menu{
@@ -1872,9 +1875,30 @@ img{
 	text-transform: capitalize;
 }
 
+/* --- Custom Navigation Styling --- */
+/* .navigation > li > a {
+    border-bottom: none !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 2px 2px 0px rgb(61, 47, 6);
+    font-weight: bold;
+}
+
+.navigation > li.active > a {
+    color: #ffcc00 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.navigation > li > a:hover {
+    color: rgb(28, 190, 44) !important;
+    text-shadow: 2px 2px 4px rgb(10, 71, 14);
+}
+ */
+
 .mobile-menu .navigation li:hover > a,
 .mobile-menu .navigation li.current > a{
-	color:#ff7d5f;	
+	color:#ff8e2a;	
 }
 
 .mobile-menu .navigation li.dropdown .dropdown-btn{
@@ -2019,9 +2043,9 @@ img{
 }
 
 .product-form-section .default-form .ui-selectmenu-button.ui-button{
-	background-color:#fdebe7;
+	background-color:#ff8e2a;
 	border-color:#fdebe7;
-	color:#ff7d5f;
+	color:#ffffff;
 	font-size:16px;
 	letter-spacing:1px;
 	padding-left:20px;
@@ -2039,7 +2063,7 @@ img{
 }
 
 .product-form-section .form-group .ui-button .ui-icon:before{
-	color:#ff8667;
+	color:#a05a1e;
 }
 
 .product-form-section .form-group .search-btn{
@@ -2050,7 +2074,7 @@ img{
 	font-size:16px;
 	border-radius:0px 50px 50px 0px;
 	display:inline-block;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .default-form{
@@ -2101,7 +2125,7 @@ img{
 .default-form .form-group input:focus,
 .default-form .form-group select:focus,
 .default-form .form-group textarea:focus{
-	border:1px solid #ff8667;
+	border:1px solid #ff8e2a;
 }
 
 /*** 
@@ -2188,7 +2212,7 @@ img{
 	text-align:center;
 	border-radius:50px;
 	display:inline-block;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 	transition: all 300ms ease;
     -webkit-transition: all 300ms ease;
     -ms-transition: all 300ms ease;
@@ -2203,7 +2227,7 @@ img{
 
 .categories-tab .product-tab-btns .p-tab-btn:hover,
 .categories-tab .product-tab-btns .p-tab-btn.active-btn{
-	color: #ff7d5f;
+	color: #ff8e2a;
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
 }
@@ -2329,7 +2353,7 @@ img{
 
 .category-block .inner-box .lower-content h4 a{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	-webkit-transition:all 300ms ease;
 	-ms-transition:all 300ms ease;
 	-o-transition:all 300ms ease;
@@ -2453,7 +2477,7 @@ img{
 
 .trending-section .content-column .bold-text{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:18px;
 	line-height:1.7em;
 }
@@ -2574,7 +2598,7 @@ img{
 
 .recipes-block .inner-box .lower-content .category{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:14px;
 	text-transform:uppercase;
 }
@@ -2597,7 +2621,7 @@ img{
 }
 
 .recipes-block .inner-box .lower-content h4 a:hover{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .recipes-block .inner-box .lower-content .text{
@@ -2624,7 +2648,7 @@ img{
 .recipes-block .inner-box .lower-content .post-meta li .icon{
 	position:relative;
 	margin-right:8px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:16px;
 }
 
@@ -2710,6 +2734,23 @@ img{
 	margin-top:38px;
 }
 
+/* .rounded-recipe-card .lower-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.rounded-recipe-card h4 a {
+    color: #333;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', cursive;
+} */
+
+.recipes-block .inner-box {
+    border-radius: 16px;
+    overflow: hidden;
+	background-color: white;
+}
+
 
 
 /* recipes-details-area */
@@ -2728,9 +2769,9 @@ img{
 	margin-bottom: 10px;
 }
 .my-tab .nav-pills .nav-link.active, .my-tab .nav-pills .show>.nav-link {
-	background: #FF7D5F;
+	background: #ff8e2a;
 	color: #ffffff;
-	border-color: #FF7D5F;
+	border-color: #ff8e2a;
 }
 .discription-para {
 	margin-bottom: 30px;
@@ -2993,6 +3034,8 @@ img{
 	margin-bottom:30px;
 }
 
+
+
 .entertaining-block .inner-box{
 	position:relative;
 }
@@ -3067,18 +3110,18 @@ img{
 }
 
 .entertaining-block .inner-box .lower-content h4 a:hover{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .entertaining-block .inner-box .lower-content .read-more:hover{
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 	color:#ffffff;
-	border-color:#ff7d5f;
+	border-color:#ff8e2a;
 }
 
 .entertaining-block .inner-box .lower-content .read-more{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:16px;
 	padding:10px 28px;
 	border:1px solid #e7e7e7;
@@ -3166,7 +3209,7 @@ img{
 }
 
 .treat-block .inner-box .lower-content h4 a:hover{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .clients-section{
@@ -3190,7 +3233,7 @@ img{
 .subscribe-section{
 	position:relative;
 	padding:80px 0px 50px;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .subscribe-section .column{
@@ -3288,7 +3331,7 @@ img{
 	height:40px;
 	cursor:pointer;
 	line-height:24px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:18px;
 	font-weight:600;
 	border-radius: 0px;
@@ -3508,7 +3551,7 @@ img{
 }
 
 .main-footer .social-box li a:hover{
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 	color:#ffffff;
 }
 
@@ -3703,7 +3746,7 @@ img{
 .banner-section-two .content-box .post-meta li .icon{
 	position:relative;
 	margin-right:8px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:18px;
 }
 
@@ -4033,7 +4076,7 @@ img{
 
 .about-section .content-column .bold-text{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:20px;
 	font-weight:500;
 	line-height:1.4em;
@@ -4324,7 +4367,7 @@ img{
 
 .carousel-post-widget .owl-dots .owl-dot.active,
 .carousel-post-widget .owl-dots .owl-dot:hover{
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 /* Post Block */
@@ -4366,7 +4409,7 @@ img{
 
 .post-block .block-inner .lower-content .category{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:14px;
 	text-transform:uppercase;
 }
@@ -4382,13 +4425,14 @@ img{
 	color:#161616;
 }
 
+
 .recipe-detail{
 	position:relative;
 }
 
 .recipe-detail .inner-box{
 	position:relative;
-}
+	}
 
 .recipe-detail .inner-box .image{
 	position:relative;
@@ -4420,7 +4464,7 @@ img{
 
 .recipe-detail .inner-box .content .category{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:14px;
 	letter-spacing:1px;
 	padding:6px 18px;
@@ -4453,7 +4497,7 @@ img{
 
 .recipe-detail .inner-box .content .rating{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:14px;
 	margin-top:17px;
 	margin-bottom:10px;
@@ -4589,7 +4633,7 @@ img{
 	margin-bottom:10px;
 	border-radius:50px;
 	display:inline-block;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 /* Nutrition List */
@@ -4783,7 +4827,7 @@ img{
 	text-align:center;
 	border-radius:50px;
 	display:inline-block;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .post-share-options .post-share-inner a{
@@ -4799,13 +4843,13 @@ img{
 
 .post-share-options .post-share-inner a:hover{
 	text-decoration:underline;
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .post-share-options .post-share-inner .save{
 	position:relative;
 	padding:9px 16px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:16px;
 	display:inline-block;
 	background-color:#feefeb;
@@ -5028,7 +5072,7 @@ img{
 	position:relative;
 	width:24px;
 	height:24px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:11px;
 	font-weight:400;
 	display:inline-block;
@@ -5039,7 +5083,7 @@ img{
 }
 
 .comment-box .comment .reply-btn:hover{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 
@@ -5063,7 +5107,7 @@ img{
 	position:relative;
 	width:24px;
 	height:24px;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:11px;
 	font-weight:400;
 	display:inline-block;
@@ -5074,7 +5118,7 @@ img{
 }
 
 .comment-box .comment .heart-btn:hover{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 /* Related Items */
@@ -5120,7 +5164,7 @@ img{
 .news-block .inner-box .image{
 	position:relative;
 	overflow:hidden;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .news-block .inner-box .image img{
@@ -5164,7 +5208,7 @@ img{
 }
 
 .news-block .inner-box .lower-content h3 a:hover{
-	color:#ff7d5f;
+	color:#ff8e2a;
 }
 
 .news-block .inner-box .lower-content .post-info{
@@ -5204,7 +5248,7 @@ img{
 	content: "";
 	width: 80%;
 	height: 110%;
-	border: 10px solid #FF7D5F;
+	border: 10px solid #ff8e2a;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -5260,7 +5304,7 @@ img{
     -o-transition: all 500ms ease;
 }
 .social-links li a span:hover {
-	color: #FF7D5F;
+	color: #ff8e2a;
 	transition: all 500ms ease;
     -moz-transition: all 500ms ease;
     -webkit-transition: all 500ms ease;
@@ -5305,7 +5349,7 @@ img{
 }
 .add-recipe-col .form-control:focus {
 	box-shadow: none;
-	border-color: #FF7D5F;
+	border-color: #ff8e2a;
 }
 .form-group {
 	margin: 0;
@@ -5330,7 +5374,7 @@ img{
 	padding-right: 15px;		
 }
 .load-more__btn {
-	background: #FF7D5F;
+	background: #ff8e2a;
 	color: #ffffff;
 	padding: 8px 15px;
 	border-radius: 20px;
@@ -5382,7 +5426,7 @@ img{
 .styled-pagination li.active a,
 .styled-pagination li:hover a{
 	color:#ffffff;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .blog-detail{
@@ -5410,7 +5454,7 @@ img{
 
 .blog-detail .inner-box .lower-content .category{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:14px;
 	text-transform:capitalize;
 }
@@ -5661,8 +5705,8 @@ img{
 
 .comment-box-two .comment .reply-btn:hover{
 	color:#ffffff;
-	border-color:#ff7d5f;
-	background-color:#ff7d5f;
+	border-color:#ff8e2a;
+	background-color:#ff8e2a;
 }
 
 .sidebar-page-container .group-title{
@@ -5732,7 +5776,7 @@ img{
 .comment-form-two .form-group input[type="email"]:focus,
 .comment-form-two .form-group select:focus,
 .comment-form-two .form-group textarea:focus{
-	border-color:#ff7d5f;
+	border-color:#ff8e2a;
 }
 
 .comment-form-two .form-group textarea{
@@ -5794,7 +5838,7 @@ img{
 	position:relative;
 	padding-left:20px;
 	margin-bottom:30px;
-	border-left:1px solid #ff7d5f;
+	border-left:1px solid #ff8e2a;
 }
 
 .contact-page-container .info-column .contact-info-list li{
@@ -5850,7 +5894,7 @@ img{
 .contact-form .form-group input[type="email"]:focus,
 .contact-form .form-group select:focus,
 .contact-form .form-group textarea:focus{
-	border-color:#ff7d5f;
+	border-color:#ff8e2a;
 }
 
 .contact-form .form-group textarea{
@@ -5877,7 +5921,7 @@ img{
 	padding:12px 38px;
 	cursor:pointer;
 	border-radius:50px;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 .contact-form input.error,
@@ -6029,7 +6073,7 @@ img{
 .register-form .form-group input[type="email"]:focus,
 .register-form .form-group select:focus,
 .register-form .form-group textarea:focus{
-	border-color:#ff7d5f;
+	border-color:#ff8e2a;
 }
 
 .register-form .form-group textarea{
@@ -6057,7 +6101,7 @@ img{
 	cursor:pointer;
 	border-radius:50px;
 	margin-right:30px;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 /* Login Container */
@@ -6183,7 +6227,7 @@ img{
 .login-form .form-group input[type="email"]:focus,
 .login-form .form-group select:focus,
 .login-form .form-group textarea:focus{
-	border-color:#ff7d5f;
+	border-color:#ff8e2a;
 }
 
 .login-form .form-group textarea{
@@ -6211,7 +6255,7 @@ img{
 	cursor:pointer;
 	border-radius:50px;
 	margin-right:30px;
-	background-color:#ff7d5f;
+	background-color:#ff8e2a;
 }
 
 /* Error Section */
@@ -6230,7 +6274,7 @@ img{
 
 .error-section h1{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:180px;
 	font-weight:600;
 	line-height:1em;
@@ -6239,7 +6283,7 @@ img{
 
 .error-section h2{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:50px;
 	font-weight:300;
 	line-height:1.2em;
@@ -6248,9 +6292,437 @@ img{
 
 .error-section .text{
 	position:relative;
-	color:#ff7d5f;
+	color:#ff8e2a;
 	font-size:20px;
 	font-weight:300;
 	margin-top:20px;
 	margin-bottom:30px;
 }
+
+/* ============== GAMES & ACTIVITY PAGE ==================== */
+
+.page-title {
+    padding: 100px 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #ff8e2a;
+    font-weight: bold;
+}
+
+.btn-orange {
+    background-color: #ff8e2a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.btn-orange:hover {
+    background-color: #e56f00;
+    text-decoration: none;
+    color: white;
+}
+
+.game-section {
+    padding: 60px 0;
+}
+
+.printable-section img {
+    transition: transform 0.2s ease;
+}
+.printable-section img:hover {
+    transform: scale(1.1);
+}
+
+.printable-section .btn + .btn {
+    margin-left: 16px;
+}
+
+.coloring-card {
+    background-color: #fffbea;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 10px; /* 👈 Adds natural spacing */
+}
+
+.coloring-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.coloring-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.coloring-title {
+    font-weight: 700;
+    color: #d35400;
+}
+
+.rounded-icon {
+    border-radius: 12px;
+    padding: 5px;
+    background-color: #fff;
+}
+/* button on the Activties page - NAV BUTTONS */
+.btn-outline-primary,
+.btn-outline-success,
+.btn-outline-info,
+.btn-outline-warning {
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+	margin: 10px;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.btn-outline-info:hover,
+.btn-outline-warning:hover {
+    transform: scale(1.05);
+}
+
+/* match it games css */
+
+
+/* Make match games large and centered */
+.match-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.match-iframe {
+    width: 100%;
+    min-height: 400px;
+    border: none;
+}
+
+.match-caption {
+    padding: 16px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ff7a00;
+    text-align: center;
+    background-color: #fff;
+}
+
+/*========================== Vegiie facts page =================== */
+
+/* Veggie Fact Cards */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Icons Inside Cards */
+.card img {
+    width: 90px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Sticky Nav Buttons */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 8px 16px;
+    white-space: nowrap;
+}
+
+.btn::before {
+    display: inline-block;
+    line-height: 1;
+}
+
+
+.auto-container .btn-outline-success,
+.auto-container .btn-outline-warning,
+.auto-container .btn-outline-danger,
+.auto-container .btn-outline-primary {
+    font-weight: bold;
+    border-width: 2px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+}
+
+.auto-container .btn:hover {
+	transform: scale(1.1);
+}
+
+
+/* Section Headings */
+section h2 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+/* Match general spacing */
+.card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+iframe {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+/* ======= Veggie Carousel Section Fix ======= */
+/* .py-5{
+	background: #E9F5BE url(../images/background/1.png);
+} */
+
+.vg-fact-bg{
+	background: #fff3e5 url(../images/background/1.png);
+}
+.veggie-carousel-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	background-color: #E9F5BE;
+	/* background-image: ; */
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.carousel-fade .carousel-inner {
+    position: relative;
+}
+
+.difficulty-guide-icon {
+    height: 24px;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* 🍳 Recipe Difficulty Guide - Main container */
+.recipe-difficulty-guide {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px; /* More space between items */
+}
+
+/* 📈 Bigger icons in the legend */
+.difficulty-guide-icon {
+    height: 100px; 
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.difficulty-guide-icon:hover {
+    transform: scale(1.1);
+}
+
+/* 📏 Inline icons beside recipe titles (slightly bigger too) */
+.recipe-difficulty-icon {
+    height: 100px; /* Increased from 36px */
+    width: auto;
+}
+
+/* ✍️ Bigger text for guide descriptions */
+.recipe-difficulty-guide div span {
+    font-size: 18px; /* Bigger font */
+    font-weight: bold;
+    color: #222;
+    margin-left: 10px;
+}
+
+/* 💡 Optional: make the guide heading stand out more */
+.recipe-difficulty-guide h5 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* 🎯 Text under guide icons */
+.recipe-difficulty-guide div {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+
+/* Ensure all slides overlap and transition smoothly */
+.carousel-fade .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    pointer-events: none;
+}
+
+.carousel-fade .carousel-item.active {
+    position: relative;
+    opacity: 1;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+/* Carousel content box */
+.carousel-item > div {
+    background-color: #fffbea;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Center inside the box */
+.carousel-item > .p-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.carousel-item p {
+    color: #000;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.carousel-inner img {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.carousel-inner img:hover {
+    transform: scale(1.1);
+}
+
+/* Image sizing */
+.veggie-icon-lg {
+    width: 220px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Navigation arrows size */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+/* ----------- recipe carousel ------------ */
+#recipeCarousel .carousel-item {
+    transition: transform 0.6s ease, opacity 0.6s ease-in-out;
+}
+
+.recipe-img {
+    height: 320px; /* or 350px if you want bigger */
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.carousel-item .text-center {
+    padding-top: 1rem;
+}
+
+
+/* -------Comic strip----- */
+.comic-strip {
+    background-color: #fffbe6;
+    padding: 50px 20px;
+    overflow-x: auto;
+}
+
+.comic-panels {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap; /* prevents wrapping */
+    overflow-x: auto;   /* allows horizontal scroll on small screens */
+}
+
+.comic-panel {
+    min-width: 220px;
+    max-width: 240px;
+    flex: 0 0 auto;
+    text-align: center;
+    border: 3px solid #f3c13a;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+
+.comic-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.comic-panel .caption {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #333;
+}
+.comic-caption {
+    font-size: 1.2rem;
+    color: #444;
+    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* =========== Parents and Teachers ================ */
+section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.bg-light {
+    background-color: #f9f9f9 !important;
+}
+
+.about-section{
+	background-color: #f5f5dc; 	
+}
+

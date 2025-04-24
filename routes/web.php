@@ -155,6 +155,15 @@ Route::get('/weekly-veggie-fact', [WebsiteController::class, 'weeklyVeggieFact']
 
 
 Route::get('/quiz/results', [WebsiteController::class, 'quizResults'])->name('user.quiz.results');
-Route::get('/activities', [WebsiteController::class, 'activities'])->name('user.activities');
+// Route::get('/activities', [WebsiteController::class, 'activities'])->name('user.activities');
+Route::get('/activities', [WebsiteController::class, 'activitiesPage'])->name('user.activities');
+
 Route::post('/submit-puzzle', [WebsiteController::class, 'submitPuzzle'])->name('user.puzzle.submit');
+Route::get('/activities', [WebsiteController::class, 'activitiesPage'])->name('activities');
+Route::get('/resources', [WebsiteController::class, 'resourcesPage'])->name('resources');
+
+// user tips route
+Route::post('/submit-tip', [WebsiteController::class, 'submitTip'])->name('submit.tip');
+Route::get('/healthy-tips', [WebsiteController::class, 'showHealthyTips'])->name('healthy.tips');
+
 ?>

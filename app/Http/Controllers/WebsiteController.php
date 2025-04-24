@@ -25,6 +25,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\DailyPuzzle;
 use App\Models\UserPuzzleAnswer;
+use App\Models\UserTip; 
 
 class WebsiteController extends Controller
 {
@@ -65,10 +66,121 @@ class WebsiteController extends Controller
         return view('website.recipe_detail', compact('product'));
     }
 
-    public function activities()
+    public function activitiesPage()
     {
-        return view('website.activities');
+        $printables = [
+            [
+                'title' => 'Broccoli Coloring Sheet',
+                'file' => 'Broccoli-Coloring-Page-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon1.png',
+            ],
+            [
+                'title' => 'Carrots Coloring Sheet',
+                'file' => 'Carrots-Coloring-Page-For-Kids.pdf',
+                'icon' => 'colouring-icon2.png',
+            ],
+            [
+                'title' => 'Mushroom Coloring Sheet',
+                'file' => 'Mushrooms-Coloring-Sheet.pdf',
+                'icon' => 'colouring-icon3.png',
+            ],
+            [
+                'title' => 'Tomatoes Coloring Sheet',
+                'file' => 'Vine-Tomatoes-Coloring-Page.pdf',
+                'icon' => 'colouring-icon4.png',
+            ],
+            [
+                'title' => 'Onion Coloring Sheet',
+                'file' => 'Brown-Onions-Coloring-Page.pdf',
+                'icon' => 'colouring-icon5.png',
+            ],
+            [
+                'title' => 'Corn Coloring Sheet',
+                'file' => 'Coloring-Page-Of-Corn-On-The-Cob.pdf',
+                'icon' => 'colouring-icon6.png',
+            ],
+            [
+                'title' => 'Veg Coloring Sheet',
+                'file' => 'Vegetables-Coloring-Pages.pdf',
+                'icon' => 'colouring-icon7.png',
+            ],
+            [
+                'title' => 'Mix Veg Coloring Sheets',
+                'file' => 'Simple-Outline-Of-Common-Vegetables-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon8.png',
+            ],
+        ];
+        $wordSearches = [
+            ['file' => 'ADA_BTSWordsearch.pdf', 'title' => 'Food Word Search', 'icon' => 'ws-icon1.png'],
+            ['file' => 'healthy_eating_word_search.pdf', 'title' => 'Healthy Eating Word Search', 'icon' => 'ws-icon2.png'],
+            ['file' => 'superfoods-word-search.pdf', 'title' => 'Super Foods Word Search', 'icon' => 'ws-icon3.png'],
+            // ... add more
+        ];
+        
+        return view('website.activities', compact('printables', 'wordSearches'));
     }
+
+    public function resourcesPage()
+    {
+        $printables = [
+            [
+                'title' => 'Broccoli Coloring Sheet',
+                'file' => 'Broccoli-Coloring-Page-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon1.png',
+            ],
+            [
+                'title' => 'Carrots Coloring Sheet',
+                'file' => 'Carrots-Coloring-Page-For-Kids.pdf',
+                'icon' => 'colouring-icon2.png',
+            ],
+            [
+                'title' => 'Mushroom Coloring Sheet',
+                'file' => 'Mushrooms-Coloring-Sheet.pdf',
+                'icon' => 'colouring-icon3.png',
+            ],
+            [
+                'title' => 'Tomatoes Coloring Sheet',
+                'file' => 'Vine-Tomatoes-Coloring-Page.pdf',
+                'icon' => 'colouring-icon4.png',
+            ],
+            [
+                'title' => 'Onion Coloring Sheet',
+                'file' => 'Brown-Onions-Coloring-Page.pdf',
+                'icon' => 'colouring-icon5.png',
+            ],
+            [
+                'title' => 'Corn Coloring Sheet',
+                'file' => 'Coloring-Page-Of-Corn-On-The-Cob.pdf',
+                'icon' => 'colouring-icon6.png',
+            ],
+            [
+                'title' => 'Veg Coloring Sheet',
+                'file' => 'Vegetables-Coloring-Pages.pdf',
+                'icon' => 'colouring-icon7.png',
+            ],
+            [
+                'title' => 'Mix Veg Coloring Sheets',
+                'file' => 'Simple-Outline-Of-Common-Vegetables-For-Preschoolers.pdf',
+                'icon' => 'colouring-icon8.png',
+            ],
+        ];
+        $wordSearches = [
+            ['file' => 'ADA_BTSWordsearch.pdf', 'title' => 'Food Word Search', 'icon' => 'ws-icon1.png'],
+            ['file' => 'healthy_eating_word_search.pdf', 'title' => 'Healthy Eating Word Search', 'icon' => 'ws-icon2.png'],
+            ['file' => 'superfoods-word-search.pdf', 'title' => 'Super Foods Word Search', 'icon' => 'ws-icon3.png'],
+            // ... add more
+        ];
+
+            // Fetch tips from DB
+        $tips = UserTip::orderBy('created_at', 'desc')->get();
+        // fetch 4 latest blogs 
+        $blogs = Blogs::orderBy('id', 'desc')->take(4)->get(); 
+
+        // Pass tips along with other variables
+        return view('website.resources', compact('printables', 'wordSearches', 'tips', 'blogs'));
+
+    }
+
 
     public function resources()
     {
@@ -402,7 +514,15 @@ class WebsiteController extends Controller
 
     public function veggie_facts_benefits()
     {
-        return view('website.veggie_facts_benefits');
+        $featuredRecipes = Products::latest()->take(6)->get(); // or filter by 'featured' column if needed
+        return view('website.veggie_facts_benefits', compact('featuredRecipes'));
+
+    }
+
+    public function veggieFacts()
+    {
+        $featuredRecipes = Product::latest()->take(6)->get(); // pick 6 recent or featured recipes
+        return view('your.blade.name', compact('featuredRecipes'));
     }
 
     public function userlogout(Request $request)
@@ -499,5 +619,28 @@ public function weeklyVeggieFact()
 
     return view('website.weekly_fact', compact('fact'));
 }
+
+public function submitTip(Request $request)
+{
+    $request->validate([
+        'tip' => 'required|string|max:1000',
+    ]);
+
+    UserTip::create([
+        'name' => $request->name,
+        'tip' => $request->tip,
+    ]);
+
+    return back()->with('success', 'Thank you for your tip!');
+}
+
+
+
+// public function showHealthyTips()
+// {
+//     $tips = UserTip::orderBy('created_at', 'desc')->get();
+//     return view('website.healthy-tips', compact('tips'));
+// }
+
 
 }
