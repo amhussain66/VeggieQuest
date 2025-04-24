@@ -2387,25 +2387,6 @@ img{
 	padding:0px 0px 100px;
 }
 
-.progress-container {
-    width: 80%;
-    background-color: #f3f3f3;
-    border-radius: 30px;
-    overflow: hidden;
-    margin: 20px auto;
-    height: 30px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.progress-bar {
-    height: 100%;
-    background-color: #ffc107; /* Yellow-orange, kid friendly! */
-    text-align: center;
-    line-height: 30px;
-    font-weight: bold;
-    color: #fff;
-    transition: width 0.5s ease;
-}
 
 
 
@@ -2506,6 +2487,24 @@ img{
 	text-transform:uppercase;
 	background:url(../images/icons/category-icon.png) no-repeat;
 }
+
+.earned-badge {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.earned-badge:hover {
+    transform: scale(1.1);
+}
+
+.badge-item {
+    margin: 10px;
+}
+
 
 /*** 
 
@@ -6722,7 +6721,7 @@ section {
     background-color: #f9f9f9 !important;
 }
 
-.about-section{
+/* .about-section{
 	background-color: #f5f5dc; 	
-}
+} */
 

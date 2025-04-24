@@ -532,16 +532,20 @@ jQuery(document).ready(function ($) {
         $('.progress-bar').css('width', '20%').text('1 of 5 Missions Complete');
 
         // OPTIONAL: Award points with fetch
-        fetch("/award-points", {
-            method: "POST",
-            headers: {
-                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ points: 10 })
-        })
-        .then(res => res.json())
-        .then(data => console.log(data.message));
+		let csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+		let csrfToken = csrfTokenMeta ? csrfTokenMeta.content : '';
+		
+		fetch("/award-points", {
+			method: "POST",
+			headers: {
+				"X-CSRF-TOKEN": csrfToken,
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ points: 10 })
+		})
+		.then(res => res.json())
+		.then(data => console.log(data.message));
+		
     });
 	
 });

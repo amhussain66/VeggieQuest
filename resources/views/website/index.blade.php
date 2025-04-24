@@ -6,455 +6,294 @@
 
 @section('content')
 
-    <style>
-        @keyframes bounceScale {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .veggie-animation {
-            animation: bounceScale 2s infinite ease-in-out;
-        }
-
-        .categories-section {
-            position: relative;
-            padding: 40px 0px 40px;
-        }
-    </style>
-
-    <!-- Banner Section -->
-        <!-- Banner Section -->
-        <section class="banner-section">
-            <div class="slide-item">
-                <div class="image-layer" style="background-image:url({{ URL::asset('website/images/resource/Veggie-superheros-togther.jpg') }})"></div>
-                <div class="container">
-                    <h1 class="text-white" style="font-size: 72px;">Ready to Power Up with Veggies?</h1>
-                    <h6 class="text-white">Level up your health, boost</h6>
-                </div>
-            </div>
-        </section>
-
-    </section>
-    <!--End Banner Section -->
-
-    <section class="categories-section">
-    <div class="auto-container">
-        <div class="sec-title centered">
-            <h2><b>‘VEGGIE’</b> OF THE WEEK!</h2>
-            <p> Discover this weeks Veggie of the weak by pressing the button below!</p>
-        </div>
-
-        <div class="row text-center justify-content-center">
-            <!-- <div class="col-md-12">
-                <img src="{{ URL::asset('admin/assets/uploads/'.$vog->image) }}" class="veggie-animation"
-                     style="width: 50%; object-fit: cover; border-radius: 50%;">
-            </div> -->
-        </div>
-
-        <!-- @if($fact)
-        <div class="veggie-of-week text-center my-5">
-            <h2 class="mb-3">🥦 Veggie of the Week: {{ $fact->title }}</h2>
-            <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3">
-            <p>{{ $fact->fact }}</p>
-        </div>
-        @endif
-
-        
-        <div class="text-center mt-4">
-            <button id="reveal-fact-btn" class="theme-btn btn-style-one">Reveal a Veggie Fact</button>
-
-            <div id="veggie-fact-box" style="display: none; margin-top: 20px;">
-            <img src="{{ URL::asset('website/images/resource/veggie-carrot-fact.jpg') }}" 
-                alt="Cartoon Carrot" 
-                style="max-width: 300px; margin-bottom: 15px; border-radius: 20px;">
-
-                <p class="fact-text">
-                    🥕 Did you know? Carrots were originally purple before the orange variety became popular!
-                </p>
-            </div>
-        </div> -->
-
-        <div class="text-center mt-4">
-            <button id="reveal-veggie-btn" class="theme-btn btn-style-one">Reveal Veggie of the Week</button>
-        </div>
-
-        @if($fact)
-            <div id="veggie-of-week-box" class="veggie-of-week text-center my-5" style="display: none;">
-                <h2 class="mb-3">This weeks Veggie of the Week is:
-                    <br> {{ $fact->title }} !</h2>
-                <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3">
-                <p>{{ $fact->fact }}</p>
-            </div>
-        @endif
-        
-    </div>
-</section>
-
-
-    <section class="trending-section">
-        <div class="auto-container">
-            <div class="layer-one"
-                 style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
-            <div class="layer-two"
-                 style="background-image: url({{ URL::asset('website/images/resource/category-pattern-1.png') }})"></div>
-            <div class="row clearfix">
-
-                <!-- Content Column -->
-                <div class="content-column col-lg-7 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <!-- Sec Title -->
-                        <div class="sec-title">
-                            <!-- <div class="title">HEALTHY LIFESTYLE</div> -->
-                            <h2 class="sec-title">🚀 Start Your Veggie Adventure!</h2>
-                            <div class="text">
-                            Eating healthy can be super fun! 🍅🥦🍇  
-                            Power up your body with tasty veggie snacks, drink plenty of water, and move your body like a superhero!  
-                            Every small step earns you points and makes you stronger.  
-                            Are you ready to unlock your first veggie power? 💥💪
-                            </div>
-                            <br>
-                            <br>
-                            <div class="progress-section text-center">
-                                <h3>🌟 Your Veggie Power Level</h3>
-                                <div class="progress-container">
-                                    <div class="progress-bar" style="width: 30%;">30%</div>
-
-                                    @php
-                                        $points = Auth::guard('websiteuser')->user()->points ?? 0;
-                                        $maxPoints = 100; // You decide!
-                                        $progress = min(100, ($points / $maxPoints) * 100);
-                                    @endphp
-
-                                    <div class="progress-bar" style="width: {{ $progress }}%;">{{ intval($progress) }}%</div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image Column -->
-                <div class="image-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="image">
-                            <img src="{{ URL::asset('website/images/resource/veggie-start.png') }}" style="width: 100%;max-height: 450px;object-fit: cover;margin-top: 30px;border-radius: 50%;">
-                            
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section-->
-    <section class="categories-section">
-        <div class="auto-container">
-
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-            <h2 class="sec-title">🍽️ Pick Your Power-Up Recipes!</h2>
-
-                <div class="text">Choose a recipe zone to explore! Each one is packed with delicious, 
-                    <br> healthy meals that’ll boost your energy and earn you points! 🥕💪  
-                    <br> Are you going to try something cheesy, crunchy, or super green today?</div>
-            </div>
-
-            <!-- Categories Tabs -->
-            <div class="categories-tab">
-
-                <!-- Tabs Content -->
-                <div class="p-tabs-content">
-
-                    <!-- Portfolio Tab / Active Tab -->
-                    <div class="p-tab active-tab" id="p-tab-1">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            @forelse($categories as $category)
-                                <div class="category-block">
-                                    <div class="inner-box">
-                                        <div class="image">
-                                            <img src="{{ URL::asset('website/images/resource/category.png') }}"
-                                                 style="width: 100%;height:200px;object-fit: cover" alt=""/>
-                                        </div>
-                                        <div class="lower-content">
-                                            <h4><a href="{{ route('recipes',['category' => $category->id]) }}">{{ $category->name }}</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                            @endforelse
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Categories Section-->
-
-    <!-- Trending Section -->
- <!-- Mission Section -->
-<section class="trending-section">
-  <div class="auto-container">
-    <div class="row clearfix">
-
-      <!-- Text Content -->
-      <div class="content-column col-lg-7 col-md-12">
-        <div class="inner-column">
-          <div class="sec-title">
-            <div class="title">🚀 Your First Mission</div>
-            <h2>Build Your Super Salad!</h2>
-            <div class="text">
-              Start your journey by creating a colorful salad using 3 or more veggies! Snap a photo, share it with your grown-up, and earn your first 10 points!
-            </div>
-            <div class="progress-container mt-4">
-                <div class="progress-bar" style="width: 20%;">1 of 5 Missions Complete</div>
-            </div>
-
-          </div>
-          <a href="/user/Quiz" class="theme-btn btn-style-one mt-3"><span class="txt">Accept the Mission</span></a>
-          <div id="mission-complete" style="display: none; margin-top: 20px;">
-            <p class="fact-text">🎉 Awesome! You completed Mission 1 and earned a badge!</p>
-            <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" style="max-width: 120px;" alt="Mission 1 Badge">
-        </div>
-            <br>
-            <br>
-        <button id="complete-mission-btn" class="theme-btn btn-style-two mt-3">I Did It!</button>
-
-
-        </div>
-      </div>
-
-      <!-- Image Content -->
-      <div class="image-column col-lg-5 col-md-12">
-        <div class="inner-column">
-          <div class="image">
-            <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" alt="Super Salad Mission" style="width: 100%; border-radius: 12px; max-height: 400px; object-fit: cover;">
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-    <!-- End Trending Section -->
-
-    <!-- Popular Recipes Section -->
-    <section class="popular-recipes-section">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <h2>Recipes</h2>
-                        <div class="text">
-                            "Featuring easy, kid-friendly vegetable recipes like colorful veggie pasta, crispy baked
-                            snacks, fun-shaped salads, and healthy soups."
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <a href="{{ route('recipes') }}" class="theme-btn btn-style-one"><span
-                                    class="txt">See all Post</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="outer-container">
-            <div class="row clearfix">
-
-                @forelse($products as $product)
-                <div class="recipes-block style-three col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box shadow h-100">
-                        <div class="image position-relative">
-                            <a href="{{ route('recipe_detail',[$product->slug]) }}">
-                                <img src="{{ URL::asset('admin/assets/uploads/'.$product->image )}}" class="img-fluid"
-                                     style="width: 100%; height: 300px; object-fit: cover;" alt=""/>
-                            </a>
-                            @if(Auth::guard('websiteuser')->check())
-                                @if(in_array($product->id,Auth::guard('websiteuser')->user()->wishlistProducts()))
-                                    <a href="{{ route('user.add_to_wislist',[$product->id]) }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart text-danger"></i></a>
-                                @else
-                                    <a href="{{ route('user.add_to_wislist',[$product->id]) }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart-o text-danger"></i></a>
-                                @endif
-                            @else
-                                <a href="{{ route('login') }}" class="wishlist-btn btn btn-light"><i class="fa fa-heart-o text-danger"></i></a>
-                            @endif
-                        </div>
-                        <div class="lower-content">
-                            <div class="author-image"><img src="{{ URL::asset('admin/assets/uploads/'.$product->image )}}"
-                                                           alt=""/></div>
-                            <div class="category">{{ $product->category->name }}</div>
-                            <h4><a href="{{ route('recipe_detail',[$product->slug]) }}">{{ $product->heading }}</a>
-                            </h4>
-                            <div class="text">
-                                {{ Str::limit(strip_tags($product->description), 150) }}
-                            </div>
-                            <ul class="post-meta">
-                                <li><span class="icon flaticon-dish"></span>{{ $product->ingredients }}</li>
-                                <li><span class="icon flaticon-clock-3"></span>{{ $product->prepration_time }}</li>
-                                <li><span class="icon flaticon-business-and-finance"></span>{{ $product->serve }}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                    <div class="row">
-                        <center>
-                            <h3>No record found</h3>
-                        </center>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </section>
-    <!-- End Popular Recipes Section -->
-
-    <!-- Call To Action Section -->
-    <section class="call-to-action-section"
-             style="background-image:url({{ URL::asset('website/images/background/2.jpg') }})">
-        <div class="auto-container">
-            <div class="row clearfix">
-
-                <!-- Column -->
-                <div class="column col-lg-6 col-md-12 col-sm-12">
-                    <!-- Sec Title -->
-                    <div class="sec-title light">
-                        <div class="title">Pizza</div>
-                        <h2>Your Complete Christmas <br> Dinner Planning Guide</h2>
-                        <div class="text">Special occasions call for extraordinary food. Whether your gathering is big
-                            or small, casual or formal, here's everything you need to create a crowd-pleasing holiday
-                            feast
-                        </div>
-                    </div>
-                    <a href="" class="theme-btn btn-style-two"><span class="txt">Check Recipe</span></a>
-                </div>
-
-                <!-- Column -->
-                <div class="column col-lg-6 col-md-12 col-sm-12">
-                    <!-- Sec Title -->
-                    <div class="sec-title light">
-                        <div class="title">Breakfast</div>
-                        <h2>How to Meal Prep Breakfast Sandwiches for the <br> Week Ahead</h2>
-                        <div class="text">Special occasions call for extraordinary food. Whether your gathering is big
-                            or small, casual or formal, here's everything you need to create a crowd-pleasing holiday
-                            feast
-                        </div>
-                    </div>
-                    <a href="" class="theme-btn btn-style-two"><span class="txt">Check Recipe</span></a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Call To Action Section -->
-
-    <section class="entertaining-section p-0 pt-5">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-                <h2>Testimonials</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-md-8 col-center m-auto">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <!-- Carousel -->
-                        <div class="carousel-inner">
-                            <div class="item carousel-item active">
-                                <div class="img-box"><img src="{{ URL::asset('website/images/resource/r3.jpg') }}" alt=""></div>
-                                <p class="testimonial">These healthy vegetable recipes are so yummy!</p>
-                                <p class="overview"><b>Aadam Hussain</p>
-                            </div>
-                            <div class="item carousel-item">
-                                <div class="img-box"><img src="{{ URL::asset('website/images/resource/r3.jpg') }}" alt=""></div>
-                                <p class="testimonial">I never knew eating vegetables could be this tasty!</p>
-                                <p class="overview"><b>Sam Harris</p>
-                            </div>
-                            <div class="item carousel-item">
-                                <div class="img-box"><img src="{{ URL::asset('website/images/resource/r4.jpg') }}" alt=""></div>
-                                <p class="testimonial">I learn't a new recipie!</p>
-                                <p class="overview"><b>Chloe Wright</p>
-                            </div>
-                        </div>
-                        <!-- Carousel Controls -->
-                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-
-
-<!-- reveal a veggie of the week JS -->
-    <script>
-    document.getElementById("reveal-veggie-btn").addEventListener("click", function () {
-        const box = document.getElementById("veggie-of-week-box");
-
-        // Optional: smooth slide toggle
-        if (box.style.display === "none" || box.style.display === "") {
-            box.style.display = "block";
-            box.style.transition = "all 0.5s ease-in-out";
-            box.style.opacity = 1;
-        } else {
-            box.style.display = "none";
-        }
-    });
-</script>
-
 <style>
-    .banner-section {
-        position: relative;
-        margin-top: 0;
-        padding: 0;
+    @keyframes bounceScale {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
     }
+    .veggie-animation { animation: bounceScale 2s infinite ease-in-out; }
 
-    .banner-section .slide-item {
-        position: relative;
-        width: 100%;
-        height: 100vh; /* Makes the banner fill the full viewport height */
-        background-size: cover;
-        background-position: center center;
-    }
-
-    .banner-section .image-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .banner-section .container {
-        position: relative;
-        z-index: 2;
-        top: 50%;
-        transform: translateY(-50%);
+    .progress-bar {
+        background-color: #4CAF50; /* Green progress bar */
+        height: 20px;
+        border-radius: 10px;
         text-align: center;
+        color: white;
+    }
+    .progress-container {
+        background-color: #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 80%;
+        margin: 0 auto;
     }
 </style>
+
+<!-- Hero Section -->
+<section class="banner-section" style="background-image:url({{ URL::asset('website/images/resource/Veggie-superheros-togther.jpg') }}'); background-size: cover; background-position: center; height: 100vh;">
+    <div class="container text-center" style="padding-top: 20vh;">
+        <h1 class="text-white" style="font-size: 64px;">Join the Veggie Heroes!</h1>
+        <h4 class="text-white">Power up your health with fun games, recipes, and more!</h4>
+        <a href="#start-adventure" class="theme-btn btn-style-one mt-4">Start Your Adventure</a>
+    </div>
+</section>
+
+
+
+<!-- Veggie of the Week -->
+<section class="categories-section">
+    <div class="auto-container text-center">
+        <h2><b>Veggie of the Week</b></h2>
+        <p>Unlock this week’s hero veggie and its secret power!</p>
+        <button id="reveal-veggie-btn" class="theme-btn btn-style-one mt-3">Reveal Veggie</button>
+
+        <div id="veggie-of-week-box" class="veggie-of-week my-5" style="display: none;">
+            <h3 class="mb-3">This week's Veggie Hero: <br>{{ $fact->title }}</h3>
+            <img src="{{ asset($fact->image_path) }}" alt="{{ $fact->title }}" style="max-width: 300px;" class="mb-3 veggie-animation">
+            <p>{{ $fact->fact }}</p>
+        </div>
+    </div>
+</section>
+
+<!-- Veggie Power Level -->
+<section class="trending-section bg-light py-5">
+    <div class="auto-container text-center">
+        <h2>🌟 Your Veggie Power Level</h2>
+        
+        @php
+            $points = Auth::guard('websiteuser')->user()->points ?? 0;
+            $maxPoints = 100;
+            $progress = min(100, ($points / $maxPoints) * 100);
+        @endphp
+
+        <div class="progress-container my-3" style="background-color: #eee; border-radius: 10px; overflow: hidden; width: 80%; margin: 0 auto; height: 20px;">
+            <div id="progress-bar" style="background-color: #ffc107; height: 100%; line-height: 20px; text-align: center; color:white; width: {{ intval($progress) }}%;">
+                {{ intval($progress) }}%
+            </div>
+        </div>
+
+        <p>Eat veggies, complete missions, and level up!</p>
+    </div>
+</section>
+
+
+
+<!-- Mission of the Week -->
+<section class="trending-section py-5 bg-light" id="start-adventure">
+    <div class="auto-container">
+        <div class="row align-items-center">
+
+            <!-- Text Column -->
+            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                <div class="inner-column">
+                    <h2 class="mb-3">🚀 Mission of the Week: Build Your Super Salad!</h2>
+                    <p class="mb-4">Create a colorful salad with 3 or more veggies. Share it and earn your badge!</p>
+
+                    <div class="progress-container mb-3">
+                        <div class="progress-bar" style="width: 20%;">1 of 5 Missions Complete</div>
+                    </div>
+
+                    <a href="/user/Quiz" class="theme-btn btn-style-one mb-3 d-inline-block">Accept the Mission</a>
+
+                    <button id="complete-mission-btn" class="theme-btn btn-style-two mb-3 d-inline-block">I Did It!</button>
+
+                    <div id="mission-complete" style="display: none;">
+                        <p class="fact-text">🎉 You earned a badge!</p>
+                        <img src="{{ URL::asset('website/images/resource/veggie-mission-badge-1.jpg') }}" class="badge-img" alt="Mission Badge">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="col-lg-6 col-md-12">
+                <div class="inner-column text-center">
+                    <img src="{{ URL::asset('website/images/resource/super-salad.png') }}" alt="Super Salad Mission" class="img-fluid rounded" style="max-height: 400px; object-fit: cover;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="row mt-5 text-center">
+            <div class="col-md-12">
+                <h2>🏅 Badges Earned</h2>
+                <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+
+                    @forelse($badges as $badge)
+                        <div class="badge-item text-center">
+                            <img src="{{ asset('website/images/badges/' . $badge . '.jpg') }}" alt="{{ $badge }}" class="earned-badge">
+                            <p class="mt-2">{{ ucfirst(str_replace('_', ' ', $badge)) }}</p>
+                        </div>
+                    @empty
+                        <p>No badges earned yet. Start your veggie adventures to earn some!</p>
+                    @endforelse
+
+                </div>
+            </div>
+        </div>
+
+<!-- Fun Games & Activities -->
+<section class="categories-section">
+    <div class="auto-container text-center">
+        <h2>🎮 Fun Games & Activities</h2>
+        <p>Play, color, and quiz your way to veggie mastery!</p>
+        <div class="row justify-content-center mt-4">
+            <!-- Add your game/activity links -->
+            <div class="col-md-3">
+                <a href="/games" class="theme-btn btn-style-one">Play Games</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/activities" class="theme-btn btn-style-one">Coloring Pages</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/quizzes" class="theme-btn btn-style-one">Veggie Quiz</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fun Recipes -->
+<section class="popular-recipes-section">
+    <div class="auto-container text-center">
+        <h2>🍽️ Power-Up Recipes</h2>
+        <p>Cook fun, healthy meals with your favorite veggies!</p>
+        <a href="{{ route('recipes') }}" class="theme-btn btn-style-one mt-3">See Recipes</a>
+    </div>
+</section>
+
+<!-- Parent & Teacher Zone -->
+<section class="call-to-action-section text-center" style="background-color: #f9f9f9;">
+    <div class="auto-container">
+        <h2>👩‍🏫 Parent & Teacher Zone</h2>
+        <p>Helpful guides, resources, and tips to support young veggie heroes!</p>
+        <a href="/parents-teachers" class="theme-btn btn-style-two mt-3">Visit Grown-Up Zone</a>
+    </div>
+</section>
+
+
+<style>
+.progress-container {
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    height: 20px;
+}
+
+.progress-bar {
+    background-color: #ffc107; /* Start as yellow */
+    height: 100%;
+    line-height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    transition: width 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 0 5px #ffc107, 0 0 10px #ffc107; /* Glow effect */
+}
+
+.badge-img {
+    border-radius: 50%; /* Make it circular */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add soft shadow */
+    max-width: 150px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#mission-complete {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#mission-complete img {
+    border-radius: 50%; /* Make it a circle */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    max-width: 150px; /* Slightly bigger if you'd like */
+    margin-top: 10px;
+}
+
+</style>
+
+<script>
+let progress = {{ intval($progress) }};
+let hasRevealedVeggie = localStorage.getItem('lastRevealDate') === new Date().toISOString().split('T')[0];
+let missionCompleted = localStorage.getItem('missionCompleted') === 'true';
+
+function updateProgress(increase) {
+    progress = Math.min(100, progress + increase);
+    const progressBar = document.getElementById("progress-bar");
+    progressBar.style.width = progress + "%";
+    progressBar.innerText = progress + "%";
+
+    // Animate color & glow
+    if (progress < 50) {
+        progressBar.style.backgroundColor = '#ffc107'; // Yellow
+        progressBar.style.boxShadow = '0 0 5px #ffc107, 0 0 10px #ffc107';
+    } else if (progress < 80) {
+        progressBar.style.backgroundColor = '#ff9800'; // Orange
+        progressBar.style.boxShadow = '0 0 5px #ff9800, 0 0 15px #ff9800';
+    } else {
+        progressBar.style.backgroundColor = '#4CAF50'; // Green
+        progressBar.style.boxShadow = '0 0 5px #4CAF50, 0 0 20px #4CAF50';
+    }
+
+    // Save progress to backend
+    fetch('{{ url("/update-progress") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ points: progress })
+    }).then(response => response.json())
+      .then(data => {
+        if (data.success) {
+            console.log('Progress saved:', data.points + '%');
+        }
+    });
+}
+
+function awardBadge(badgeName) {
+    fetch('{{ url("/award-badge") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ badge_name: badgeName })
+    }).then(response => response.json())
+      .then(data => {
+        console.log('Badge response:', data);
+    });
+}
+
+
+// Reveal Veggie Logic (Once Per Day)
+document.getElementById("reveal-veggie-btn").addEventListener("click", function () {
+    const box = document.getElementById("veggie-of-week-box");
+    box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
+
+    if (!hasRevealedVeggie) {
+        updateProgress(20);
+        awardBadge('veggie_fact_finder');
+        localStorage.setItem('lastRevealDate', new Date().toISOString().split('T')[0]);
+        hasRevealedVeggie = true;
+    }
+});
+
+// Complete Mission Logic (Once Only)
+document.getElementById("complete-mission-btn").addEventListener("click", function () {
+    if (missionCompleted) return;
+
+    document.getElementById("mission-complete").style.display = "block";
+    updateProgress(10);
+    awardBadge('mission1');
+    localStorage.setItem('missionCompleted', 'true');
+    missionCompleted = true;
+});
+</script>
 
 
 @endsection

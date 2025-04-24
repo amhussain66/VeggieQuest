@@ -165,5 +165,8 @@ Route::get('/resources', [WebsiteController::class, 'resourcesPage'])->name('res
 // user tips route
 Route::post('/submit-tip', [WebsiteController::class, 'submitTip'])->name('submit.tip');
 Route::get('/healthy-tips', [WebsiteController::class, 'showHealthyTips'])->name('healthy.tips');
+// Progress and Badge Logic
+Route::post('/update-progress', [WebsiteController::class, 'updateProgress'])->middleware('auth:websiteuser');
+Route::post('/award-badge', [WebsiteController::class, 'awardBadge'])->middleware('auth:websiteuser');
 
 ?>

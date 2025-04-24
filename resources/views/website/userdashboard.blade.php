@@ -7,54 +7,107 @@
 @section('content')
 
     <!-- Page Title -->
-    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/10.jpg') }})">
+    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/user-dash1.png') }})">
         <div class="auto-container">
-            <h1>User Dashboard</h1>
+        <h1>{{ Auth::guard('websiteuser')->user()->name ?? 'User' }}'s Dashboard</h1>
+
+
         </div>
     </section>
     <!--End Page Title-->
 
 
     <!-- Popular Recipes Section -->
-    <section class="popular-recipes-section style-three">
+    <section class="popular-recipes-section style-three" style="background-color:rgb(199, 255, 198)";>
         <div class="auto-container">
             <!-- Sec Title -->
             <div class="sec-title">
                 <div class="clearfix">
                     <div class="text-center">
-                        <h2>User Dashboard</h2>
+                    <h2>{{ Auth::guard('websiteuser')->user()->name ?? 'User' }}'s Dashboard</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="outer-container">
 
-            <div class="row">
-                <div class="col-md-2 mb-4"></div>
+        <!-- Veggie Power Level on Dashboard -->
+            <div class="row mt-5 text-center mb-5">
+                <div class="col-md-12">
+                    <h2>🌟 Your Veggie Power Level</h2>
+
+                    @php
+                        $points = Auth::guard('websiteuser')->user()->points ?? 0;
+                        $maxPoints = 100;
+                        $progress = min(100, ($points / $maxPoints) * 100);
+                    @endphp
+
+                    <div class="progress-container my-3" style="width: 60%; margin: 0 auto;">
+                        <div class="progress-bar" style="
+                            width: {{ $progress }}%;
+                            background-color: #ffc107;
+                            height: 20px;
+                            line-height: 20px;
+                            border-radius: 10px;
+                            text-align: center;
+                            color: white;
+                            transition: width 0.5s ease;">
+                            {{ intval($progress) }}%
+                        </div>
+                    </div>
+
+                    <p>Keep playing, eating veggies, and completing missions to reach 100%!</p>
+                </div>
+            </div>
+
+            <div class="row mt-5 text-center mb-5">
+            <div class="col-md-12">
+                <h2>🏅 Badges Earned</h2>
+                <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+
+                    @forelse($badges as $badge)
+                        <div class="badge-item text-center">
+                            <img src="{{ asset('website/images/badges/' . $badge . '.jpg') }}" alt="{{ $badge }}" class="earned-badge">
+                            <p class="mt-2">{{ ucfirst(str_replace('_', ' ', $badge)) }}</p>
+                        </div>
+                    @empty
+                        <p>No badges earned yet. Start your veggie adventures to earn some!</p>
+                    @endforelse
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="outer-container">
+                    <div class="row justify-content-center">
                 <div class="col-md-4 mb-4">
                     <a href="{{ route('user.quizhistory') }}" style="color:white">
-                        <div class="card shadow" style="background-color: #182b29;border-radius: 3%;">
+                        <div class="card shadow text-center" style="background-color:rgb(151, 255, 245); border-radius: 3%;">
                             <div class="card-body">
-                                <h4 class="p-4">Total Quiz Attempts <i class="link-icon"
-                                                                       data-feather="arrow-down-circle"></i> <strong
-                                            style="letter-spacing: 5px"><b>({{ sizeof($quizes) }})</b></strong></h4>
+                                <h4 class="p-4">
+                                    Total Quiz Attempts <i class="link-icon" data-feather="arrow-down-circle"></i>
+                                    <strong style="letter-spacing: 5px"><b>({{ sizeof($quizes) }})</b></strong>
+                                </h4>
                             </div>
                         </div>
                     </a>
                 </div>
+
                 <div class="col-md-4 mb-4">
                     <a href="{{ route('user.wishlist') }}" style="color:white">
-                        <div class="card shadow" style="background-color: #182b29;border-radius: 3%;">
+                        <div class="card shadow text-center" style="background-color:rgb(151, 255, 245); border-radius: 3%;">
                             <div class="card-body">
-                                <h4 class="p-4">Total Recipes Bookmarked <i class="link-icon"
-                                                                            data-feather="arrow-down-circle"></i>
-                                    <strong style="letter-spacing: 5px"><b>({{ sizeof($products) }})</b></strong></h4>
+                                <h4 class="p-4">
+                                    Total Recipes Bookmarked <i class="link-icon" data-feather="arrow-down-circle"></i>
+                                    <strong style="letter-spacing: 5px"><b>({{ sizeof($products) }})</b></strong>
+                                </h4>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-2 mb-4"></div>
             </div>
+
 
             <br>
 

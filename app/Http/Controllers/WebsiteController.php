@@ -27,6 +27,7 @@ use App\Models\DailyPuzzle;
 use App\Models\UserPuzzleAnswer;
 use App\Models\UserTip; 
 
+
 class WebsiteController extends Controller
 {
 
@@ -43,8 +44,20 @@ class WebsiteController extends Controller
         // Get veggie fact for current week
         $fact = \DB::table('veggie_facts')->where('week_number', $currentWeek)->first();
     
-        return view('website.index', compact('vog', 'products', 'categories', 'blogs', 'fact'));
+        // Get badges for logged-in user
+        $user = Auth::guard('websiteuser')->user();
+        $badges = [];
+    
+        if ($user) {
+            $badges = \DB::table('user_badges')
+                ->where('user_id', $user->id)
+                ->pluck('badge_name')
+                ->toArray();
+        }
+    
+        return view('website.index', compact('vog', 'products', 'categories', 'blogs', 'fact', 'badges'));
     }
+    
 
     public function recipes(Request $request)
     {
@@ -595,18 +608,28 @@ class WebsiteController extends Controller
 
     public function userdashboard()
     {
-        $quizes = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->get();
-        $products = wishlist::where('userid', Auth::guard('websiteuser')->user()->id)->get();
-
-
+        $user = Auth::guard('websiteuser')->user();
+        $quizes = QuizAnswers::where('userid', $user->id)->get();
+        $products = wishlist::where('userid', $user->id)->get();
+    
         $attemptsPerDay = QuizAnswers::selectRaw('DATE(created_at) as label, COUNT(id) as y')
+            ->where('userid', $user->id)
             ->groupBy('label')
             ->orderBy('label')
             ->get();
-
+    
         $chartDataJson = $attemptsPerDay->toJson();
-        return view("website.userdashboard", compact('quizes','products','chartDataJson'));
+    
+        // ✅ Fetch badges
+        $badges = DB::table('user_badges')
+            ->where('user_id', $user->id)
+            ->pluck('badge_name')
+            ->toArray();
+    
+        // ✅ Pass badges to the view
+        return view("website.userdashboard", compact('quizes','products','chartDataJson', 'badges'));
     }
+    
 
 
 public function weeklyVeggieFact()
@@ -634,13 +657,52 @@ public function submitTip(Request $request)
     return back()->with('success', 'Thank you for your tip!');
 }
 
+public function updateProgress(Request $request)
+{
+    $user = Auth::guard('websiteuser')->user();
 
+    if ($user) {
+        $user->points = min(100, intval($request->points));
+        $user->save();
+        return response()->json(['success' => true, 'points' => $user->points]);
+    }
 
-// public function showHealthyTips()
-// {
-//     $tips = UserTip::orderBy('created_at', 'desc')->get();
-//     return view('website.healthy-tips', compact('tips'));
-// }
+    return response()->json(['success' => false], 401);
+}
+
+public function checkUser()
+{
+    $user = Auth::guard('websiteuser')->user();
+    return $user ? "Logged in as user ID: " . $user->id : "Not logged in";
+}
+
+public function awardBadge(Request $request)
+{
+    $user = Auth::guard('websiteuser')->user();
+    $badgeName = $request->badge_name;
+
+    if (!$user || !$badgeName) {
+        return response()->json(['success' => false, 'message' => 'Invalid request.'], 400);
+    }
+
+    $alreadyHasBadge = DB::table('user_badges')
+        ->where('user_id', $user->id)
+        ->where('badge_name', $badgeName)
+        ->exists();
+
+    if (!$alreadyHasBadge) {
+        DB::table('user_badges')->insert([
+            'user_id' => $user->id,
+            'badge_name' => $badgeName,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return response()->json(['success' => true, 'badge' => $badgeName]);
+    }
+
+    return response()->json(['success' => false, 'message' => 'Badge already exists']);
+}
+
 
 
 }
