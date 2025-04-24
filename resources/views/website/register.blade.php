@@ -14,24 +14,29 @@
     </section>
     <!--End Page Title-->
 
-    <!-- Login Container -->
-    <div class="login-container margin">
-        <div class="top-layer" style="background-image:url({{ URL::asset('website/images/background/20.png') }})"></div>
-        <div class="bottom-layer" style="background-image:url({{ URL::asset('website/images/background/21.png') }})"></div>
-        <div class="auto-container">
-            <div class="inner-container">
+<!-- Login Container -->
+<div class="login-container margin py-5" style="background: #f9fbe7;">
+    <div class="auto-container">
+        <div class="inner-container">
 
-                <div class="image">
-                    <img src="{{ URL::asset('website/images/resource/login.jpg') }}" alt="" />
+            <!-- Unified Card for Image and Form -->
+            <div class="card shadow-lg rounded-lg overflow-hidden">
+                <div class="row no-gutters align-items-stretch">
 
-                    <!-- Login Form -->
-                    <div class="login-form">
-                        <div class="pattern-layer text-center" style="background-image:url({{ URL::asset('website/images/background/18.png') }})">
-                            <h2 class="mt-3"><b>Create your account</b></h2>
+                    <!-- Veggie Image Fills Left Column -->
+                    <div class="col-md-6 p-0">
+                        <img src="{{ URL::asset('website/images/resource/veggie-start.png') }}" 
+                             alt="Veggie Start" 
+                             class="img-fluid h-100 w-100" 
+                             style="object-fit: cover; border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                    </div>
+
+                    <!-- Registration Form -->
+                    <div class="col-md-6 bg-white p-4 d-flex flex-column justify-content-center">
+                        <div class="text-center mb-3">
+                            <h2><b>Create your hero account!</b></h2>
                         </div>
 
-                        <!-- Register Form -->
-                        <br>
                         @include('website.includes.laravel_errors')
                         <form class="contact-form style2 MyForm" method="post" action="{{ route('save_register_user') }}" enctype="multipart/form-data">
                             @csrf
@@ -48,25 +53,11 @@
                                 <input type="text" name="phone" placeholder="Phone" required value="{{ old('phone') }}">
                             </div>
 
-{{--                            <div class="form-group">--}}
-{{--                                <input type="text" name="address" placeholder="Address" required value="{{ old('address') }}">--}}
-{{--                            </div>--}}
-
-{{--                            <div class="form-group">--}}
-{{--                                <input type="password" name="password" placeholder="Password" minlength="8" required value="{{ old('password') }}" >--}}
-{{--                            </div>--}}
-
-{{--                            <div class="form-group">--}}
-{{--                                <input type="password" name="password_confirmation" minlength="8" placeholder="Confirm Password" required value="{{ old('password_confirmation') }}">--}}
-{{--                            </div>--}}
-
-                            <!-- Password Input -->
                             <div class="form-group">
                                 <input type="password" id="password" name="password" placeholder="Password" minlength="8" required value="{{ old('password') }}">
                                 <small id="passwordError" style="color: red; display: none;">Password must be at least 8 characters, contain 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.</small>
                             </div>
 
-                            <!-- Confirm Password Input -->
                             <div class="form-group">
                                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" minlength="8" required value="{{ old('password_confirmation') }}">
                                 <small id="confirmPasswordError" style="color: red; display: none;">Passwords do not match.</small>
@@ -76,22 +67,25 @@
                                 <div class="check-box"><input type="checkbox" required id="account-option"> &ensp; <label for="account-option">I have read and accept the Terms and Privacy Policy</label></div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <button class="theme-btn btn-style-one MyButton" type="submit"><span class="txt">Register</span></button>
-                                Already have an account? <a href="{{ route('login') }}">Log In</a>
+                                <br>Already have an account? <a href="{{ route('login') }}">Log In</a>
                             </div>
 
                         </form>
-
                     </div>
-                    <!-- End Register Form -->
 
                 </div>
-
             </div>
+            <!-- End Unified Card -->
+
         </div>
     </div>
-    <!-- End Register Container -->
+</div>
+<!-- End Register Container -->
+
+
+
 
 @endsection
 @section('script')

@@ -39,6 +39,24 @@
     </div>
 </section>
 
+<!-- 🥦 Welcome Hero Section -->
+<section class="veggie-hero-intro py-5" style="background: linear-gradient(135deg, #f1f8e9 0%, #c8e6c9 100%); border-radius: 15px; margin-top: 30px;">
+    <div class="container text-center">
+        <h2 style="font-size: 2.5rem; font-weight: bold; color: #388e3c;">🌟 Join the Veggie Heroes! 🌟</h2>
+        <p class="lead mt-3" style="font-size: 1.2rem; color: #4e342e; max-width: 800px; margin: 0 auto;">
+            Embark on your <strong>Veggie Quest</strong> today and become a true Veggie Hero! 🥕🥦🌽 Complete exciting missions, earn shiny badges, and collect your favorite veggie characters. 🌟 Power up by answering quizzes, solving puzzles, and unlocking new challenges every day!
+        </p>
+        <p class="mt-3" style="font-size: 1.1rem; color: #4e342e;">
+            🌱 <strong>Grow your Veggie Power</strong> 🌟 <strong>Earn Points</strong> 🏅 <strong>Unlock Badges</strong> 🎮 <strong>Collect Veggie Heroes</strong> 🥇
+        </p>
+
+        <a href="{{ url('/Register') }}" 
+           class="btn btn-lg mt-4" 
+           style="background-color: #8bc34a; color: white; padding: 12px 30px; font-size: 18px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            🚀 Start Your Veggie Adventure!
+        </a>
+    </div>
+</section>
 
 
 <!-- Veggie of the Week -->

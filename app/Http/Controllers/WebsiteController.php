@@ -248,32 +248,31 @@ class WebsiteController extends Controller
         $totalQuestion = 10;
         $quizCompleted = $totalAnswers >= $totalQuestion;
     
+        // Always load puzzles, regardless of quiz completion
+        $answeredPuzzleIds = UserPuzzleAnswer::where('userid', $userId)
+            ->whereDate('created_at', $today)
+            ->pluck('puzzleid')
+            ->toArray();
+    
+        $puzzles = DailyPuzzle::whereNotIn('id', $answeredPuzzleIds)
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+    
         if ($quizCompleted) {
             $correctCount = count($answeredCorrectly);
             return view('website.quiz', compact(
-                'quizCompleted', 'correctCount', 'totalAnswers', 'totalQuestion', 'quizid'
+                'quizCompleted', 'correctCount', 'totalAnswers', 'totalQuestion', 'quizid', 'puzzles', 'answeredPuzzleIds'
             ));
         }
     
         $question = QuizQuestions::whereNotIn('id', $answeredCorrectly)->inRandomOrder()->first();
     
-        // Get IDs of puzzles the user has answered 
-        $answeredPuzzleIds = UserPuzzleAnswer::where('userid', $userId)
-        ->whereDate('created_at', $today)
-        ->pluck('puzzleid')
-        ->toArray();
-
-        // Get up to 5 puzzles the user has NOT answered yet today
-        $puzzles = DailyPuzzle::whereNotIn('id', $answeredPuzzleIds)
-        ->inRandomOrder()
-        ->take(5)
-        ->get();
-    
-    
         return view('website.quiz', compact(
             'request', 'question', 'quizid', 'totalQuestion', 'totalAnswers', 'quizCompleted', 'puzzles', 'answeredPuzzleIds'
         ));
     }
+    
     
     public function submitPuzzle(Request $request)
 {
@@ -305,61 +304,83 @@ class WebsiteController extends Controller
 }
     
 
-    public function savequiz(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'questionid' => 'required',
-            'quizid' => 'required',
-            'userid' => 'required',
-            'answer' => 'required'
-        ]);
-    
-        if ($validator->fails()) {
-            return back()->withInput()->with('error', 'All fields required !');
-        }
-    
-        $question = QuizQuestions::findOrFail($request->questionid);
-        $correctAnswer = $question->correctanswer->option ?? null;
-    
-        $data['questionid'] = $request->questionid;
-        $data['quizid'] = $request->quizid;
-        $data['userid'] = $request->userid;
-        $data['answer'] = $request->answer;
-        QuizAnswers::create($data);
-    
-        // Flash result for feedback
-        $result = ($request->answer == $correctAnswer) ? 'correct' : 'incorrect';
-        session()->flash('quiz_result', $result);
-    
-        $totalAnswers = QuizAnswers::where('userid', Auth::guard('websiteuser')->user()->id)
-            ->where('quizid', $request->quizid)
-            ->pluck('questionid')
-            ->count();
-    
-        $totalQuestion = $request->totalQuestion;
-    
-        // ✅ When quiz is complete, evaluate result
-        if ($totalAnswers == $totalQuestion) {
-            $allAnswers = QuizAnswers::where('userid', Auth::guard('websiteuser')->user()->id)
-                ->where('quizid', $request->quizid)
-                ->get();
-    
-            $correctCount = 0;
-            foreach ($allAnswers as $answer) {
-                $question = QuizQuestions::with('correctanswer')->find($answer->questionid);
-                if ($question && $question->correctanswer && $question->correctanswer->option === $answer->answer) {
-                    $correctCount++;
-                }
-            }
-    
-            return redirect()->route('user.quiz.results', [
-                'correct' => $correctCount,
-                'total' => $totalQuestion
-            ]);
-        } else {
-            return redirect()->route('user.quiz', ['quizid' => $request->quizid]);
-        }
+public function savequiz(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'questionid' => 'required',
+        'quizid' => 'required',
+        'userid' => 'required',
+        'answer' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withInput()->with('error', 'All fields required!');
     }
+
+    $question = QuizQuestions::findOrFail($request->questionid);
+    $correctAnswer = $question->correctanswer->option ?? null;
+
+    $data['questionid'] = $request->questionid;
+    $data['quizid'] = $request->quizid;
+    $data['userid'] = $request->userid;
+    $data['answer'] = $request->answer;
+    QuizAnswers::create($data);
+
+    $result = ($request->answer == $correctAnswer) ? 'correct' : 'incorrect';
+    session()->flash('quiz_result', $result);
+
+    $user = Auth::guard('websiteuser')->user();
+
+    $totalAnswers = QuizAnswers::where('userid', $user->id)
+        ->where('quizid', $request->quizid)
+        ->count();
+
+    $totalQuestion = $request->totalQuestion;
+
+    // ✅ Quiz Completed Logic
+    if ($totalAnswers == $totalQuestion) {
+        // Award first quiz badge if not already awarded
+        $badgeName = 'first-quiz-badge';
+        $alreadyHasBadge = DB::table('user_badges')
+            ->where('user_id', $user->id)
+            ->where('badge_name', $badgeName)
+            ->exists();
+
+        if (!$alreadyHasBadge) {
+            DB::table('user_badges')->insert([
+                'user_id' => $user->id,
+                'badge_name' => $badgeName,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        // Increment Veggie Power Progress by 20%
+        $user->points = min(100, $user->points + 20);
+        $user->save();
+
+        // Evaluate correct answers
+        $allAnswers = QuizAnswers::where('userid', $user->id)
+            ->where('quizid', $request->quizid)
+            ->get();
+
+        $correctCount = 0;
+        foreach ($allAnswers as $answer) {
+            $question = QuizQuestions::with('correctanswer')->find($answer->questionid);
+            if ($question && $question->correctanswer && $question->correctanswer->option === $answer->answer) {
+                $correctCount++;
+            }
+        }
+
+        return redirect()->route('user.quiz.results', [
+            'correct' => $correctCount,
+            'total' => $totalQuestion
+        ]);
+    } else {
+        return redirect()->route('user.quiz', ['quizid' => $request->quizid]);
+    }
+}
+
     
     public function quizResults(Request $request)
 {
