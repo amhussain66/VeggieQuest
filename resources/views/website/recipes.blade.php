@@ -6,6 +6,7 @@
 
 @section('content')
 
+
     <!-- Page Title -->
     <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/recipe-page-bg.png') }})">
         <div class="auto-container">
@@ -63,17 +64,44 @@
     <!-- Popular Recipes Section -->
     <section class="popular-recipes-section style-three">
         <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <div class="clearfix">
-                    <div class="text-center">
-                        <h2>All Recipes List</h2>
-                        <div class="text">
-                            "Featuring easy, kid-friendly vegetable recipes like colorful veggie pasta, crispy baked
-                            snacks, fun-shaped salads, and healthy soups. These recipes make veggies exciting for the
-                            whole family with simple, tasty, and nutritious ingredients!"
+
+                <!-- Sec Title -->
+                <div class="sec-title">
+                    <div class="clearfix">
+                        <div class="text-center">
+                            <h2>All Recipes List</h2>
+                            <div class="text mb-3" style="margin-bottom: 20px !important;">
+                                ❤️ Heart a recipe to earn a badge! 
+                                <br>Why not try out some of these recipes to taste your newly discovered veggie?
+                            </div>
                         </div>
                     </div>
+                </div>
+
+
+                    <div class="row justify-content-center mt-4">
+                <!-- 📊 Difficulty Legend -->
+                <div class="col-lg-8 text-center mb-5">
+                    <h5 class="fw-bold text-dark mb-4">👩‍🍳 Recipe Difficulty Guide</h5>
+                    <div class="d-flex justify-content-center gap-5 flex-wrap">
+                    <div class="text-center">
+                        <img src="{{ asset('website/images/icons/difficulty-1.png') }}" alt="Easy" style="max-width: 80px; height: auto; margin-bottom: 10px;">
+                        <div><strong>Easy Peasy!</strong><br><small class="text-muted">You got this</small></div>
+                    </div>
+                    <div class="text-center">
+                        <img src="{{ asset('website/images/icons/difficulty-2.png') }}" alt="Medium" style="max-width: 80px; height: auto; margin-bottom: 10px;">
+                        <div><strong>Little Helper Needed</strong><br><small class="text-muted">Some grown-up help</small></div>
+                    </div>
+                    <div class="text-center">
+                        <img src="{{ asset('website/images/icons/difficulty-3.png') }}" alt="Hard" style="max-width: 80px; height: auto; margin-bottom: 10px;">
+                        <div><strong>Grown-Up Supervision</strong><br><small class="text-muted">Grown-up needed</small></div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+
                 </div>
             </div>
         </div>
@@ -211,4 +239,13 @@
     </section>
     <!-- End Popular Recipes Section -->
 
+ <style>
+    .default-form {
+        margin-bottom: 20px; /* Reduced from default */
+    }
+    .sec-title .text {
+        margin-bottom: 20px !important; /* Reduce space below description */
+    }
+</style>
+ 
 @endsection

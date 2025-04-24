@@ -18,7 +18,7 @@
 
 
     <!-- Popular Recipes Section -->
-    <section class="popular-recipes-section style-three" style="background-color:rgb(199, 255, 198)";>
+    <section class="popular-recipes-section style-three" style="background-color:rgb(233, 255, 233)";>
         <div class="auto-container">
             <!-- Sec Title -->
             <div class="sec-title">

@@ -28,6 +28,7 @@ use App\Models\UserPuzzleAnswer;
 use App\Models\UserTip; 
 
 
+
 class WebsiteController extends Controller
 {
 
@@ -54,8 +55,12 @@ class WebsiteController extends Controller
                 ->pluck('badge_name')
                 ->toArray();
         }
-    
-        return view('website.index', compact('vog', 'products', 'categories', 'blogs', 'fact', 'badges'));
+            // Fetch featured recipes from Products model
+            $featuredRecipes = Products::inRandomOrder()->take(5)->get();
+
+
+            return view('website.index', compact('vog', 'products', 'categories', 'blogs', 'featuredRecipes','fact', 'badges'));
+
     }
     
 
@@ -304,7 +309,7 @@ class WebsiteController extends Controller
 }
     
 
-public function savequiz(Request $request)
+   public function savequiz(Request $request)
 {
     $validator = Validator::make($request->all(), [
         'questionid' => 'required',
