@@ -263,51 +263,68 @@ class WebsiteController extends Controller
             ->inRandomOrder()
             ->take(5)
             ->get();
-    
+        
+        // If the quiz is completed, calculate the number of correct answers and return the quiz view with results.  
         if ($quizCompleted) {
             $correctCount = count($answeredCorrectly);
             return view('website.quiz', compact(
                 'quizCompleted', 'correctCount', 'totalAnswers', 'totalQuestion', 'quizid', 'puzzles', 'answeredPuzzleIds'
             ));
         }
-    
+        // Select a random unanswered quiz question from the database.
         $question = QuizQuestions::whereNotIn('id', $answeredCorrectly)->inRandomOrder()->first();
     
         return view('website.quiz', compact(
             'request', 'question', 'quizid', 'totalQuestion', 'totalAnswers', 'quizCompleted', 'puzzles', 'answeredPuzzleIds'
         ));
     }
+
+    
     
     
     public function submitPuzzle(Request $request)
-{
-    $request->validate([
-        'puzzleid' => 'required|exists:daily_puzzles,id',
-        'user_answer' => 'required|string'
-    ]);
-
-    $userId = Auth::guard('websiteuser')->id();
-    $puzzleId = $request->puzzleid;
-
-    // Prevent duplicate answers
-    $alreadyAnswered = UserPuzzleAnswer::where('userid', $userId)
-        ->where('puzzleid', $puzzleId)
-        ->exists();
-
-    if ($alreadyAnswered) {
-        return back()->with('error', 'You already answered this puzzle!');
-    }
-
-    UserPuzzleAnswer::create([
-        'userid' => $userId,
-        'puzzleid' => $puzzleId,
-        'answer' => $request->user_answer,
-        'created_at' => now()
-    ]);
-
-    return back()->with('success', 'Answer submitted! 🧠');
-}
+    {
+        $request->validate([
+            'puzzleid' => 'required|exists:daily_puzzles,id',
+            'user_answer' => 'required|string'
+        ]);
     
+        $userId = Auth::guard('websiteuser')->id();
+        $puzzleId = $request->puzzleid;
+    
+        // Prevent duplicate answers
+        $alreadyAnswered = UserPuzzleAnswer::where('userid', $userId)
+            ->where('puzzleid', $puzzleId)
+            ->exists();
+    
+        if ($alreadyAnswered) {
+            return back()->with('error', 'You already answered this puzzle!');
+        }
+    
+        // Get correct answer from daily_puzzles table
+        $puzzle = DailyPuzzle::findOrFail($puzzleId);
+        $correctAnswer = strtolower(trim($puzzle->answer));
+        $userAnswer = strtolower(trim($request->user_answer));
+    
+        // Check if correct
+        $isCorrect = $correctAnswer === $userAnswer ? 1 : 0;
+    
+        // Save answer with correctness
+        UserPuzzleAnswer::create([
+            'userid' => $userId,
+            'puzzleid' => $puzzleId,
+            'answer' => $userAnswer,
+            'correct' => $isCorrect,
+            'created_at' => now()
+        ]);
+    
+        // Feedback message
+        $message = $isCorrect ? '🎉 Correct! Well done!' : '❌ Oops! The correct answer was: ' . ucfirst($correctAnswer);
+    
+        return back()->with('success', $message);
+    }
+    
+
 
    public function savequiz(Request $request)
 {
@@ -342,7 +359,7 @@ class WebsiteController extends Controller
 
     $totalQuestion = $request->totalQuestion;
 
-    // ✅ Quiz Completed Logic
+    // Quiz Completed Logic
     if ($totalAnswers == $totalQuestion) {
         // Award first quiz badge if not already awarded
         $badgeName = 'first-quiz-badge';
