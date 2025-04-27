@@ -161,7 +161,7 @@
                                     <div class="difficulty-badge text-center my-3">
                                         <img src="{{ asset('website/images/icons/' . $badgeIcon) }}" alt="{{ $badgeLabel }}" style="width: 60px; height: 60px;">
                                         <div class="badge mt-2"
-                                            style="font-size: 14px; background-color: #ffeaa7; padding: 6px 12px; border-radius: 12px; display: inline-block;">
+                                            style="font-size: 14px; background-color:rgb(239, 195, 52); padding: 6px 12px; border-radius: 12px; display: inline-block;">
                                             {{ $badgeLabel }}
                                         </div>
                                     </div>

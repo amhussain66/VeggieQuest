@@ -44,22 +44,46 @@
 
 <!-- 🥦 Welcome Hero Section -->
 <section class="veggie-hero-intro py-5" style="background: linear-gradient(135deg, #f1f8e9 0%, #c8e6c9 100%); border-radius: 15px; margin-top: 30px;">
-    <div class="container text-center">
-        <h2 style="font-size: 2.5rem; font-weight: bold; color: #388e3c;">🌟 Join the Veggie Heroes! 🌟</h2>
-        <p class="lead mt-3" style="font-size: 1.2rem; color: #4e342e; max-width: 800px; margin: 0 auto;">
-            Embark on your <strong>Veggie Quest</strong> today and become a true Veggie Hero! 🥕🥦🌽 Complete exciting missions, earn shiny badges, and collect your favorite veggie characters. 🌟 Power up by answering quizzes, solving puzzles, and unlocking new challenges every day!
-        </p>
-        <p class="mt-3" style="font-size: 1.1rem; color: #4e342e;">
-            🌱 <strong>Grow your Veggie Power</strong> 🌟 <strong>Earn Points</strong> 🏅 <strong>Unlock Badges</strong> 🎮 <strong>Collect Veggie Heroes</strong> 🥇
-        </p>
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Image Column -->
+            <div class="col-md-5 text-center mb-4 mb-md-0">
+                <img src="{{ URL::asset('website/images/resource/veggie-start.png') }}" alt="Veggie Start" class="img-fluid rounded glow-effect" style="max-width: 100%; height: auto;">
+            </div>
 
-        <a href="{{ url('/Register') }}" 
-           class="btn btn-lg mt-4" 
-           style="background-color: #8bc34a; color: white; padding: 12px 30px; font-size: 18px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-            🚀 Let's get started!
-        </a>
+            <!-- Text Column -->
+            <div class="col-md-7 text-center text-md-left">
+                <h2 style="font-size: 2.5rem; font-weight: bold; color: #388e3c;">🌟 Join the Veggie Heroes! 🌟</h2>
+                <p class="lead mt-3" style="font-size: 1.2rem; color: #4e342e;">
+                    Embark on your <strong>Veggie Quest</strong> today and become a true Veggie Hero! 🥕🥦🌽 Complete exciting missions, earn shiny badges, and collect your favorite veggie characters. 🌟 Power up by answering quizzes, solving puzzles, and unlocking new challenges every day!
+                </p>
+                <p class="mt-3" style="font-size: 1.1rem; color: #4e342e;">
+                    🌱 <strong>Grow your Veggie Power</strong> 🌟 <strong>Earn Points</strong> 🏅 <strong>Unlock Badges</strong> 🎮 <strong>Collect Veggie Heroes</strong> 🥇
+                </p>
+
+                <a href="{{ url('/Register') }}" 
+                   class="btn btn-lg mt-4" 
+                   style="background-color: #8bc34a; color: white; padding: 12px 30px; font-size: 18px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                    🚀 Let's get started!
+                </a>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- Add this CSS for the glow effect -->
+<style>
+    .glow-effect {
+        box-shadow: 0 0 20px rgba(56, 142, 60, 0.7), 0 0 40px rgba(56, 142, 60, 0.5);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .glow-effect:hover {
+        box-shadow: 0 0 25px rgba(56, 142, 60, 1), 0 0 50px rgba(56, 142, 60, 0.8);
+    }
+</style>
+
+
 
 <!-- Veggie of the Week -->
 <section class="categories-section py-5" style="background: linear-gradient(135deg, #e1f5fe 0%,rgb(252, 225, 179) 100%); border-radius: 15px; margin-top: 30px;">
@@ -104,20 +128,17 @@
             <!-- Text Column -->
             <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
                 <div class="inner-column text-center">
-                    <h2 class="mb-3">🚀 Mission of the Week: Build Your Super Salad!</h2>
-                    <p class="mb-4">Create a colorful salad with 3 or more veggies. Share it and earn your badge!</p>
-<!-- 
-                    <div class="progress-container mb-3">
-                        <div class="progress-bar" style="width: 20%;">1 of 5 Missions Complete</div>
-                    </div> -->
+                    <h2 class="mb-3">🚀 Mission of the Week: Try a veggie recipe!</h2>
+                    <p class="mb-4">Create a fun and colorful meal with 1 or more veggies. Share it and earn your badge!</p>
 
                     <!-- Centered Accept Mission Button -->
                     <div class="mb-4">
-                        <a href="/user/Quiz" class="theme-btn btn-style-one mb-3">Accept the Mission</a>
+                        <a href="{{ route('recipes') }}" class="theme-btn btn-style-one mb-3">Accept the Mission</a>
                     </div>
 
                     <!-- Caption and I Did It Button -->
-                    <p class="mb-2" style="font-weight: bold; color: #4e342e;">Did you make the salad?</p>
+                    <p class="mb-2" style="font-weight: bold; color: #4e342e;">Explore our recipe page and try one out!
+                        <br> Come back and press the button below when you have done it! </p>
                     <button id="complete-mission-btn" class="theme-btn btn-style-two mb-3">I Did It!</button>
 
                     <!-- Mission Complete Feedback -->
@@ -138,6 +159,8 @@
         </div>
     </div>
 </section>
+
+
 
 
 <div class="row mt-5 text-center">
