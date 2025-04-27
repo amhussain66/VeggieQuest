@@ -7,7 +7,7 @@
 @section('content')
 
     <!-- Page Title -->
-    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/14.jpg') }})">
+    <section class="page-title" style="background-image:url({{ URL::asset('website/images/background/blogs-bg.png') }})">
         <div class="auto-container">
             <h1>Profile</h1>
         </div>
