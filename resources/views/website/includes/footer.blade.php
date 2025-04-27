@@ -13,7 +13,8 @@ $system = App\Models\Setting::first();
                                 alt="{{ $system->name }}"></a>
                 </div>
                 <p>
-                    {{ $system->footer_description }}
+                "Veggie recipes are a fun and tasty way to enjoy your favourite vegetables! 🥦 From crunchy salads to yummy soups and colourful stir-fries, there's something for every young hero to try. 
+                <br>🦸‍♀️ Eating veggies helps you grow strong, stay healthy, and feel great. Let's make every meal an adventure with delicious and powerful veggie dishes!⭐"
                 </p>
             </div>
             <div class="col-md-4">
@@ -35,7 +36,7 @@ $system = App\Models\Setting::first();
                             <li><a style="color: white" href="{{ route('user.quiz') }}}">Fun Challenges</a></li>
                             <li><a style="color: white" href="{{ route('resources') }}">Parents & Teachers</a></li>
 {{--                            <li><a style="color: white" href="{{ route('login') }}">login</a></li>--}}
-                            <li class="recipe mt-3"><a href="{{ route('login') }}" style="background-color: #182b29;color: antiquewhite;padding: 10px;letter-spacing: 2px"><span class="icon fa fa-user"></span> Login</a></li>
+                            <li class="recipe mt-3"><a href="{{ route('login') }}" style="background-color:rgb(43, 116, 21);color: antiquewhite;padding: 10px;letter-spacing: 2px"><span class="icon fa fa-user"></span> Login</a></li>
                         @endif
                     </ul>
                 </div>

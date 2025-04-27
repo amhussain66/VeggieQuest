@@ -22,7 +22,7 @@
             <div class="inner-container">
 
                 <div class="image">
-                    <img src="{{ URL::asset('website/images/resource/login.jpg') }}" alt="" />
+                    <img src="{{ URL::asset('website/images/background/blogs-bg.png') }}" alt="" />
 
                     <!-- Login Form -->
                     <div class="login-form">
