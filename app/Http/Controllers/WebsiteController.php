@@ -282,34 +282,43 @@ class WebsiteController extends Controller
     
     
     
-    public function submitPuzzle(Request $request)
+    public function submitPuzzle(Request $request) // Function to handle puzzle answer submission
     {
+        // Validate incoming request data: puzzleid must exist, user_answer must be a string
         $request->validate([
             'puzzleid' => 'required|exists:daily_puzzles,id',
             'user_answer' => 'required|string'
         ]);
     
+        // Get the logged-in user's ID
         $userId = Auth::guard('websiteuser')->id();
+    
+        // Get the puzzle ID from the submitted form
         $puzzleId = $request->puzzleid;
     
-        // Prevent duplicate answers
+        // Check if this user has already answered this puzzle before
         $alreadyAnswered = UserPuzzleAnswer::where('userid', $userId)
             ->where('puzzleid', $puzzleId)
             ->exists();
     
+        // If they have, show an error and stop them from answering again
         if ($alreadyAnswered) {
             return back()->with('error', 'You already answered this puzzle!');
         }
     
-        // Get correct answer from daily_puzzles table
+        // Retrieve the puzzle from the database using the puzzle ID
         $puzzle = DailyPuzzle::findOrFail($puzzleId);
+    
+        // Get the correct answer from the puzzle and clean it (lowercase, no spaces)
         $correctAnswer = strtolower(trim($puzzle->answer));
+    
+        // Get the user's answer and clean it the same way
         $userAnswer = strtolower(trim($request->user_answer));
     
-        // Check if correct
+        // Check if the user's answer is correct (1 for correct, 0 for incorrect)
         $isCorrect = $correctAnswer === $userAnswer ? 1 : 0;
     
-        // Save answer with correctness
+        // Save the user's answer into the database, including if it was correct or not
         UserPuzzleAnswer::create([
             'userid' => $userId,
             'puzzleid' => $puzzleId,
@@ -318,9 +327,10 @@ class WebsiteController extends Controller
             'created_at' => now()
         ]);
     
-        // Feedback message
+        // Create a message based on whether they were correct or not
         $message = $isCorrect ? '🎉 Correct! Well done!' : '❌ Oops! The correct answer was: ' . ucfirst($correctAnswer);
     
+        // Redirect back to the previous page with a success message
         return back()->with('success', $message);
     }
     
@@ -648,31 +658,30 @@ class WebsiteController extends Controller
         $quizes = QuizAnswers::where('userid',Auth::guard('websiteuser')->user()->id)->get();
         return view("website.quizhistory", compact('quizes'));
     }
+    
 
     public function userdashboard()
-    {
-        $user = Auth::guard('websiteuser')->user();
-        $quizes = QuizAnswers::where('userid', $user->id)->get();
-        $products = wishlist::where('userid', $user->id)->get();
-    
-        $attemptsPerDay = QuizAnswers::selectRaw('DATE(created_at) as label, COUNT(id) as y')
-            ->where('userid', $user->id)
-            ->groupBy('label')
-            ->orderBy('label')
-            ->get();
-    
-        $chartDataJson = $attemptsPerDay->toJson();
-    
-        // ✅ Fetch badges
-        $badges = DB::table('user_badges')
-            ->where('user_id', $user->id)
-            ->pluck('badge_name')
-            ->toArray();
-    
-        // ✅ Pass badges to the view
-        return view("website.userdashboard", compact('quizes','products','chartDataJson', 'badges'));
-    }
-    
+{
+    $user = Auth::guard('websiteuser')->user();
+    $quizes = QuizAnswers::where('userid', $user->id)->get();
+    $products = wishlist::where('userid', $user->id)->get();
+
+    $attemptsPerDay = QuizAnswers::selectRaw('DATE(created_at) as label, COUNT(id) as y')
+        ->where('userid', $user->id)
+        ->groupBy('label')
+        ->orderBy('label')
+        ->get();
+
+    $chartDataJson = $attemptsPerDay->toJson();
+
+    $badges = DB::table('user_badges')
+        ->where('user_id', $user->id)
+        ->pluck('badge_name')
+        ->toArray();
+
+    return view("website.userdashboard", compact('quizes', 'products', 'chartDataJson', 'badges', 'user'));
+}
+
 
 
 public function weeklyVeggieFact()

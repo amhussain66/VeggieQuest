@@ -6725,3 +6725,14 @@ section {
 	background-color: #f5f5dc; 	
 } */
 
+.points-display {
+    background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+    border-radius: 15px;
+    color: #0277bd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.earned-badge {
+    max-width: 80px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

@@ -59,11 +59,20 @@
                 </div>
             </div>
 
+        
             <div class="row mt-5 text-center mb-5">
-            <div class="col-md-12">
+            <!-- Points Display Column -->
+            <div class="col-md-6">
+                <div class="points-display p-4">
+                    <h3>🌟 Your Veggie Power Points: {{ $user->points ?? 0 }} 🌟</h3>
+                    <p>Keep completing quizzes and missions to level up!</p>
+                </div>
+            </div>
+
+            <!-- Badges Earned Column -->
+            <div class="col-md-6">
                 <h2>🏅 Badges Earned</h2>
                 <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
-
                     @forelse($badges as $badge)
                         <div class="badge-item text-center">
                             <img src="{{ asset('website/images/badges/' . $badge . '.jpg') }}" alt="{{ $badge }}" class="earned-badge">
@@ -72,7 +81,6 @@
                     @empty
                         <p>No badges earned yet. Start your veggie adventures to earn some!</p>
                     @endforelse
-
                 </div>
             </div>
         </div>
