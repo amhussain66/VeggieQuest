@@ -661,26 +661,35 @@ class WebsiteController extends Controller
     
 
     public function userdashboard()
-{
-    $user = Auth::guard('websiteuser')->user();
-    $quizes = QuizAnswers::where('userid', $user->id)->get();
-    $products = wishlist::where('userid', $user->id)->get();
-
-    $attemptsPerDay = QuizAnswers::selectRaw('DATE(created_at) as label, COUNT(id) as y')
-        ->where('userid', $user->id)
-        ->groupBy('label')
-        ->orderBy('label')
-        ->get();
-
-    $chartDataJson = $attemptsPerDay->toJson();
-
-    $badges = DB::table('user_badges')
-        ->where('user_id', $user->id)
-        ->pluck('badge_name')
-        ->toArray();
-
-    return view("website.userdashboard", compact('quizes', 'products', 'chartDataJson', 'badges', 'user'));
-}
+    {
+        // Get the currently authenticated user from the 'websiteuser' guard
+        $user = Auth::guard('websiteuser')->user();
+    
+        // Fetch all quiz answers submitted by the user
+        $quizes = QuizAnswers::where('userid', $user->id)->get();
+    
+        // Fetch all wishlist items saved by the user
+        $products = wishlist::where('userid', $user->id)->get();
+    
+        // Aggregate quiz attempts per day: count how many quizzes the user attempted on each day
+        $attemptsPerDay = QuizAnswers::selectRaw('DATE(created_at) as label, COUNT(id) as y')
+            ->where('userid', $user->id)
+            ->groupBy('label')  // Group the attempts by date
+            ->orderBy('label')  // Order by date
+            ->get();
+    
+        // Convert the aggregated data into JSON format for use in a chart (e.g., chart.js)
+        $chartDataJson = $attemptsPerDay->toJson();
+    
+        // Fetch the names of all badges earned by the user as an array
+        $badges = DB::table('user_badges')
+            ->where('user_id', $user->id)
+            ->pluck('badge_name')  // Only get the badge names
+            ->toArray();  // Convert to a plain array
+    
+        // Return the user dashboard view with all the data: quizzes, wishlist, chart data, badges, and user info
+        return view("website.userdashboard", compact('quizes', 'products', 'chartDataJson', 'badges', 'user'));
+    }
 
 
 

@@ -44,7 +44,7 @@
 
                             <!-- Form Group -->
                             <div class="form-group col-lg-7 col-md-6 col-sm-12">
-                                <input type="text" name="heading" placeholder="Recipe Kayword"
+                                <input type="text" name="heading" placeholder="Recipe Keyword"
                                        value="{{ ($request && !empty($request->heading)) ? $request->heading : '' }}">
                             </div>
 
